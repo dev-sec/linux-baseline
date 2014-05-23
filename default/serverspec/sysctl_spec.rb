@@ -42,11 +42,11 @@ describe 'IP V4 networking' do
        its(:value) { should eq 0 }
     end
 
-    context linux_kernel_parameter('net.ipv4.conf.eth0.arp_ignore') do
+    context linux_kernel_parameter('net.ipv4.conf.all.arp_ignore') do
        its(:value) { should eq 1 }
     end
 
-    context linux_kernel_parameter('net.ipv4.conf.eth0.arp_announce') do
+    context linux_kernel_parameter('net.ipv4.conf.all.arp_announce') do
        its(:value) { should eq 2 }
     end
 
