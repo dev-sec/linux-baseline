@@ -173,7 +173,7 @@ describe 'System sysctl' do
 end
 
 describe 'ExecShield' do
-  if command('cat /proc/cpuinfo').return_stdout?(/^flags.*?: .*? nx .*?$/)
+  if command('cat /proc/cpuinfo').return_stdout?(/^flags.*?:.*? nx( .*?)?$/)
     context linux_kernel_parameter('kernel.exec-shield') do
       its(:value) { should eq 1 }
     end
