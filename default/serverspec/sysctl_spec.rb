@@ -173,10 +173,15 @@ describe 'System sysctl' do
 end
 
 describe 'ExecShield' do
-  %x( cat /proc/cpuinfo  | egrep "^flags" | grep -q ' nx ' )
-  if $CHILD_STATUS.exitstatus != 0
+  if command('cat /proc/cpuinfo').return_stdout?(/^flags.*?: .*? nx .*?$/)
     context linux_kernel_parameter('kernel.exec-shield') do
       its(:value) { should eq 1 }
+    end
+  else
+    context 'No nx flag detected' do
+      it 'no kernel.exec-shield required' do 
+        true
+      end
     end
   end
 
