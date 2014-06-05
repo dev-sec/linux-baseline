@@ -179,7 +179,7 @@ describe 'ExecShield' do
     end
   else
     context 'No nx flag detected' do
-      it 'no kernel.exec-shield required' do 
+      it 'no kernel.exec-shield required' do
         true
       end
     end
