@@ -21,7 +21,7 @@ describe 'IP V4 networking' do
     its(:value) { should eq 1 }
   end
 
-  # GIS: Req 3.21-3
+  # GIS: Req 3.21-3 ; GIS: Req 3.37-10
   context linux_kernel_parameter('net.ipv4.conf.default.rp_filter') do
     its(:value) { should eq 1 }
   end
