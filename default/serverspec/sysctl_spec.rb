@@ -6,22 +6,27 @@ end
 
 describe 'IP V4 networking' do
 
+  # GIS: Req 3.21-1
   context linux_kernel_parameter('net.ipv4.ip_forward') do
     its(:value) { should eq 0 }
   end
 
+  # GIS: Req 3.21-1
   context linux_kernel_parameter('net.ipv4.conf.all.forwarding') do
     its(:value) { should eq 0 }
   end
 
+  # GIS: Req 3.21-3
   context linux_kernel_parameter('net.ipv4.conf.all.rp_filter') do
     its(:value) { should eq 1 }
   end
 
+  # GIS: Req 3.21-3 ; GIS: Req 3.37-10
   context linux_kernel_parameter('net.ipv4.conf.default.rp_filter') do
     its(:value) { should eq 1 }
   end
 
+  # GIS: Req 3.21-1
   context linux_kernel_parameter('net.ipv4.icmp_echo_ignore_broadcasts') do
     its(:value) { should eq 1 }
   end
@@ -30,6 +35,7 @@ describe 'IP V4 networking' do
     its(:value) { should eq 1 }
   end
 
+  # GIS: Req 3.01-9
   context linux_kernel_parameter('net.ipv4.icmp_ratelimit') do
     its(:value) { should eq 100 }
   end
@@ -42,10 +48,12 @@ describe 'IP V4 networking' do
     its(:value) { should eq 0 }
   end
 
+  # GIS: Req 3.21-3
   context linux_kernel_parameter('net.ipv4.conf.all.arp_ignore') do
     its(:value) { should eq 1 }
   end
 
+  # GIS: Req 3.21-3
   context linux_kernel_parameter('net.ipv4.conf.all.arp_announce') do
     its(:value) { should eq 2 }
   end
@@ -66,10 +74,12 @@ describe 'IP V4 networking' do
     its(:value) { should eq 1 }
   end
 
+  # GIS: Req 3.37-12
   context linux_kernel_parameter('net.ipv4.conf.all.accept_source_route') do
     its(:value) { should eq 0 }
   end
 
+  # GIS: Req 3.37-12
   context linux_kernel_parameter('net.ipv4.conf.default.accept_source_route') do
     its(:value) { should eq 0 }
   end
@@ -111,6 +121,7 @@ describe 'IP V6 Networking' do
     its(:value) { should eq  1 }
   end
 
+  # GIS: Req 3.21-1
   context linux_kernel_parameter('net.ipv6.conf.all.forwarding') do
     its(:value) { should eq 0 }
   end
@@ -173,6 +184,8 @@ describe 'System sysctl' do
 end
 
 describe 'ExecShield' do
+
+  # GIS: Req 3.21-5
   if command('cat /proc/cpuinfo').return_stdout?(/^flags.*?:.*? nx( .*?)?$/)
     context linux_kernel_parameter('kernel.exec-shield') do
       its(:value) { should eq 1 }
@@ -185,6 +198,7 @@ describe 'ExecShield' do
     end
   end
 
+  # GIS: Req 3.21-5
   context linux_kernel_parameter('kernel.randomize_va_space') do
     its(:value) { should eq 2 }
   end
