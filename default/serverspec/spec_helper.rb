@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 if ENV['STANDALONE_SPEC']
 
   require 'serverspec'

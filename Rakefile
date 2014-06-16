@@ -1,6 +1,18 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
 
+# Rubocop
+desc 'Run Rubocop lint checks'
+task :rubocop do
+  Rubocop::RakeTask.new
+end
+
+# Lint the cookbook
+desc "Run linters"
+task :lint => [ :rubocop ]
+
+# Serverspec tests
 suites = Dir.glob('*').select{|entry| File.directory?(entry) }
 
 class ServerspecTask < RSpec::Core::RakeTask
