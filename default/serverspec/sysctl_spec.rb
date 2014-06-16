@@ -74,10 +74,12 @@ describe 'IP V4 networking' do
     its(:value) { should eq 1 }
   end
 
+  # GIS: Req 3.37-12
   context linux_kernel_parameter('net.ipv4.conf.all.accept_source_route') do
     its(:value) { should eq 0 }
   end
 
+  # GIS: Req 3.37-12
   context linux_kernel_parameter('net.ipv4.conf.default.accept_source_route') do
     its(:value) { should eq 0 }
   end
@@ -119,6 +121,7 @@ describe 'IP V6 Networking' do
     its(:value) { should eq  1 }
   end
 
+  # GIS: Req 3.21-1
   context linux_kernel_parameter('net.ipv6.conf.all.forwarding') do
     its(:value) { should eq 0 }
   end
