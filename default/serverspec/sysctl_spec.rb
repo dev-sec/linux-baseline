@@ -188,14 +188,16 @@ end
 describe 'ExecShield' do
 
   # GIS: Req 3.21-5
+  # check if we find the nx flag
   if command('cat /proc/cpuinfo').return_stdout?(/^flags.*?:.*? nx( .*?)?$/)
-    context linux_kernel_parameter('kernel.exec-shield') do
-      its(:value) { should eq 1 }
-    end
+    true
   else
+    # if no nx flag is present, we require exec-shield
     context 'No nx flag detected' do
-      it 'no kernel.exec-shield required' do
-        true
+      it 'require kernel.exec-shield' do
+        context linux_kernel_parameter('kernel.exec-shield') do
+          its(:value) { should eq 1 }
+        end
       end
     end
   end
