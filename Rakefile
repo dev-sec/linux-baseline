@@ -13,6 +13,7 @@ end
 # Lint the cookbook
 desc 'Run linters'
 task :run_all_linters => [:rubocop] # rubocop:disable Style/HashSyntax
+task :default => :run_all_linters # rubocop:disable Style/HashSyntax
 
 # Serverspec tests
 suites = Dir.glob('*').select { |entry| File.directory?(entry) }
