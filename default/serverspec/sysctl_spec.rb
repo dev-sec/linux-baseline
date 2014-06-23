@@ -120,7 +120,7 @@ end
 describe 'IP V6 Networking' do
 
   context linux_kernel_parameter('net.ipv6.conf.all.disable_ipv6') do
-    its(:value) { should eq  1 }
+    its(:value) { should eq 1 }
   end
 
   # GIS: Req 3.21-1
