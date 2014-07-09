@@ -207,3 +207,43 @@ describe 'ExecShield' do
     its(:value) { should eq 2 }
   end
 end
+
+# GIS: Req 3.21-4
+describe command('find / -name \'.rhosts\' | wc -l ') do
+  its(:stdout) { should match /0/ }
+end
+
+# GIS: Req 3.21-4
+describe command('find / -name \'hosts.equiv\' | wc -l ') do
+  its(:stdout) { should match /0/ }
+end
+
+# GIS: Req 3.21-7
+describe file('/etc/shadow') do
+  it { should be_owned_by 'root' }
+end
+
+# GIS: Req 3.21-7
+describe file('/etc/shadow') do
+  it { should be_mode 600 }
+end
+
+# GIS: Req 3.21-8
+describe command('echo $PATH | grep -ci \'\.\'') do
+  its(:stdout) { should match /0/ }
+end
+
+# GIS: Req 3.21-8
+describe file('/etc/login.defs') do
+  its(:content) { should match /^ENV_SUPATH\s+PATH=\/usr\/local\/sbin:\/usr\/local\/bin:\/usr\/sbin:\/usr\/bin:\/sbin:\/bin:/ }
+end
+
+# GIS: Req 3.21-8
+describe file('/etc/login.defs') do
+  its(:content) { should match /^ENV_PATH\s+PATH=\/usr\/local\/bin:\/usr\/bin:\/bin:/ }
+end
+
+# GIS: Req 3.21-10
+describe file('/etc/login.defs') do
+  its(:content) { should match /^UMASK +027/ }
+end
