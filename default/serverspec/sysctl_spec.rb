@@ -235,12 +235,12 @@ end
 
 # GIS: Req 3.21-8
 describe file('/etc/login.defs') do
-  its(:content) { should match(/^ENV_SUPATH\s+PATH=\/usr\/local\/sbin:\/usr\/local\/bin:\/usr\/sbin:\/usr\/bin:\/sbin:\/bin/) }
+  its(:content) { should match(%r{/^ENV_SUPATH\s+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin/}) }
 end
 
 # GIS: Req 3.21-8
 describe file('/etc/login.defs') do
-  its(:content) { should match(/^ENV_PATH\s+PATH=\/usr\/local\/bin:\/usr\/bin:\/bin/) }
+  its(:content) { should match(%r{/^ENV_PATH\s+PATH=/usr/local/bin:/usr/bin:/bin/}) }
 end
 
 # GIS: Req 3.21-10
