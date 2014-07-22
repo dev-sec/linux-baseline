@@ -47,8 +47,8 @@ describe file('/etc/login.defs') do
 end
 
 # GIS: Req 3.21-12
-describe "SUID/ SGID whitelist check" do
-  it "found only whitelist suid/sgid" do
+describe 'SUID/ SGID whitelist check' do
+  it 'found only whitelist suid/sgid' do
     whitelist  = [
       # whitelist as provided by NSA
       '/bin/mount', '/bin/ping', '/bin/su', '/bin/umount', '/sbin/pam_timestamp_check',
@@ -102,11 +102,11 @@ describe "SUID/ SGID whitelist check" do
 end
 
 # GIS: Req 3.21-16
-describe "Unique uid" do
-  it "check for unique uid's" do
+describe 'Unique uid' do
+  it 'check for unique uids' do
     actual = command('cat /etc/passwd | cut -d \':\' -f 3').stdout.split(/\r?\n/)
-    hm = actual.each_with_object(Hash.new(0)) { |d,counts| counts[d] += 1 }
-    hm.each do |k,v|
+    hm = actual.each_with_object(Hash.new(0)) { |d, counts| counts[d] += 1 }
+    hm.each do |k, v|
       str = "User: UID #{k} instances: "
       ("#{str}#{v}").should eq("#{str}1")
     end
