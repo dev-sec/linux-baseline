@@ -1,3 +1,11 @@
+# encoding: utf-8
+
+require 'spec_helper'
+
+RSpec.configure do |c|
+  c.filter_run_excluding skipOn: backend(Serverspec::Commands::Base).check_os[:family]
+end
+
 # GIS: Req 3.21-4
 describe command('find / -name \'.rhosts\' | wc -l ') do
   its(:stdout) { should match(/^0/) }
@@ -93,5 +101,14 @@ describe "SUID/ SGID whitelist check" do
   end
 end
 
-
-# trennen von sysctl und uid's mit einer map suchen
+# GIS: Req 3.21-16
+describe "Unique uid" do
+  it "check for unique uid's" do
+    actual = command('cat /etc/passwd | cut -d \':\' -f 3').stdout.split(/\r?\n/)
+    hm = actual.each_with_object(Hash.new(0)) { |d,counts| counts[d] += 1 }
+    hm.each do |k,v|
+      str = "User: UID #{k} instances: "
+      ("#{str}#{v}").should eq("#{str}1")
+    end
+  end
+end
