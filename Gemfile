@@ -3,5 +3,5 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'serverspec'
+gem 'serverspec', '~> 2.1.0'
 gem 'rubocop',    '~> 0.23'
