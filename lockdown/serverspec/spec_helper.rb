@@ -22,8 +22,7 @@ if ENV['STANDALONE_SPEC']
   require 'net/ssh'
   require 'highline/import'
 
-  include Serverspec::Helper::Ssh
-  include Serverspec::Helper::DetectOS
+  set :backend, :ssh
 
   RSpec.configure do |c|
 
@@ -62,8 +61,7 @@ if ENV['STANDALONE_SPEC']
 else
   require 'serverspec'
 
-  include Serverspec::Helper::Exec
-  include Serverspec::Helper::DetectOS
+  set :backend, :exec
 
   RSpec.configure do |c|
     c.before :all do
