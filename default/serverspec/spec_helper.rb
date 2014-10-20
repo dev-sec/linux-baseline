@@ -41,17 +41,17 @@ if ENV['STANDALONE_SPEC']
     end
 
     if ENV['ASK_LOGIN_USERNAME']
-      user = ask("\nEnter login username: ") { |q| q.echo = false }
+      options[:user] = ask("\nEnter login username: ") { |q| q.echo = false }
     else
-      user = ENV['LOGIN_USERNAME'] || ENV['user'] || Etc.getlogin
+      options[:user] = ENV['LOGIN_USERNAME'] || ENV['user'] || Etc.getlogin
     end
 
-    if user.nil?
+    if options[:user].nil?
       puts 'specify login user env LOGIN_USERNAME= or user='
       exit 1
     end
 
-    c.host  = ENV['TARGET_HOST']
+    c.host = ENV['TARGET_HOST']
     c.ssh_options = options.merge(Net::SSH::Config.for(c.host))
 
   end
