@@ -200,7 +200,7 @@ describe 'ExecShield' do
 
 
   # check if we find the nx flag
-  if command('cat /proc/cpuinfo').return_stdout?(/^flags.*?:.*? nx( .*?)?$/)
+  if command('cat /proc/cpuinfo').stdout =~ /^flags.*?:.*? nx( .*?)?$/
     true
   else
     # if no nx flag is present, we require exec-shield
