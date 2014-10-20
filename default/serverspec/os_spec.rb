@@ -17,10 +17,6 @@
 
 require 'spec_helper'
 
-RSpec.configure do |c|
-  c.filter_run_excluding skipOn: backend(Serverspec::Commands::Base).check_os[:family]
-end
-
 # DTAG SEC: Req 3.21-4
 describe command('find / -name \'.rhosts\' | wc -l ') do
   its(:stdout) { should match(/^0/) }
