@@ -17,10 +17,6 @@
 
 require 'spec_helper'
 
-RSpec.configure do |c|
-  c.filter_run_excluding skipOn: backend(Serverspec::Commands::Base).check_os[:family]
-end
-
 describe 'IP V4 networking' do
 
   # DTAG SEC: Req 3.21-1
@@ -204,7 +200,7 @@ describe 'ExecShield' do
 
   # DTAG SEC: Req 3.21-5
   # check if we find the nx flag
-  if command('cat /proc/cpuinfo').return_stdout?(/^flags.*?:.*? nx( .*?)?$/)
+  if command('cat /proc/cpuinfo').stdout =~ /^flags.*?:.*? nx( .*?)?$/
     true
   else
     # if no nx flag is present, we require exec-shield
