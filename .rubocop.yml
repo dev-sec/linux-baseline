@@ -1,10 +1,10 @@
 AllCops:
-  Excludes:
-    - vendor/**
+  Exclude:
+    - vendor/**/*
     - metadata.rb
     - '**/Puppetfile'
     - Puppetfile
-
+    - test/**/*
 
 Documentation:
   Enabled: false
@@ -17,6 +17,10 @@ HashSyntax:
 LineLength:
   Enabled: false
 MethodLength:
-  Max: 30
+  Max: 40
 NumericLiterals:
   MinDigits: 10
+Metrics/CyclomaticComplexity:
+  Max: 10
+Metrics/PerceivedComplexity:
+  Max: 10
