@@ -1,11 +1,7 @@
+---
 AllCops:
   Exclude:
-    - vendor/**/*
-    - metadata.rb
-    - '**/Puppetfile'
-    - Puppetfile
-    - test/**/*
-
+  - vendor/**/*
 Documentation:
   Enabled: false
 AlignParameters:
