@@ -99,6 +99,8 @@ describe 'SUID/ SGID whitelist check' do
       '/usr/kerberos/bin/ksu',
       # whitelist pam_caching
       '/usr/sbin/ccreds_validate',
+      # whitelist su-tools
+      '/usr/bin/schroot',
       # whitelist Xorg
       '/usr/bin/Xorg',                                              # xorg
       '/usr/bin/X',                                                 # xorg
