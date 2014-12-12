@@ -3,6 +3,7 @@ AllCops:
   Exclude:
   - vendor/**/*
   - "*/puppet/Puppetfile"
+  - "*/puppet/.tmp/**/*"
 Documentation:
   Enabled: false
 AlignParameters:
@@ -21,3 +22,5 @@ Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/PerceivedComplexity:
   Max: 10
+Metrics/AbcSize:
+  Max: 29
