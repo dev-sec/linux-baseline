@@ -37,6 +37,7 @@ namespace :serverspec do
     desc "Run serverspec suite #{suite}"
     ServerspecTask.new(suite.to_sym) do |t|
       t.rspec_opts = '--no-color --format html --out report.html' if ENV['format'] == 'html'
+      t.rspec_opts = '--no-color --format json --out report.json' if ENV['format'] == 'json'
       t.target = ENV['TARGET_HOST'] || ENV['target_host']
       t.ruby_opts = "-I #{suite}/serverspec"
       t.pattern = "#{suite}/serverspec/*_spec.rb"
