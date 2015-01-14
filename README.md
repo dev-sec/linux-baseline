@@ -40,5 +40,5 @@ bundle exec rake serverspec:default target_host=<name-or-ip-of-target-server>
 ASK_LOGIN_PASSWORD=true bundle exec rake serverspec:default target_host=192.168.1.222 user=stack
 ```
 
-add `format=html` to get a report.html document
+add `format=html|json` to get a report.html or report.json document
 
