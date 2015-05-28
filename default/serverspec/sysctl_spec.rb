@@ -167,6 +167,14 @@ describe 'NSA 2.5.3.2.5 Limit Network-Transmitted Configuration' do
     its(:value) { should eq 0 }
   end
 
+  context linux_kernel_parameter('net.ipv6.conf.all.accept_ra') do
+    its(:value) { should eq 0 }
+  end
+
+  context linux_kernel_parameter('net.ipv6.conf.default.accept_ra') do
+    its(:value) { should eq 0 }
+  end
+
   context linux_kernel_parameter('net.ipv6.conf.default.autoconf') do
     its(:value) { should eq 0 }
   end
