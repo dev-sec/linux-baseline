@@ -3,9 +3,10 @@ tests-os-hardening
 
 This are the integration tests for the projects
 
-- https://github.com/TelekomLabs/puppet-os-hardening
-- https://github.com/TelekomLabs/chef-os-hardening
-
+- https://github.com/hardening-io/puppet-os-hardening
+- https://github.com/hardening-io/chef-os-hardening
+- https://github.com/hardening-io/ansible-os-hardening
+- 
 they start at `integration` level
 
 you can use the gem `kitchen-sharedtests`
