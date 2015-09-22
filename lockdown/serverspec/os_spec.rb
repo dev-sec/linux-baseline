@@ -60,7 +60,7 @@ end
 
 describe 'SUID/ SGID whitelist check' do
   it 'found only whitelist suid/sgid' do
-    whitelist  = [
+    whitelist = [
       # whitelist as provided by NSA
       '/bin/mount', '/bin/ping', '/bin/su', '/bin/umount', '/sbin/pam_timestamp_check',
       '/sbin/unix_chkpwd', '/usr/bin/at', '/usr/bin/gpasswd', '/usr/bin/locate',
