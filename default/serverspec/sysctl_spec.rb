@@ -19,26 +19,21 @@ require 'spec_helper'
 
 describe 'IP V4 networking' do
 
-
   context linux_kernel_parameter('net.ipv4.ip_forward') do
     its(:value) { should eq 0 }
   end
-
 
   context linux_kernel_parameter('net.ipv4.conf.all.forwarding') do
     its(:value) { should eq 0 }
   end
 
-
   context linux_kernel_parameter('net.ipv4.conf.all.rp_filter') do
     its(:value) { should eq 1 }
   end
 
-
   context linux_kernel_parameter('net.ipv4.conf.default.rp_filter') do
     its(:value) { should eq 1 }
   end
-
 
   context linux_kernel_parameter('net.ipv4.icmp_echo_ignore_broadcasts') do
     its(:value) { should eq 1 }
@@ -47,7 +42,6 @@ describe 'IP V4 networking' do
   context linux_kernel_parameter('net.ipv4.icmp_ignore_bogus_error_responses') do
     its(:value) { should eq 1 }
   end
-
 
   context linux_kernel_parameter('net.ipv4.icmp_ratelimit') do
     its(:value) { should eq 100 }
@@ -61,11 +55,9 @@ describe 'IP V4 networking' do
     its(:value) { should eq 0 }
   end
 
-
   context linux_kernel_parameter('net.ipv4.conf.all.arp_ignore') do
     its(:value) { should eq 1 }
   end
-
 
   context linux_kernel_parameter('net.ipv4.conf.all.arp_announce') do
     its(:value) { should eq 2 }
@@ -87,11 +79,9 @@ describe 'IP V4 networking' do
     its(:value) { should eq 1 }
   end
 
-
   context linux_kernel_parameter('net.ipv4.conf.all.accept_source_route') do
     its(:value) { should eq 0 }
   end
-
 
   context linux_kernel_parameter('net.ipv4.conf.default.accept_source_route') do
     its(:value) { should eq 0 }
@@ -133,7 +123,6 @@ describe 'IP V6 Networking' do
   context linux_kernel_parameter('net.ipv6.conf.all.disable_ipv6') do
     its(:value) { should eq 1 }
   end
-
 
   context linux_kernel_parameter('net.ipv6.conf.all.forwarding') do
     its(:value) { should eq 0 }
@@ -206,7 +195,6 @@ end
 
 describe 'ExecShield' do
 
-
   # check if we find the nx flag
   if command('cat /proc/cpuinfo').stdout =~ /^flags.*?:.*? nx( .*?)?$/
     true
@@ -220,7 +208,6 @@ describe 'ExecShield' do
       end
     end
   end
-
 
   context linux_kernel_parameter('kernel.randomize_va_space') do
     its(:value) { should eq 2 }

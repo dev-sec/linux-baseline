@@ -17,46 +17,28 @@
 
 require 'spec_helper'
 
-
 describe command('find / -name \'.rhosts\' | wc -l ') do
   its(:stdout) { should match(/^0/) }
 end
-
 
 describe command('find / -name \'hosts.equiv\' | wc -l ') do
   its(:stdout) { should match(/^0/) }
 end
 
-
-describe file('/etc/shadow') do
-  it { should be_owned_by 'root' }
-end
-
-
 describe file('/etc/shadow') do
   it { should be_mode 600 }
+  it { should be_owned_by 'root' }
 end
-
 
 describe command('echo $PATH | grep -ci \'\.\'') do
   its(:stdout) { should match(/^0/) }
 end
 
-
 describe file('/etc/login.defs') do
   its(:content) { should match(%r{^ENV_SUPATH\s+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin}) }
-end
-
-
-describe file('/etc/login.defs') do
   its(:content) { should match(%r{^ENV_PATH\s+PATH=/usr/local/bin:/usr/bin:/bin}) }
-end
-
-
-describe file('/etc/login.defs') do
   its(:content) { should match(/^UMASK +027/) }
 end
-
 
 describe 'SUID/ SGID whitelist check' do
   it 'found only whitelist suid/sgid' do
@@ -113,7 +95,6 @@ describe 'SUID/ SGID whitelist check' do
     (actual - whitelist).count.should be 0
   end
 end
-
 
 describe 'Unique uid' do
   it 'check for unique uids' do
