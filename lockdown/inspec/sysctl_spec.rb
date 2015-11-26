@@ -80,7 +80,7 @@ end
 
 control '07' do
   impact 1.0
-  title #TCP timestamps'
+  title 'TCP timestamps'
   desc "It is possible to estimate the current uptime of a Linux system. It's preferable to disable TCP timestamps on your systems."
   describe kernel_parameter('net.ipv4.tcp_timestamps') do
     its(:value) { should eq 0 }
@@ -260,8 +260,8 @@ end
 
 control '25' do
   impact 1.0
-  title "Disable the system`s acceptance of router advertisement"
-  desc "Setting controls whether the system will accept router advertisement"
+  title 'Disable the system`s acceptance of router advertisement'
+  desc 'Setting controls whether the system will accept router advertisement'
   describe kernel_parameter('net.ipv6.conf.all.accept_ra') do
     its(:value) { should eq 0 }
   end
@@ -337,7 +337,7 @@ control '33' do
   impact 1.0
   title 'CPU No execution Flag or Kernel ExecShield'
   desc 'Kernel features and CPU flags provide a protection against buffer overflows. The CPU NX Flag and the kernel parameter exec-shield prevents code execution on a per memory page basis. If the CPU supports the NX-Flag then this should be used instead of the kernel parameter exec-shield.'
-  flags = parse_config_file('/proc/cpuinfo', { assignment_re: /^([^:]*?)\s+:\s+(.*?)$/ }).flags.split(' ')
+  flags = parse_config_file('/proc/cpuinfo', assignment_re: /^([^:]*?)\s+:\s+(.*?)$/).flags.split(' ')
   describe '/proc/cpuinfo' do
     it 'Flags should include NX' do
       expect(flags).to include('nx')
