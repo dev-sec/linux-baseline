@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# Copyright 2015, Patrick Münch
+# Copyright 2015, Patrick Muench
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 #
 # author: Christoph Hartmann
 # author: Dominik Richter
-# author: Patrick Münch
+# author: Patrick Muench
 
 control '01' do
   impact 1.0
-  title "Trusted hosts login"
+  title 'Trusted hosts login'
   desc "Rhosts/hosts.equiv files are a weak implemenation of authentication. Disabling the .rhosts and hosts.equiv support helps to prevent users from subverting the system's normal access control mechanisms of the system."
   describe command('find / -name \'.rhosts\'') do
     its('stdout') { should be_empty }
@@ -32,8 +32,8 @@ end
 
 control '02' do
   impact 1.0
-  title "Check owner and permissions for /etc/shadow "
-  desc "Check periodically the owner and permissions for /etc/shadow"
+  title 'Check owner and permissions for /etc/shadow'
+  desc 'Check periodically the owner and permissions for /etc/shadow'
   describe file('/etc/shadow') do
     it { should exist }
     it { should be_file }
@@ -49,8 +49,8 @@ end
 
 control '03' do
   impact 1.0
-  title "Check owner and permissions for /etc/passwd "
-  desc "Check periodically the owner and permissions for /etc/passwd"
+  title 'Check owner and permissions for /etc/passwd'
+  desc 'Check periodically the owner and permissions for /etc/passwd'
   describe file('/etc/passwd') do
     it { should exist }
     it { should be_file }
@@ -68,8 +68,8 @@ end
 
 control '04' do
   impact 1.0
-  title "Dot in PATH variable"
-  desc "Do not include the current working directory in PATH variable. This makes it easier for an attacker to gain extensive rigths by executing a Trojan program"
+  title 'Dot in PATH variable'
+  desc 'Do not include the current working directory in PATH variable. This makes it easier for an attacker to gain extensive rigths by executing a Trojan program'
   describe os_env('PATH') do
     its('split') { should_not include('') }
     its('split') { should_not include('.') }
@@ -78,8 +78,8 @@ end
 
 control '05' do
   impact 1.0
-  title "Check login.defs"
-  desc "Check owner and permissions for login.defs. Also check the configured PATH variable and umask in login.defs"
+  title 'Check login.defs'
+  desc 'Check owner and permissions for login.defs. Also check the configured PATH variable and umask in login.defs'
   describe file('/etc/login.defs') do
     it { should exist }
     it { should be_file }
@@ -112,8 +112,8 @@ end
 
 control '06' do
   impact 1.0
-  title "Check for SUID/ SGID blacklist "
-  desc "Find blacklisted SUID and SGID files to ensure that no rogue SUID and SGID files have been introduced into the system"
+  title 'Check for SUID/ SGID blacklist'
+  desc 'Find blacklisted SUID and SGID files to ensure that no rogue SUID and SGID files have been introduced into the system'
 
   blacklist = [
     # blacklist as provided by NSA
@@ -141,20 +141,20 @@ control '06' do
     '/usr/lib/evolution/camel-lock-helper-1.2',                   # investigate current state...
     '/usr/lib/pt_chown',                                          # pseudo-tty, needed?
     '/usr/lib/eject/dmcrypt-get-device',
-    '/usr/lib/mc/cons.saver'                                     # midnight commander screensaver
+    '/usr/lib/mc/cons.saver' # midnight commander screensaver
   ]
 
   output = command('find / -perm -4000 -o -perm -2000 -type f ! -path \'/proc/*\' -print 2>/dev/null | grep -v \'^find:\'')
   diff = output.stdout.split(/\r?\n/) & blacklist
   describe diff do
-    it {should be_empty}
+    it { should be_empty }
   end
 end
 
 control '07' do
   impact 1.0
-  title "Unique uid and gid"
-  desc "Check for unique uids gids"
+  title 'Unique uid and gid'
+  desc 'Check for unique uids gids'
   describe passwd do
     its('uids') { should_not contain_duplicates }
   end
