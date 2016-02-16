@@ -1,45 +1,44 @@
 tests-os-hardening
 ==================
 
-This are the integration tests for the projects
+This Compliance Profile ensures, that all hardening projects keep the same quality.
 
 - https://github.com/hardening-io/puppet-os-hardening
 - https://github.com/hardening-io/chef-os-hardening
 - https://github.com/hardening-io/ansible-os-hardening
- 
-They start at `integration` level.
-
-you can use the gem `kitchen-sharedtests`
-
-- https://github.com/ehaselwanter/kitchen-sharedtests/
-
-to make them available to your project. Use `thor kitchen:fetch-remote-tests` to put the repo into `test/integration`.  
 
 ## Standalone Usage
 
-You can target the integration tests to any host where you have ssh access.
-
-`rake -T` gives you a list of suites you can run (we'll ignore directories which are obviously not suites for now)
+This Compliance Profile requires [InSpec](https://github.com/chef/inspec) for execution:
 
 ```
-± rake -T
-rake serverspec:data_bags  # Run serverspec suite data_bags
-rake serverspec:default    # Run serverspec suite default
+$ git clone https://github.com/hardening-io/tests-os-hardening
+$ inspec exec tests-os-hardening
 ```
 
-Run it with:
+You can also execute the profile directly from Github:
 
 ```
-bundle install
-
-# default user and ssh-key
-
-bundle exec rake serverspec:default target_host=<name-or-ip-of-target-server>
-
-# or with user, host, password
-
-ASK_LOGIN_PASSWORD=true bundle exec rake serverspec:default target_host=192.168.1.222 user=stack
+$ inspec exec https://github.com/hardening-io/tests-os-hardening
 ```
 
-Add `format=html|json` to get a report.html or report.json document.
+## License and Author
 
+* Author:: Patrick Muench <patrick.meier111@googlemail.com>
+* Author:: Dominik Richter <dominik.richter@googlemail.com>
+* Author:: Christoph Hartmann <chris@lollyrock.com>
+* Author:: Edmund Haselwanter <me@ehaselwanter.com>
+
+* Copyright 2014-2016, The Hardening Framework Team
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

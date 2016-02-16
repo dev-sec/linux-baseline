@@ -1,8 +1,11 @@
 sudo: false
+language: ruby
 cache: bundler
 
 rvm:
   - 1.9.3
   - 2.0.0
   - 2.2.0
-language: ruby
+
+bundler_args: --without integration
+script: bundle exec rake

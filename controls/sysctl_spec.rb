@@ -18,7 +18,7 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-control '01' do
+control 'sysctl-01' do
   impact 1.0
   title 'IPv4 Forwarding'
   desc "If you're not intending for your system to forward traffic between interfaces, or if you only have a single interface, the forwarding function must be disable."
@@ -30,7 +30,7 @@ control '01' do
   end
 end
 
-control '02' do
+control 'sysctl-02' do
   impact 1.0
   title 'Reverse path filtering'
   desc "The rp_filter can reject incoming packets if their source address doesn't match the network interface that they're arriving on, which helps to prevent IP spoofing."
@@ -42,7 +42,7 @@ control '02' do
   end
 end
 
-control '03' do
+control 'sysctl-03' do
   impact 1.0
   title 'ICMP ignore bogus error responses'
   desc 'Sometimes routers send out invalid responses to broadcast frames. This is a violation of RFC 1122 and the kernel will logged this. To avoid filling up your logfile with unnecessary stuff, you can tell the kernel not to issue these warnings'
@@ -51,7 +51,7 @@ control '03' do
   end
 end
 
-control '04' do
+control 'sysctl-04' do
   impact 1.0
   title 'ICMP echo ignore broadcasts'
   desc 'Blocking ICMP ECHO requests to broadcast addresses'
@@ -60,7 +60,7 @@ control '04' do
   end
 end
 
-control '05' do
+control 'sysctl-05' do
   impact 1.0
   title 'ICMP ratelimit'
   desc 'icmp_ratelimit defines how many packets that match the icmp_ratemask per second'
@@ -69,7 +69,7 @@ control '05' do
   end
 end
 
-control '06' do
+control 'sysctl-06' do
   impact 1.0
   title 'ICMP ratemask'
   desc 'Ratemask is a logical OR of all ICMP codes to rate limit'
@@ -78,7 +78,7 @@ control '06' do
   end
 end
 
-control '07' do
+control 'sysctl-07' do
   impact 1.0
   title 'TCP timestamps'
   desc "It is possible to estimate the current uptime of a Linux system. It's preferable to disable TCP timestamps on your systems."
@@ -87,7 +87,7 @@ control '07' do
   end
 end
 
-control '08' do
+control 'sysctl-08' do
   impact 1.0
   title 'ARP ignore'
   desc 'Reply only if the target IP address is local address configured on the incoming interface.'
@@ -96,7 +96,7 @@ control '08' do
   end
 end
 
-control '09' do
+control 'sysctl-09' do
   impact 1.0
   title 'ARP announce'
   desc 'Always use the best local address for this target. In this mode we ignore the source address in the IP packet and try to select local address that we prefer for talks with	the target host.'
@@ -105,7 +105,7 @@ control '09' do
   end
 end
 
-control '10' do
+control 'sysctl-10' do
   impact 1.0
   title 'TCP RFC1337 Protect Against TCP Time-Wait'
   desc 'This enables a fix for time-wait assassination hazards in tcp, described in RFC 1337. If enabled, this causes the kernel to drop RST packets for sockets in the time-wait state.'
@@ -114,7 +114,7 @@ control '10' do
   end
 end
 
-control '11' do
+control 'sysctl-11' do
   impact 1.0
   title 'Protection against SYN flood attacks'
   desc 'A SYN-Attack is a denial of service (DoS) attack that consumes resources on your system forcing you to reboot.'
@@ -123,7 +123,7 @@ control '11' do
   end
 end
 
-control '12' do
+control 'sysctl-12' do
   impact 1.0
   title 'Shared Media IP Architecture'
   desc 'Send(router) or accept(host) RFC1620 shared media redirects. If it is not set the kernel does not assume that different subnets on this device can communicate directly.'
@@ -135,7 +135,7 @@ control '12' do
   end
 end
 
-control '13' do
+control 'sysctl-13' do
   impact 1.0
   title 'Disable Source Routing'
   desc 'The accept_source_route option causes network interfaces to accept packets with the Strict Source Route (SSR) or Loose Source Routing (LSR) option set. An attacker is able to send a source routed packet into the network, then he could intercept the replies and your server might not know that it is not communicating with a trusted server'
@@ -147,7 +147,7 @@ control '13' do
   end
 end
 
-control '14' do
+control 'sysctl-14' do
   impact 1.0
   title 'Disable acceptance of all IPv4 redirected packets'
   desc 'Disable acceptance of all redirected packets these prevents Man-in-the-Middle attacks.'
@@ -159,7 +159,7 @@ control '14' do
   end
 end
 
-control '15' do
+control 'sysctl-15' do
   impact 1.0
   title 'Disable acceptance of all secure redirected packets'
   desc 'Disable acceptance of all secure redirected packets these prevents Man-in-the-Middle attacks.'
@@ -171,7 +171,7 @@ control '15' do
   end
 end
 
-control '16' do
+control 'sysctl-16' do
   impact 1.0
   title 'Disable sending of redirects packets'
   desc 'Disable sending of redirects packets'
@@ -183,7 +183,7 @@ control '16' do
   end
 end
 
-control '17' do
+control 'sysctl-17' do
   impact 1.0
   title 'Disable log martians'
   desc 'log_martians can cause a denial of service attack to the host'
@@ -192,7 +192,7 @@ control '17' do
   end
 end
 
-control '18' do
+control 'sysctl-18' do
   impact 1.0
   title 'Disable IPv6 if it is not needed'
   desc 'Disable IPv6 if it is not needed'
@@ -201,7 +201,7 @@ control '18' do
   end
 end
 
-control '19' do
+control 'sysctl-19' do
   impact 1.0
   title 'IPv6 Forwarding'
   desc "If you're not intending for your system to forward traffic between interfaces, or if you only have a single interface, the forwarding function must be disable."
@@ -210,7 +210,7 @@ control '19' do
   end
 end
 
-control '20' do
+control 'sysctl-20' do
   impact 1.0
   title 'Disable acceptance of all IPv6 redirected packets'
   desc 'Disable acceptance of all redirected packets these prevents Man-in-the-Middle attacks.'
@@ -222,7 +222,7 @@ control '20' do
   end
 end
 
-control '21' do
+control 'sysctl-21' do
   impact 1.0
   title 'Disable acceptance of IPv6 router solicitations messages'
   desc 'The router solicitations setting determines how many router solicitations are sent when bringing up the interface. If addresses are statically assigned, there is no need to send any solicitations.'
@@ -231,7 +231,7 @@ control '21' do
   end
 end
 
-control '22' do
+control 'sysctl-22' do
   impact 1.0
   title 'Disable Accept Router Preference from router advertisement'
   desc 'Disable Accept Router Preference from router advertisement'
@@ -240,7 +240,7 @@ control '22' do
   end
 end
 
-control '23' do
+control 'sysctl-23' do
   impact 1.0
   title 'Disable learning Prefix Information from router advertisement'
   desc 'The accept_ra_pinfo setting controls whether the system will accept prefix info from the router.'
@@ -249,7 +249,7 @@ control '23' do
   end
 end
 
-control '24' do
+control 'sysctl-24' do
   impact 1.0
   title 'Disable learning Hop limit from router advertisement'
   desc 'The accept_ra_defrtr setting controls whether the system will accept Hop Limit settings from a router advertisement. Setting it to 0 prevents a router from changing your default IPv6 Hop Limit for outgoing packets.'
@@ -258,7 +258,7 @@ control '24' do
   end
 end
 
-control '25' do
+control 'sysctl-25' do
   impact 1.0
   title 'Disable the system`s acceptance of router advertisement'
   desc 'Setting controls whether the system will accept router advertisement'
@@ -270,7 +270,7 @@ control '25' do
   end
 end
 
-control '26' do
+control 'sysctl-26' do
   impact 1.0
   title 'Disable IPv6 autoconfiguration'
   desc 'The autoconf setting controls whether router advertisements can cause the system to assign a global unicast address to an interface.'
@@ -279,7 +279,7 @@ control '26' do
   end
 end
 
-control '27' do
+control 'sysctl-27' do
   impact 1.0
   title 'Disable neighbor solicitations to send out per address'
   desc 'The dad_transmits setting determines how many neighbor solicitations to send out per address (global and link-local) when bringing up an interface to ensure the desired address is unique on the network.'
@@ -288,7 +288,7 @@ control '27' do
   end
 end
 
-control '28' do
+control 'sysctl-28' do
   impact 1.0
   title 'Assign one global unicast IPv6 addresses to each interface'
   desc 'The max_addresses setting determines how many global unicast IPv6 addresses can be assigned to each interface. The default is 16, but it should be set to exactly the number of statically configured global addresses required.'
@@ -297,7 +297,7 @@ control '28' do
   end
 end
 
-control '29' do
+control 'sysctl-29' do
   impact 1.0
   title 'Disable loading kernel modules'
   desc 'The sysctl key kernel.modules_disabled is very straightforward. If it contains a "1" it will disable loading new modules, where a "0" will still allow loading them. Using this option will be a great protection against loading malicious kernel modules.'
@@ -306,7 +306,7 @@ control '29' do
   end
 end
 
-control '30' do
+control 'sysctl-30' do
   impact 1.0
   title 'Magic SysRq'
   desc "Kernel.sysreg is a 'magical' key combo you can hit which the kernel will respond to regardless of whatever else it is doing, unless it is completely locked up."
@@ -315,7 +315,7 @@ control '30' do
   end
 end
 
-control '31' do
+control 'sysctl-31' do
   impact 1.0
   title 'Disable Core Dumps'
   desc 'Ensure that core dumps can never be made by setuid programs'
@@ -324,7 +324,7 @@ control '31' do
   end
 end
 
-control '32' do
+control 'sysctl-32' do
   impact 1.0
   title 'kernel.randomize_va_space'
   desc 'kernel.randomize_va_space'
@@ -333,7 +333,7 @@ control '32' do
   end
 end
 
-control '33' do
+control 'sysctl-33' do
   impact 1.0
   title 'CPU No execution Flag or Kernel ExecShield'
   desc 'Kernel features and CPU flags provide a protection against buffer overflows. The CPU NX Flag and the kernel parameter exec-shield prevents code execution on a per memory page basis. If the CPU supports the NX-Flag then this should be used instead of the kernel parameter exec-shield.'
