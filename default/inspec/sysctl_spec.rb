@@ -337,7 +337,7 @@ control '33' do
   impact 1.0
   title 'CPU No execution Flag or Kernel ExecShield'
   desc 'Kernel features and CPU flags provide a protection against buffer overflows. The CPU NX Flag and the kernel parameter exec-shield prevents code execution on a per memory page basis. If the CPU supports the NX-Flag then this should be used instead of the kernel parameter exec-shield.'
-  flags = parse_config_file('/proc/cpuinfo', assignment_re: /^([^:]*?)\s+:\s+(.*?)$/).flags.split(' ')
+  flags = parse_config_file('/proc/cpuinfo', assignment_re: /^([^:]*?)\s+:\s+(.*?)$/).flags.to_s.split(' ')
   describe '/proc/cpuinfo' do
     it 'Flags should include NX' do
       expect(flags).to include('nx')
