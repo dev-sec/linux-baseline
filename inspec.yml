@@ -1,10 +1,10 @@
-name: os-hardening-default
+name: os-hardening
 title: Hardening Framework OS Hardening Test Suite
 maintainer: Hardening Framework Team
 copyright: Hardening Framework Team
 copyright_email: hello@hardening.io
 license: Apache 2 license
-summary: Test Suite for all OS Hardening Implementations
+summary: Test-suite for best-preactice os hardening
 version: 1.0.0
 supports:
   - os-family: linux
