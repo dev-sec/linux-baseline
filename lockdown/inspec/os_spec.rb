@@ -18,7 +18,7 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-control '01' do
+control 'os-01' do
   impact 1.0
   title 'Trusted hosts login'
   desc "Rhosts/hosts.equiv files are a weak implemenation of authentication. Disabling the .rhosts and hosts.equiv support helps to prevent users from subverting the system's normal access control mechanisms of the system."
@@ -30,7 +30,7 @@ control '01' do
   end
 end
 
-control '02' do
+control 'os-02' do
   impact 1.0
   title 'Check owner and permissions for /etc/shadow'
   desc 'Check periodically the owner and permissions for /etc/shadow'
@@ -47,7 +47,7 @@ control '02' do
   end
 end
 
-control '03' do
+control 'os-03' do
   impact 1.0
   title 'Check owner and permissions for /etc/passwd'
   desc 'Check periodically the owner and permissions for /etc/passwd'
@@ -66,7 +66,7 @@ control '03' do
   end
 end
 
-control '04' do
+control 'os-04' do
   impact 1.0
   title 'Dot in PATH variable'
   desc 'Do not include the current working directory in PATH variable. This makes it easier for an attacker to gain extensive rigths by executing a Trojan program'
@@ -76,7 +76,7 @@ control '04' do
   end
 end
 
-control '05' do
+control 'os-05' do
   impact 1.0
   title 'Check login.defs'
   desc 'Check owner and permissions for login.defs. Also check the configured PATH variable and umask in login.defs'
@@ -110,7 +110,7 @@ control '05' do
   end
 end
 
-control '06' do
+control 'os-06' do
   impact 1.0
   title 'Check for SUID/ SGID blacklist'
   desc 'Find blacklisted SUID and SGID files to ensure that no rogue SUID and SGID files have been introduced into the system'
@@ -151,7 +151,7 @@ control '06' do
   end
 end
 
-control '07' do
+control 'os-07' do
   impact 1.0
   title 'Unique uid and gid'
   desc 'Check for unique uids gids'
