@@ -18,7 +18,7 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-control '01' do
+control 'package-01' do
   impact 1.0
   title 'Do not run deprecated inetd or xinetd'
   desc 'http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.1'
@@ -30,7 +30,7 @@ control '01' do
   end
 end
 
-control '02' do
+control 'package-02' do
   impact 1.0
   title 'Do not install Telnet server'
   desc 'Telnet protocol uses unencrypted communication, that means the passowrd and other sensitive data are unencrypted. http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.2'
@@ -39,7 +39,7 @@ control '02' do
   end
 end
 
-control '03' do
+control 'package-03' do
   impact 1.0
   title 'Do not install rsh server'
   desc 'The r-commands suffers same problem as telnet. http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.3'
@@ -48,7 +48,7 @@ control '03' do
   end
 end
 
-control '05' do
+control 'package-05' do
   impact 1.0
   title 'Do not install ypserv server (NIS)'
   desc 'Network Information Service (NIS) has some security design weaknesses like inadequate protection of important authentication information. http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.4'
@@ -57,7 +57,7 @@ control '05' do
   end
 end
 
-control '06' do
+control 'package-06' do
   impact 1.0
   title 'Do not install tftp server'
   desc 'tftp-server provides little security http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.5'
