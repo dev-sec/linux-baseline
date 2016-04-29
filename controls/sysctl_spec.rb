@@ -188,7 +188,7 @@ control 'sysctl-17' do
   title 'Disable log martians'
   desc 'log_martians can cause a denial of service attack to the host'
   describe kernel_parameter('net.ipv4.conf.all.log_martians') do
-    its(:value) { should eq 0 }
+    its(:value) { should eq 1 }
   end
 end
 
@@ -338,16 +338,16 @@ control 'sysctl-33' do
   title 'CPU No execution Flag or Kernel ExecShield'
   desc 'Kernel features and CPU flags provide a protection against buffer overflows. The CPU NX Flag and the kernel parameter exec-shield prevents code execution on a per memory page basis. If the CPU supports the NX-Flag then this should be used instead of the kernel parameter exec-shield.'
 
+  # parse for cpu flags
+  flags = parse_config_file('/proc/cpuinfo', assignment_re: /^([^:]*?)\s+:\s+(.*?)$/).flags
+  flags ||= ''
+  flags = flags.split(' ')
+
   describe '/proc/cpuinfo' do
     it 'Flags should include NX' do
       expect(flags).to include('nx')
     end
   end
-
-  # parse for cpu flags
-  flags = parse_config_file('/proc/cpuinfo', assignment_re: /^([^:]*?)\s+:\s+(.*?)$/).flags
-  flags ||= ''
-  flags = flags.split(' ')
 
   unless flags.include?('nx')
     # if no nx flag is present, we require exec-shield
