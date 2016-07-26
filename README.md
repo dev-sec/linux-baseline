@@ -3,23 +3,23 @@ tests-os-hardening
 
 This Compliance Profile ensures, that all hardening projects keep the same quality.
 
-- https://github.com/hardening-io/puppet-os-hardening
-- https://github.com/hardening-io/chef-os-hardening
-- https://github.com/hardening-io/ansible-os-hardening
+- https://github.com/dev-sec/puppet-os-hardening
+- https://github.com/dev-sec/chef-os-hardening
+- https://github.com/dev-sec/ansible-os-hardening
 
 ## Standalone Usage
 
 This Compliance Profile requires [InSpec](https://github.com/chef/inspec) for execution:
 
 ```
-$ git clone https://github.com/hardening-io/tests-os-hardening
+$ git clone https://github.com/dev-sec/tests-os-hardening
 $ inspec exec tests-os-hardening
 ```
 
 You can also execute the profile directly from Github:
 
 ```
-$ inspec exec https://github.com/hardening-io/tests-os-hardening
+$ inspec exec https://github.com/dev-sec/tests-os-hardening
 ```
 
 ## License and Author
