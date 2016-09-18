@@ -65,3 +65,38 @@ control 'package-06' do
     it { should_not be_installed }
   end
 end
+
+## can also be syslog-ng...
+control 'package-07' do
+  impact 1.0
+  title 'Install rsyslog server'
+  desc 'Syslog server is required to receive system and applications logs'
+  describe package('rsyslog') do
+    it { should be_installed }
+  end
+end
+
+control 'package-08' do
+  impact 1.0
+  title 'Install auditd'
+  desc 'auditd provides extended logging capacities on recent distribution'
+  describe package('auditd') do
+    it { should be_installed }
+  end
+  describe auditd_conf do
+    its('log_file') { should cmp '/var/log/audit/audit.log' }
+    its('log_format') { should cmp 'raw' }
+    its('flush') { should cmp 'INCREMENTAL' }
+    its('freq') { should cmp 20 }
+    its('num_logs') { should cmp 5 }
+    its('max_log_file') { should cmp 6 }
+    its('max_log_file_action') { should cmp 'ROTATE' }
+    its('space_left') { should cmp 75 }
+    its('action_mail_acct') { should cmp 'root' }
+    its('space_left_action') { should cmp 'SYSLOG' }
+    its('admin_space_left') { should cmp 50 }
+    its('admin_space_left_action') { should cmp 'SUSPEND' }
+    its('disk_full_action') { should cmp 'SUSPEND' }
+    its('disk_error_action') { should cmp 'SUSPEND' }
+  end
+end

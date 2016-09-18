@@ -18,6 +18,27 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
+if ENV['login_defs_umask']
+  login_defs_umask = ENV['login_defs_umask']
+else
+  login_defs_umask = '027'
+end
+if ENV['login_defs_passmaxdays']
+  login_defs_passmaxdays = ENV['login_defs_passmaxdays']
+else
+  login_defs_passmaxdays = 60
+end
+if ENV['login_defs_passmindays']
+  login_defs_passmindays = ENV['login_defs_passmindays']
+else
+  login_defs_passmindays = 7
+end
+if ENV['login_defs_passwarnage']
+  login_defs_passwarnage = ENV['login_defs_passwarnage']
+else
+  login_defs_passwarnage = 7
+end
+
 control 'os-01' do
   impact 1.0
   title 'Trusted hosts login'
@@ -38,12 +59,18 @@ control 'os-02' do
     it { should exist }
     it { should be_file }
     it { should be_owned_by 'root' }
-    its('group') { should eq 'root' }
     it { should_not be_executable }
     it { should be_writable.by('owner') }
     it { should be_readable.by('owner') }
-    it { should_not be_readable.by('group') }
     it { should_not be_readable.by('other') }
+  end
+  describe file('/etc/shadow'), :if => os.family == 'redhat' do
+    its('group') { should eq 'root' }
+    it { should_not be_readable.by('group') }
+  end
+  describe file('/etc/shadow'), :if => os.family == 'debian' do
+    its('group') { should eq 'shadow' }
+    it { should be_readable.by('group') }
   end
 end
 
@@ -86,28 +113,38 @@ control 'os-05' do
     it { should be_owned_by 'root' }
     its('group') { should eq 'root' }
     it { should_not be_executable }
-    it { should_not be_writable }
     it { should be_readable.by('owner') }
     it { should be_readable.by('group') }
     it { should be_readable.by('other') }
   end
+  describe file('/etc/login.defs'), :if => os.family == 'redhat' do
+    it { should_not be_writable }
+  end
   describe login_defs do
     its('ENV_SUPATH') { should include('/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin') }
     its('ENV_PATH') { should include('/usr/local/bin:/usr/bin:/bin') }
-    its('UMASK') { should include('027') }
-    its('PASS_MAX_DAYS') { should eq '60' }
-    its('PASS_MIN_DAYS') { should eq '7' }
-    its('PASS_WARN_AGE') { should eq '7' }
+    its('UMASK') { should include(login_defs_umask) }
+    its('PASS_MAX_DAYS') { should eq login_defs_passmaxdays }
+    its('PASS_MIN_DAYS') { should eq login_defs_passmindays }
+    its('PASS_WARN_AGE') { should eq login_defs_passwarnage }
     its('LOGIN_RETRIES') { should eq '5' }
     its('LOGIN_TIMEOUT') { should eq '60' }
     its('UID_MIN') { should eq '1000' }
     its('GID_MIN') { should eq '1000' }
+  end
+  describe login_defs, :if => os.family == 'redhat' do
     its('SYS_UID_MIN') { should eq '100' }
     its('SYS_UID_MAX') { should eq '999' }
     its('SYS_GID_MIN') { should eq '100' }
     its('SYS_GID_MAX') { should eq '999' }
-    its('ENCRYPT_METHOD') { should eq 'SHA512' }
   end
+#  describe login_defs, :if => os.family == 'debian' do
+## Those are commented on debian/ubuntu
+#    its('SYS_UID_MIN') { should eq '100' }
+#    its('SYS_UID_MAX') { should eq '999' }
+#    its('SYS_GID_MIN') { should eq '100' }
+#    its('SYS_GID_MAX') { should eq '999' }
+#  end
 end
 
 control 'os-06' do
@@ -142,9 +179,24 @@ control 'os-06' do
     '/usr/lib/pt_chown',                                          # pseudo-tty, needed?
     '/usr/lib/eject/dmcrypt-get-device',
     '/usr/lib/mc/cons.saver' # midnight commander screensaver
+#    # from Ubuntu xenial
+#    '/sbin/unix_chkpwd',
+#    '/sbin/pam_extrausers_chkpwd',
+#    '/usr/lib/x86_64-linux-gnu/utempter/utempter',
+#    '/usr/sbin/postdrop',
+#    '/usr/sbin/postqueue',
+#    '/usr/bin/ssh-agent',
+#    '/usr/bin/mlocate',
+#    '/usr/bin/crontab',
+#    '/usr/bin/dotlockfile',
+#    '/usr/bin/screen',
+#    '/usr/bin/expiry',
+#    '/usr/bin/wall',
+#    '/usr/bin/chage',
+#    '/usr/bin/bsd-write',
   ]
 
-  output = command('find / -perm -4000 -o -perm -2000 -type f ! -path \'/proc/*\' -print 2>/dev/null | grep -v \'^find:\'')
+  output = command('find / -perm -4000 -o -perm -2000 -type f ! -path \'/proc/*\' ! -path \'/var/lib/lxd/containers/*\' -print 2>/dev/null | grep -v \'^find:\'')
   diff = output.stdout.split(/\r?\n/) & blacklist
   describe diff do
     it { should be_empty }
@@ -162,3 +214,25 @@ control 'os-07' do
     its('gids') { should_not contain_duplicates }
   end
 end
+
+control 'os-08' do
+  impact 1.0
+  title 'Entropy'
+  desc 'Check system has enough entropy - greater than 1000'
+  describe file('/proc/sys/kernel/random/entropy_avail').content.to_i do
+    it { should >= 1000 }
+  end
+end
+
+control 'os-09' do
+  impact 1.0
+  title 'Check for .rhosts and .netrc file'
+  desc 'Find .rhosts and .netrc files - CIS Benchmark 9.2.9-10'
+
+  output = command('find / \( -iname .rhosts -o -iname .netrc \) -print 2>/dev/null | grep -v \'^find:\'')
+  out = output.stdout.split(/\r?\n/)
+  describe out do
+    it { should be_empty }
+  end
+end
+

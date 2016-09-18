@@ -22,12 +22,14 @@ control 'sysctl-01' do
   impact 1.0
   title 'IPv4 Forwarding'
   desc "If you're not intending for your system to forward traffic between interfaces, or if you only have a single interface, the forwarding function must be disable."
-  describe kernel_parameter('net.ipv4.ip_forward') do
-    its(:value) { should eq 0 }
-  end
-  describe kernel_parameter('net.ipv4.conf.all.forwarding') do
-    its(:value) { should eq 0 }
-  end
+#  unless defined? ENV['sysctl_forwarding']
+    describe kernel_parameter('net.ipv4.ip_forward') do
+      its(:value) { should eq 0 }
+    end
+    describe kernel_parameter('net.ipv4.conf.all.forwarding') do
+      its(:value) { should eq 0 }
+    end
+#  end
 end
 
 control 'sysctl-02' do
@@ -317,11 +319,23 @@ end
 
 control 'sysctl-31' do
   impact 1.0
-  title 'Disable Core Dumps'
-  desc 'Ensure that core dumps can never be made by setuid programs'
+  title 'Secure Core Dumps'
+  desc 'Ensure that core dumps can never be made by setuid programs or with fully qualified path'
+
   describe kernel_parameter('fs.suid_dumpable') do
-    its(:value) { should eq 0 }
+#    its(:value) { should eq 0 or should eq 2 } NOK
+#    its(:value) { should match /[02]/ }    NOK
+#    its(:value) { should match /0|2/ }     NOK
+    its(:value) { should eq 2 }
   end
+#  unless kernel_parameter('fs.suid_dumpable') == 2
+#    describe kernel_parameter('fs.suid_dumpable') do
+#      its(:value) { should eq 2 }
+#    end
+  describe kernel_parameter('kernel.core_pattern') do
+    its(:value) { should match /^\// }
+  end
+#  end
 end
 
 control 'sysctl-32' do
