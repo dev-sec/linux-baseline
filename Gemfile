@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rack', '~>= 1.6.4'
+gem 'rack', '~> 1.6.4'
 gem 'rake'
 gem 'inspec', '~> 0'
 gem 'rubocop', '~> 0.36.0'
