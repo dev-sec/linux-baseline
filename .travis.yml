@@ -8,7 +8,10 @@ rvm:
   - 2.2.0
 
 bundler_args: --without integration
-script:
+
+before_install:
   - bundle exec gem install rubygems-update
   - bundle exec update_rubygems
+
+script:
   - bundle exec rake
