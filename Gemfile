@@ -7,6 +7,9 @@ source 'https://rubygems.org'
 if Gem::Version.new(RUBY_VERSION) <= Gem::Version.new('1.9.3')
   gem 'net-ssh', '~> 2.9'
 end
+if Gem::Version.new(RUBY_VERSION) <= Gem::Version.new('2.2.2')
+  gem 'rack', "~>= 1.6.4"
+end
 
 gem 'rake'
 gem 'inspec', '~> 0'
