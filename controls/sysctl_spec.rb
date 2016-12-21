@@ -18,18 +18,19 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
+sysctl_forwarding = attribute('sysctl_forwarding', default: false, description: 'Is network forwarding needed?')
+
 control 'sysctl-01' do
   impact 1.0
   title 'IPv4 Forwarding'
   desc "If you're not intending for your system to forward traffic between interfaces, or if you only have a single interface, the forwarding function must be disable."
-#  unless defined? ENV['sysctl_forwarding']
-    describe kernel_parameter('net.ipv4.ip_forward') do
-      its(:value) { should eq 0 }
-    end
-    describe kernel_parameter('net.ipv4.conf.all.forwarding') do
-      its(:value) { should eq 0 }
-    end
-#  end
+  describe kernel_parameter('net.ipv4.ip_forward') do
+    its(:value) { should eq 0 }
+  end
+  describe kernel_parameter('net.ipv4.conf.all.forwarding') do
+    its(:value) { should eq 0 }
+  end
+  only_if { sysctl_forwarding == false }
 end
 
 control 'sysctl-02' do

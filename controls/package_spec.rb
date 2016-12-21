@@ -18,6 +18,8 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
+val_syslog_pkg = attribute('syslog_pkg', default: 'rsyslog', description: 'syslog package to ensure present (default: rsyslog, alternative: syslog-ng...')
+
 control 'package-01' do
   impact 1.0
   title 'Do not run deprecated inetd or xinetd'
@@ -66,12 +68,11 @@ control 'package-06' do
   end
 end
 
-## can also be syslog-ng...
 control 'package-07' do
   impact 1.0
-  title 'Install rsyslog server'
+  title 'Install syslog server package'
   desc 'Syslog server is required to receive system and applications logs'
-  describe package('rsyslog') do
+  describe package(val_syslog_pkg) do
     it { should be_installed }
   end
 end

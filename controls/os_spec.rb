@@ -18,25 +18,14 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-if ENV['login_defs_umask']
-  login_defs_umask = ENV['login_defs_umask']
-else
-  login_defs_umask = '027'
-end
-if ENV['login_defs_passmaxdays']
-  login_defs_passmaxdays = ENV['login_defs_passmaxdays']
-else
-  login_defs_passmaxdays = 60
-end
-if ENV['login_defs_passmindays']
-  login_defs_passmindays = ENV['login_defs_passmindays']
-else
-  login_defs_passmindays = 7
-end
-if ENV['login_defs_passwarnage']
-  login_defs_passwarnage = ENV['login_defs_passwarnage']
-else
-  login_defs_passwarnage = 7
+login_defs_umask = attribute('login_defs_umask', default: '027', description: 'Default umask to set in login.defs')
+login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', description: 'Default password maxdays to set in login.defs')
+login_defs_passmindays = attribute('login_defs_passmindays', default: '7', description: 'Default password mindays to set in login.defs')
+login_defs_passwarnage = attribute('login_defs_passwarnage', default: '7', description: 'Default password warnage (days) to set in login.defs')
+if os.redhat?
+    shadow_group = 'root'
+elsif os.debian?
+    shadow_group = 'shadow'
 end
 
 control 'os-01' do
@@ -59,18 +48,20 @@ control 'os-02' do
     it { should exist }
     it { should be_file }
     it { should be_owned_by 'root' }
+    its('group') { should eq shadow_group }
     it { should_not be_executable }
     it { should be_writable.by('owner') }
     it { should be_readable.by('owner') }
     it { should_not be_readable.by('other') }
   end
-  describe file('/etc/shadow'), :if => os.family == 'redhat' do
-    its('group') { should eq 'root' }
-    it { should_not be_readable.by('group') }
-  end
-  describe file('/etc/shadow'), :if => os.family == 'debian' do
-    its('group') { should eq 'shadow' }
-    it { should be_readable.by('group') }
+  if os.redhat?
+    describe file('/etc/shadow') do
+      it { should_not be_readable.by('group') }
+    end
+  elsif os.debian?
+    describe file('/etc/shadow') do
+      it { should be_readable.by('group') }
+    end
   end
 end
 
@@ -117,8 +108,10 @@ control 'os-05' do
     it { should be_readable.by('group') }
     it { should be_readable.by('other') }
   end
-  describe file('/etc/login.defs'), :if => os.family == 'redhat' do
-    it { should_not be_writable }
+  if os.redhat?
+    describe file('/etc/login.defs') do
+      it { should_not be_writable }
+    end
   end
   describe login_defs do
     its('ENV_SUPATH') { should include('/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin') }
@@ -132,11 +125,13 @@ control 'os-05' do
     its('UID_MIN') { should eq '1000' }
     its('GID_MIN') { should eq '1000' }
   end
-  describe login_defs, :if => os.family == 'redhat' do
-    its('SYS_UID_MIN') { should eq '100' }
-    its('SYS_UID_MAX') { should eq '999' }
-    its('SYS_GID_MIN') { should eq '100' }
-    its('SYS_GID_MAX') { should eq '999' }
+  if os.redhat?
+    describe login_defs do
+      its('SYS_UID_MIN') { should eq '100' }
+      its('SYS_UID_MAX') { should eq '999' }
+      its('SYS_GID_MIN') { should eq '100' }
+      its('SYS_GID_MAX') { should eq '999' }
+    end
   end
 #  describe login_defs, :if => os.family == 'debian' do
 ## Those are commented on debian/ubuntu
@@ -188,7 +183,6 @@ control 'os-06' do
 #    '/usr/bin/ssh-agent',
 #    '/usr/bin/mlocate',
 #    '/usr/bin/crontab',
-#    '/usr/bin/dotlockfile',
 #    '/usr/bin/screen',
 #    '/usr/bin/expiry',
 #    '/usr/bin/wall',
