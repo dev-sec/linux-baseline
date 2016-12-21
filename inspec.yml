@@ -1,10 +1,10 @@
-name: os-hardening
-title: Hardening Framework OS Hardening Test Suite
+name: linux-baseline
+title: DevSec Linux Security Baseline
 maintainer: Hardening Framework Team
 copyright: Hardening Framework Team
 copyright_email: hello@hardening.io
 license: Apache 2 license
 summary: Test-suite for best-preactice os hardening
-version: 1.0.0
+version: 2.0.1
 supports:
   - os-family: linux
