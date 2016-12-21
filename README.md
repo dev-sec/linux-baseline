@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/juju4/tests-os-hardening.svg?branch=master)](https://travis-ci.org/juju4/tests-os-hardening)
-tests-os-hardening
-==================
+DevSec Linux Baseline
+=====================
 
 This Compliance Profile ensures, that all hardening projects keep the same quality.
 
