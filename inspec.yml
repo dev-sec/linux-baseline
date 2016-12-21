@@ -4,7 +4,7 @@ maintainer: Hardening Framework Team
 copyright: Hardening Framework Team
 copyright_email: hello@hardening.io
 license: Apache 2 license
-summary: Test-suite for best-preactice os hardening
+summary: Test-suite for best-preactice Linux OS hardening
 version: 2.0.1
 supports:
   - os-family: linux
