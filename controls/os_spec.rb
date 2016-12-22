@@ -108,11 +108,6 @@ control 'os-05' do
     it { should be_readable.by('group') }
     it { should be_readable.by('other') }
   end
-  if os.redhat?
-    describe file('/etc/login.defs') do
-      it { should_not be_writable }
-    end
-  end
   describe login_defs do
     its('ENV_SUPATH') { should include('/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin') }
     its('ENV_PATH') { should include('/usr/local/bin:/usr/bin:/bin') }
@@ -125,7 +120,16 @@ control 'os-05' do
     its('UID_MIN') { should eq '1000' }
     its('GID_MIN') { should eq '1000' }
   end
+end
+
+control 'os-05b' do
+  impact 1.0
+  title 'Check login.defs - RedHat specific'
+  desc 'Check owner and permissions for login.defs. Also check the configured PATH variable and umask in login.defs'
   if os.redhat?
+    describe file('/etc/login.defs') do
+      it { should_not be_writable }
+    end
     describe login_defs do
       its('SYS_UID_MIN') { should eq '100' }
       its('SYS_UID_MAX') { should eq '999' }
@@ -168,19 +172,19 @@ control 'os-06' do
     '/usr/lib/eject/dmcrypt-get-device',
     '/usr/lib/mc/cons.saver', # midnight commander screensaver
     # from Ubuntu xenial, need to investigate
-    #'/sbin/unix_chkpwd',
-    #'/sbin/pam_extrausers_chkpwd',
-    #'/usr/lib/x86_64-linux-gnu/utempter/utempter',
-    #'/usr/sbin/postdrop',
-    #'/usr/sbin/postqueue',
-    #'/usr/bin/ssh-agent',
-    #'/usr/bin/mlocate',
-    #'/usr/bin/crontab',
-    #'/usr/bin/screen',
-    #'/usr/bin/expiry',
-    #'/usr/bin/wall',
-    #'/usr/bin/chage',
-    #'/usr/bin/bsd-write',
+    # '/sbin/unix_chkpwd',
+    # '/sbin/pam_extrausers_chkpwd',
+    # '/usr/lib/x86_64-linux-gnu/utempter/utempter',
+    # '/usr/sbin/postdrop',
+    # '/usr/sbin/postqueue',
+    # '/usr/bin/ssh-agent',
+    # '/usr/bin/mlocate',
+    # '/usr/bin/crontab',
+    # '/usr/bin/screen',
+    # '/usr/bin/expiry',
+    # '/usr/bin/wall',
+    # '/usr/bin/chage',
+    # '/usr/bin/bsd-write',
   ]
 
   output = command('find / -perm -4000 -o -perm -2000 -type f ! -path \'/proc/*\' ! -path \'/var/lib/lxd/containers/*\' -print 2>/dev/null | grep -v \'^find:\'')
@@ -222,4 +226,3 @@ control 'os-09' do
     it { should be_empty }
   end
 end
-
