@@ -329,8 +329,8 @@ control 'sysctl-31' do
     # its(:value) { should match /0|2/ }
     its(:value) { should eq 2 }
   end
-    # unless kernel_parameter('fs.suid_dumpable') == 2
-    #   describe kernel_parameter('fs.suid_dumpable') do
+  # unless kernel_parameter('fs.suid_dumpable') == 2
+  #   describe kernel_parameter('fs.suid_dumpable') do
   #     its(:value) { should eq 2 }
   # end
   describe kernel_parameter('kernel.core_pattern') do

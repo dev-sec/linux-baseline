@@ -26,7 +26,8 @@ if os.redhat?
 elsif os.debian?
   shadow_group = 'shadow'
 end
-blacklist = attribute('blacklist', 
+blacklist = attribute(
+              'blacklist',
               default: [
                 # blacklist as provided by NSA
                 '/usr/bin/rcp', '/usr/bin/rlogin', '/usr/bin/rsh',
@@ -54,21 +55,22 @@ blacklist = attribute('blacklist',
                 '/usr/lib/pt_chown',                                          # pseudo-tty, needed?
                 '/usr/lib/eject/dmcrypt-get-device',
                 '/usr/lib/mc/cons.saver' # midnight commander screensaver
-                # from Ubuntu xenial, need to investigate
-                # '/sbin/unix_chkpwd',
-                # '/sbin/pam_extrausers_chkpwd',
-                # '/usr/lib/x86_64-linux-gnu/utempter/utempter',
-                # '/usr/sbin/postdrop',
-                # '/usr/sbin/postqueue',
-                # '/usr/bin/ssh-agent',
-                # '/usr/bin/mlocate',
-                # '/usr/bin/crontab',
-                # '/usr/bin/screen',
-                # '/usr/bin/expiry',
-                # '/usr/bin/wall',
-                # '/usr/bin/chage',
+               # from Ubuntu xenial, need to investigate
+               # '/sbin/unix_chkpwd',
+               # '/sbin/pam_extrausers_chkpwd',
+               # '/usr/lib/x86_64-linux-gnu/utempter/utempter',
+               # '/usr/sbin/postdrop',
+               # '/usr/sbin/postqueue',
+               # '/usr/bin/ssh-agent',
+               # '/usr/bin/mlocate',
+               # '/usr/bin/crontab',
+               # '/usr/bin/screen',
+               # '/usr/bin/expiry',
+               # '/usr/bin/wall',
+               # '/usr/bin/chage',
                # '/usr/bin/bsd-write'
-              ], description: 'blacklist of suid/sgid program on system'
+              ],
+              description: 'blacklist of suid/sgid program on system'
             )
 
 control 'os-01' do
