@@ -23,9 +23,9 @@ login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', desc
 login_defs_passmindays = attribute('login_defs_passmindays', default: '7', description: 'Default password mindays to set in login.defs')
 login_defs_passwarnage = attribute('login_defs_passwarnage', default: '7', description: 'Default password warnage (days) to set in login.defs')
 if os.redhat?
-    shadow_group = 'root'
+  shadow_group = 'root'
 elsif os.debian?
-    shadow_group = 'shadow'
+  shadow_group = 'shadow'
 end
 
 control 'os-01' do
@@ -133,13 +133,6 @@ control 'os-05' do
       its('SYS_GID_MAX') { should eq '999' }
     end
   end
-#  describe login_defs, :if => os.family == 'debian' do
-## Those are commented on debian/ubuntu
-#    its('SYS_UID_MIN') { should eq '100' }
-#    its('SYS_UID_MAX') { should eq '999' }
-#    its('SYS_GID_MIN') { should eq '100' }
-#    its('SYS_GID_MAX') { should eq '999' }
-#  end
 end
 
 control 'os-06' do
@@ -173,21 +166,21 @@ control 'os-06' do
     '/usr/lib/evolution/camel-lock-helper-1.2',                   # investigate current state...
     '/usr/lib/pt_chown',                                          # pseudo-tty, needed?
     '/usr/lib/eject/dmcrypt-get-device',
-    '/usr/lib/mc/cons.saver' # midnight commander screensaver
-#    # from Ubuntu xenial
-#    '/sbin/unix_chkpwd',
-#    '/sbin/pam_extrausers_chkpwd',
-#    '/usr/lib/x86_64-linux-gnu/utempter/utempter',
-#    '/usr/sbin/postdrop',
-#    '/usr/sbin/postqueue',
-#    '/usr/bin/ssh-agent',
-#    '/usr/bin/mlocate',
-#    '/usr/bin/crontab',
-#    '/usr/bin/screen',
-#    '/usr/bin/expiry',
-#    '/usr/bin/wall',
-#    '/usr/bin/chage',
-#    '/usr/bin/bsd-write',
+    '/usr/lib/mc/cons.saver', # midnight commander screensaver
+    # from Ubuntu xenial, need to investigate
+    #'/sbin/unix_chkpwd',
+    #'/sbin/pam_extrausers_chkpwd',
+    #'/usr/lib/x86_64-linux-gnu/utempter/utempter',
+    #'/usr/sbin/postdrop',
+    #'/usr/sbin/postqueue',
+    #'/usr/bin/ssh-agent',
+    #'/usr/bin/mlocate',
+    #'/usr/bin/crontab',
+    #'/usr/bin/screen',
+    #'/usr/bin/expiry',
+    #'/usr/bin/wall',
+    #'/usr/bin/chage',
+    #'/usr/bin/bsd-write',
   ]
 
   output = command('find / -perm -4000 -o -perm -2000 -type f ! -path \'/proc/*\' ! -path \'/var/lib/lxd/containers/*\' -print 2>/dev/null | grep -v \'^find:\'')
