@@ -27,7 +27,7 @@ elsif os.debian?
   shadow_group = 'shadow'
 end
 blacklist = attribute(
-              'blacklist',
+  'blacklist',
               default: [
                 # blacklist as provided by NSA
                 '/usr/bin/rcp', '/usr/bin/rlogin', '/usr/bin/rsh',
@@ -68,10 +68,10 @@ blacklist = attribute(
                # '/usr/bin/expiry',
                # '/usr/bin/wall',
                # '/usr/bin/chage',
-               # '/usr/bin/bsd-write'
+                # '/usr/bin/bsd-write'
               ],
               description: 'blacklist of suid/sgid program on system'
-            )
+                     )
 
 control 'os-01' do
   impact 1.0
