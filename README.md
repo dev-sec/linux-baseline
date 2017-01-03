@@ -12,14 +12,14 @@ This Compliance Profile ensures, that all hardening projects keep the same quali
 This Compliance Profile requires [InSpec](https://github.com/chef/inspec) for execution:
 
 ```
-$ git clone https://github.com/dev-sec/tests-os-hardening
-$ inspec exec tests-os-hardening
+$ git clone https://github.com/dev-sec/linux-baseline
+$ inspec exec linux-baseline
 ```
 
 You can also execute the profile directly from Github:
 
 ```
-$ inspec exec https://github.com/dev-sec/tests-os-hardening
+$ inspec exec https://github.com/dev-sec/linux-baseline
 ```
 
 ## License and Author
