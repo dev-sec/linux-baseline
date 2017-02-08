@@ -1,4 +1,3 @@
-# encoding: utf-8
 #
 # Copyright 2015, Patrick Muench
 #
@@ -18,6 +17,8 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
+sysctl_forwarding = attribute('sysctl_forwarding', default: false, description: 'Is network forwarding needed?')
+
 control 'sysctl-01' do
   impact 1.0
   title 'IPv4 Forwarding'
@@ -28,6 +29,7 @@ control 'sysctl-01' do
   describe kernel_parameter('net.ipv4.conf.all.forwarding') do
     its(:value) { should eq 0 }
   end
+  only_if { sysctl_forwarding == false }
 end
 
 control 'sysctl-02' do
@@ -317,11 +319,24 @@ end
 
 control 'sysctl-31' do
   impact 1.0
-  title 'Disable Core Dumps'
-  desc 'Ensure that core dumps can never be made by setuid programs'
+  title 'Secure Core Dumps'
+  desc 'Ensure that core dumps can never be made by setuid programs or with fully qualified path'
+
   describe kernel_parameter('fs.suid_dumpable') do
-    its(:value) { should eq 0 }
+    ## those are not valid. how to?
+    # its(:value) { should eq 0 or should eq 2 }
+    # its(:value) { should match /[02]/ }
+    # its(:value) { should match /0|2/ }
+    its(:value) { should eq 2 }
   end
+  # unless kernel_parameter('fs.suid_dumpable') == 2
+  #   describe kernel_parameter('fs.suid_dumpable') do
+  #     its(:value) { should eq 2 }
+  # end
+  describe kernel_parameter('kernel.core_pattern') do
+    its(:value) { should match %r{^/.*} }
+  end
+  # end
 end
 
 control 'sysctl-32' do
