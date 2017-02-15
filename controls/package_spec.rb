@@ -80,8 +80,14 @@ control 'package-08' do
   impact 1.0
   title 'Install auditd'
   desc 'auditd provides extended logging capacities on recent distribution'
-  describe package('auditd') do
-    it { should be_installed }
+  if os.redhat?
+    describe package('audit') do
+      it { should be_installed }
+    end
+  else
+    describe package('auditd') do
+      it { should be_installed }
+    end
   end
   describe auditd_conf do
     its('log_file') { should cmp '/var/log/audit/audit.log' }
