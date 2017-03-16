@@ -317,26 +317,25 @@ control 'sysctl-30' do
   end
 end
 
-control 'sysctl-31' do
+control 'sysctl-31a' do
   impact 1.0
-  title 'Secure Core Dumps'
-  desc 'Ensure that core dumps can never be made by setuid programs or with fully qualified path'
+  title 'Secure Core Dumps - dump settings'
+  desc 'Ensure that core dumps can never be made by setuid programs'
 
   describe kernel_parameter('fs.suid_dumpable') do
-    ## those are not valid. how to?
-    # its(:value) { should eq 0 or should eq 2 }
-    # its(:value) { should match /[02]/ }
-    # its(:value) { should match /0|2/ }
-    its(:value) { should eq 2 }
+    its(:value) { should cmp(/(0|2)/) }
   end
-  # unless kernel_parameter('fs.suid_dumpable') == 2
-  #   describe kernel_parameter('fs.suid_dumpable') do
-  #     its(:value) { should eq 2 }
-  # end
+end
+
+control 'sysctl-31b' do
+  impact 1.0
+  title 'Secure Core Dumps - dump path'
+  desc 'Ensure that core dumps are done with fully qualified path'
+  only_if { kernel_parameter('fs.suid_dumpable').value == 2 }
+
   describe kernel_parameter('kernel.core_pattern') do
     its(:value) { should match %r{^/.*} }
   end
-  # end
 end
 
 control 'sysctl-32' do
