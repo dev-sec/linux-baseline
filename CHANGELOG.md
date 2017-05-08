@@ -1,5 +1,20 @@
 # Change Log
 
+## [2.1.0](https://github.com/dev-sec/linux-baseline/tree/2.1.0) (2017-05-08)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.0.1...2.1.0)
+
+**Merged pull requests:**
+
+- update metadata [\#58](https://github.com/dev-sec/linux-baseline/pull/58) ([chris-rock](https://github.com/chris-rock))
+- update gemfile [\#57](https://github.com/dev-sec/linux-baseline/pull/57) ([atomic111](https://github.com/atomic111))
+- restrict ruby testing to version 2.3.3 [\#56](https://github.com/dev-sec/linux-baseline/pull/56) ([atomic111](https://github.com/atomic111))
+- Properly verify the kernel dump setting [\#52](https://github.com/dev-sec/linux-baseline/pull/52) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- auditd package is called audit in the rhel family [\#51](https://github.com/dev-sec/linux-baseline/pull/51) ([iamthemuffinman](https://github.com/iamthemuffinman))
+- Ignore inspec.lock file [\#50](https://github.com/dev-sec/linux-baseline/pull/50) ([techraf](https://github.com/techraf))
+- Remove duplicated expectation from sysctl-16 [\#49](https://github.com/dev-sec/linux-baseline/pull/49) ([techraf](https://github.com/techraf))
+- update links in readme [\#47](https://github.com/dev-sec/linux-baseline/pull/47) ([chris-rock](https://github.com/chris-rock))
+- essay: differentiate redhat/debian, add extra conditions [\#44](https://github.com/dev-sec/linux-baseline/pull/44) ([juju4](https://github.com/juju4))
+
 ## [2.0.1](https://github.com/dev-sec/linux-baseline/tree/2.0.1) (2016-12-21)
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.0.0...2.0.1)
 
@@ -10,6 +25,7 @@
 
 **Merged pull requests:**
 
+- update profile metadata & tooling [\#46](https://github.com/dev-sec/linux-baseline/pull/46) ([chris-rock](https://github.com/chris-rock))
 - update Gemfile [\#43](https://github.com/dev-sec/linux-baseline/pull/43) ([atomic111](https://github.com/atomic111))
 - Update links in README file [\#42](https://github.com/dev-sec/linux-baseline/pull/42) ([netflash](https://github.com/netflash))
 - Fix cpu flags and change default for net.ipv4.conf.all.log\_martians [\#39](https://github.com/dev-sec/linux-baseline/pull/39) ([chris-rock](https://github.com/chris-rock))
@@ -22,7 +38,7 @@
 - inspec profile [\#38](https://github.com/dev-sec/linux-baseline/pull/38) ([chris-rock](https://github.com/chris-rock))
 
 ## [1.3.0](https://github.com/dev-sec/linux-baseline/tree/1.3.0) (2016-04-25)
-[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/1.1.0...1.3.0)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/1.2.0...1.3.0)
 
 **Fixed bugs:**
 
@@ -31,6 +47,12 @@
 **Merged pull requests:**
 
 - prevent nil in flags [\#36](https://github.com/dev-sec/linux-baseline/pull/36) ([arlimus](https://github.com/arlimus))
+
+## [1.2.0](https://github.com/dev-sec/linux-baseline/tree/1.2.0) (2015-12-08)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/1.1.0...1.2.0)
+
+**Merged pull requests:**
+
 - removed serverspec support and created all inspec tests [\#35](https://github.com/dev-sec/linux-baseline/pull/35) ([atomic111](https://github.com/atomic111))
 
 ## [1.1.0](https://github.com/dev-sec/linux-baseline/tree/1.1.0) (2015-10-15)
