@@ -194,6 +194,15 @@ control 'sysctl-17' do
   end
 end
 
+control 'sysctl-17a' do
+  impact 1.0
+  title 'Disable log martians'
+  desc 'log_martians can cause a denial of service attack to the host'
+  describe kernel_parameter('net.ipv4.conf.default.log_martians') do
+    its(:value) { should eq 1 }
+  end
+end
+
 control 'sysctl-18' do
   impact 1.0
   title 'Disable IPv6 if it is not needed'
