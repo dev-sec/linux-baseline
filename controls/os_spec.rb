@@ -231,8 +231,8 @@ end
 
 control 'os-10' do
   impact 1.0
-  title "CIS: Disable unused filesystems"
-  desc "1.1.1 Ensure mounting of cramfs, freevxfs, jffs2, hfs, hfsplus, squashfs, udf, FAT"
+  title 'CIS: Disable unused filesystems'
+  desc '1.1.1 Ensure mounting of cramfs, freevxfs, jffs2, hfs, hfsplus, squashfs, udf, FAT'
   describe file('/etc/modprobe.d/CIS.conf') do
     its(:content) { should match 'install cramfs /bin/true' }
     its(:content) { should match 'install freevxfs /bin/true' }

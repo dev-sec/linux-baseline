@@ -102,11 +102,10 @@ control 'package-08' do
   end
 end
 
-
 control 'package-09' do
   impact 1.0
-  title "Install packages suggested by Lynis"
-  desc "Install Debian packages libpam-tmpdir,apt-listbugs, apt-listchanges, debian-goodies, debsecan, debsums, fail2ban"
+  title 'Install packages suggested by Lynis'
+  desc 'Install Debian packages libpam-tmpdir,apt-listbugs, apt-listchanges, debian-goodies, debsecan, debsums, fail2ban'
   if os[:family] == 'debian'
     describe package('libpam-tmpdir') do
       it { should be_installed }
@@ -148,17 +147,17 @@ control 'package-09' do
       it { should be_installed }
     end
 
-    cmd=inspec.command("dpkg -s apache2")
-    if cmd.exit_status.to_i == 0
-    	describe package('libapache2-mod-evasive') do
-      	  it { should be_installed }
-    	end
-    	describe package('libapache2-mod-qos') do
-      	  it { should be_installed }
-    	end
-    	describe package('libapache2-mod-security2') do
-      	  it { should be_installed }
-    	end
+    cmd = inspec.command('dpkg -s apache2')
+    if cmd.exit_status.to_i.zero?
+      describe package('libapache2-mod-evasive') do
+        it { should be_installed }
+      end
+      describe package('libapache2-mod-qos') do
+        it { should be_installed }
+      end
+      describe package('libapache2-mod-security2') do
+        it { should be_installed }
+      end
     end
 
   end
@@ -166,9 +165,9 @@ end
 
 control 'package-10' do
   impact 1.0
-  title "CIS: Additional process hardening"
-  desc "1.5.4 Ensure prelink is disabled"
+  title 'CIS: Additional process hardening'
+  desc '1.5.4 Ensure prelink is disabled'
   describe package('prelink') do
-      it { should_not be_installed }
-    end
+    it { should_not be_installed }
   end
+end
