@@ -18,6 +18,7 @@
 # author: Patrick Muench
 
 sysctl_forwarding = attribute('sysctl_forwarding', default: false, description: 'Is network forwarding needed?')
+kernel_modules_disabled = attribute('kernel_modules_disabled', default: 0, description: 'Should loading of kernel modules be disabled?')
 
 control 'sysctl-01' do
   impact 1.0
@@ -304,7 +305,7 @@ control 'sysctl-29' do
   title 'Disable loading kernel modules'
   desc 'The sysctl key kernel.modules_disabled is very straightforward. If it contains a "1" it will disable loading new modules, where a "0" will still allow loading them. Using this option will be a great protection against loading malicious kernel modules.'
   describe kernel_parameter('kernel.modules_disabled') do
-    its(:value) { should eq 0 }
+    its(:value) { should eq kernel_modules_disabled }
   end
 end
 
