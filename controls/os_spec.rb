@@ -171,17 +171,16 @@ control 'os-05b' do
   impact 1.0
   title 'Check login.defs - RedHat specific'
   desc 'Check owner and permissions for login.defs. Also check the configured PATH variable and umask in login.defs'
-  if os.redhat?
-    describe file('/etc/login.defs') do
-      it { should_not be_writable }
-    end
-    describe login_defs do
-      its('SYS_UID_MIN') { should eq '100' }
-      its('SYS_UID_MAX') { should eq '999' }
-      its('SYS_GID_MIN') { should eq '100' }
-      its('SYS_GID_MAX') { should eq '999' }
-    end
+  describe file('/etc/login.defs') do
+    it { should_not be_writable }
   end
+  describe login_defs do
+    its('SYS_UID_MIN') { should eq '100' }
+    its('SYS_UID_MAX') { should eq '999' }
+    its('SYS_GID_MIN') { should eq '100' }
+    its('SYS_GID_MAX') { should eq '999' }
+  end
+  only_if { os.redhat? }
 end
 
 control 'os-06' do
