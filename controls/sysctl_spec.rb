@@ -354,7 +354,7 @@ control 'sysctl-33' do
   desc 'Kernel features and CPU flags provide a protection against buffer overflows. The CPU NX Flag and the kernel parameter exec-shield prevents code execution on a per memory page basis. If the CPU supports the NX-Flag then this should be used instead of the kernel parameter exec-shield.'
 
   # parse for cpu flags
-  flags = parse_config_file('/proc/cpuinfo', assignment_re: /^([^:]*?)\s+:\s+(.*?)$/).flags
+  flags = parse_config_file('/proc/cpuinfo', assignment_regex: /^([^:]*?)\s+:\s+(.*?)$/).flags
   flags ||= ''
   flags = flags.split(' ')
 
