@@ -1,5 +1,3 @@
-#!/usr/bin/env rake
-
 require 'rake/testtask'
 require 'rubocop/rake_task'
 
