@@ -21,6 +21,8 @@ login_defs_umask = attribute('login_defs_umask', default: '027', description: 'D
 login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', description: 'Default password maxdays to set in login.defs')
 login_defs_passmindays = attribute('login_defs_passmindays', default: '7', description: 'Default password mindays to set in login.defs')
 login_defs_passwarnage = attribute('login_defs_passwarnage', default: '7', description: 'Default password warnage (days) to set in login.defs')
+entropy_testing_enabled = attribute('entropy_testing_enabled', default: 'true', description: 'Should entropy value be tested?') == 'true' ? true : false
+
 if os.redhat?
   shadow_group = 'root'
 elsif os.debian?
@@ -211,6 +213,8 @@ control 'os-08' do
   impact 1.0
   title 'Entropy'
   desc 'Check system has enough entropy - greater than 1000'
+  only_if { entropy_testing_enabled }
+
   describe file('/proc/sys/kernel/random/entropy_avail').content.to_i do
     it { should >= 1000 }
   end
