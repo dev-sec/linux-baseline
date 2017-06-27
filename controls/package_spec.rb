@@ -98,3 +98,73 @@ control 'package-08' do
     its('disk_error_action') { should cmp 'SUSPEND' }
   end
 end
+
+control 'package-09' do
+  impact 1.0
+  title 'Install packages suggested by Lynis'
+  desc 'Install Debian packages libpam-tmpdir,apt-listbugs, apt-listchanges, debian-goodies, debsecan, debsums, fail2ban'
+  if os[:family] == 'debian'
+    describe package('libpam-tmpdir') do
+      it { should be_installed }
+    end
+    describe package('apt-listbugs') do
+      it { should be_installed }
+    end
+    describe package('apt-listchanges') do
+      it { should be_installed }
+    end
+    describe package('debian-goodies') do
+      it { should be_installed }
+    end
+    describe package('debsecan') do
+      it { should be_installed }
+    end
+    describe package('debsums') do
+      it { should be_installed }
+    end
+    describe package('fail2ban') do
+      it { should be_installed }
+    end
+    describe package('arpwatch') do
+      it { should be_installed }
+    end
+    describe package('arpon') do
+      it { should be_installed }
+    end
+    describe package('rkhunter') do
+      it { should be_installed }
+    end
+    describe package('acct') do
+      it { should be_installed }
+    end
+    describe package('sysstat') do
+      it { should be_installed }
+    end
+    describe package('needrestart') do
+      it { should be_installed }
+    end
+
+    cmd = inspec.command('dpkg -s apache2')
+    if cmd.exit_status.to_i.zero?
+      describe package('libapache2-mod-evasive') do
+        it { should be_installed }
+      end
+      describe package('libapache2-mod-qos') do
+        it { should be_installed }
+      end
+      describe package('libapache2-mod-security2') do
+        it { should be_installed }
+      end
+    end
+
+  end
+end
+
+control 'package-10' do
+  impact 1.0
+  title 'CIS: Additional process hardening'
+  desc '1.5.4 Ensure prelink is disabled'
+  describe package('prelink') do
+    it { should_not be_installed }
+  end
+end

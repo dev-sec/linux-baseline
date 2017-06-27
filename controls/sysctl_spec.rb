@@ -192,6 +192,8 @@ control 'sysctl-17' do
   desc 'log_martians can cause a denial of service attack to the host'
   describe kernel_parameter('net.ipv4.conf.all.log_martians') do
     its(:value) { should eq 1 }
+  describe kernel_parameter('net.ipv4.conf.default.log_martians') do
+    its(:value) { should eq 1 }
   end
 end
 
