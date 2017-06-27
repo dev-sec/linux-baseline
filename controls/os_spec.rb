@@ -21,11 +21,8 @@ login_defs_umask = attribute('login_defs_umask', default: '027', description: 'D
 login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', description: 'Default password maxdays to set in login.defs')
 login_defs_passmindays = attribute('login_defs_passmindays', default: '7', description: 'Default password mindays to set in login.defs')
 login_defs_passwarnage = attribute('login_defs_passwarnage', default: '7', description: 'Default password warnage (days) to set in login.defs')
-if os.redhat?
-  shadow_group = 'root'
-elsif os.debian?
-  shadow_group = 'shadow'
-end
+shadow_group = 'root'
+shadow_group = 'shadow' if os.debian? || os.suse?
 blacklist = attribute(
   'blacklist',
   default: [
@@ -99,13 +96,13 @@ control 'os-02' do
     it { should be_readable.by('owner') }
     it { should_not be_readable.by('other') }
   end
-  if os.redhat?
-    describe file('/etc/shadow') do
-      it { should_not be_readable.by('group') }
-    end
-  elsif os.debian?
+  if os.debian? || os.suse?
     describe file('/etc/shadow') do
       it { should be_readable.by('group') }
+    end
+  else
+    describe file('/etc/shadow') do
+      it { should_not be_readable.by('group') }
     end
   end
 end
