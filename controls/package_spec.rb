@@ -98,3 +98,12 @@ control 'package-08' do
     its('disk_error_action') { should cmp 'SUSPEND' }
   end
 end
+
+control 'package-09' do
+  impact 1.0
+  title 'CIS: Additional process hardening'
+  desc '1.5.4 Ensure prelink is disabled'
+  describe package('prelink') do
+    it { should_not be_installed }
+  end
+end
