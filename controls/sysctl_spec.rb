@@ -193,6 +193,9 @@ control 'sysctl-17' do
   describe kernel_parameter('net.ipv4.conf.all.log_martians') do
     its(:value) { should eq 1 }
   end
+  describe kernel_parameter('net.ipv4.conf.default.log_martians') do
+    its(:value) { should eq 1 }
+  end
 end
 
 control 'sysctl-18' do
