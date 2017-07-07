@@ -34,7 +34,7 @@ end
 control 'package-02' do
   impact 1.0
   title 'Do not install Telnet server'
-  desc 'Telnet protocol uses unencrypted communication, that means the passowrd and other sensitive data are unencrypted. http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.2'
+  desc 'Telnet protocol uses unencrypted communication, that means the password and other sensitive data are unencrypted. http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.2'
   describe package('telnetd') do
     it { should_not be_installed }
   end
