@@ -82,7 +82,8 @@ control 'package-08' do
   desc 'auditd provides extended logging capacities on recent distribution'
   audit_pkg = os.redhat? || os.suse? ? 'audit' : 'auditd'
   puts audit_pkg
-  puts os
+  puts os.name
+  puts os.family
   describe package(audit_pkg) do
     it { should be_installed }
   end
