@@ -80,10 +80,7 @@ control 'package-08' do
   impact 1.0
   title 'Install auditd'
   desc 'auditd provides extended logging capacities on recent distribution'
-  audit_pkg = os.redhat? || os.suse? ? 'audit' : 'auditd'
-  puts audit_pkg
-  puts os.name
-  puts os.family
+  audit_pkg = os.redhat? || os.suse? || os.family == 'amazon' ? 'audit' : 'auditd'
   describe package(audit_pkg) do
     it { should be_installed }
   end
