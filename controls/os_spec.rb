@@ -73,12 +73,9 @@ blacklist = attribute(
 control 'os-01' do
   impact 1.0
   title 'Trusted hosts login'
-  desc "Rhosts/hosts.equiv files are a weak implemenation of authentication. Disabling the .rhosts and hosts.equiv support helps to prevent users from subverting the system's normal access control mechanisms of the system."
-  describe command('find / -name \'.rhosts\'') do
-    its('stdout') { should be_empty }
-  end
-  describe command('find / -name \'hosts.equiv\' ') do
-    its('stdout') { should be_empty }
+  desc "hosts.equiv file is a weak implemenation of authentication. Disabling the hosts.equiv support helps to prevent users from subverting the system's normal access control mechanisms of the system."
+  describe file('/etc/hosts.equiv') do
+    it { should_not exist }
   end
 end
 
@@ -217,8 +214,7 @@ control 'os-09' do
   impact 1.0
   title 'Check for .rhosts and .netrc file'
   desc 'Find .rhosts and .netrc files - CIS Benchmark 9.2.9-10'
-
-  output = command('find / \( -iname .rhosts -o -iname .netrc \) -print 2>/dev/null | grep -v \'^find:\'')
+  output = command('find / -maxdepth 3 \( -iname .rhosts -o -iname .netrc \) -print 2>/dev/null | grep -v \'^find:\'')
   out = output.stdout.split(/\r?\n/)
   describe out do
     it { should be_empty }
