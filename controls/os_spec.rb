@@ -17,6 +17,13 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
+log_dir_group = case os[:family]
+                when 'debian', 'redhat', 'fedora'
+                  'root'
+                when 'ubuntu'
+                  os[:release] == '14.04' ? 'syslog' : 'root'
+                end
+
 login_defs_umask = attribute('login_defs_umask', default: '027', description: 'Default umask to set in login.defs')
 login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', description: 'Default password maxdays to set in login.defs')
 login_defs_passmindays = attribute('login_defs_passmindays', default: '7', description: 'Default password mindays to set in login.defs')
@@ -234,5 +241,16 @@ control 'os-10' do
     its(:content) { should match 'install squashfs /bin/true' }
     its(:content) { should match 'install udf /bin/true' }
     its(:content) { should match 'install vfat /bin/true' }
+  end
+end
+
+control 'os-11' do
+  impact 1.0
+  title 'Protect log-directory'
+  desc 'The log-directory /var/log should belong to root'
+  describe file('/var/log') do
+    it { should be_directory }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into log_dir_group }
   end
 end
