@@ -23,8 +23,7 @@ log_dir_group = case os[:family]
                 when 'ubuntu'
                   os[:release] == '14.04' ? 'syslog' : 'root'
                 end
-
-login_defs_umask = attribute('login_defs_umask', default: '027', description: 'Default umask to set in login.defs')
+login_defs_umask = attribute('login_defs_umask', default: os.redhat? ? '077' : '027', description: 'Default umask to set in login.defs')
 login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', description: 'Default password maxdays to set in login.defs')
 login_defs_passmindays = attribute('login_defs_passmindays', default: '7', description: 'Default password mindays to set in login.defs')
 login_defs_passwarnage = attribute('login_defs_passwarnage', default: '7', description: 'Default password warnage (days) to set in login.defs')
@@ -96,9 +95,18 @@ control 'os-02' do
     it { should be_owned_by 'root' }
     its('group') { should eq shadow_group }
     it { should_not be_executable }
-    it { should be_writable.by('owner') }
-    it { should be_readable.by('owner') }
     it { should_not be_readable.by('other') }
+  end
+  if os.redhat?
+    describe file('/etc/shadow') do
+      it { should_not be_writable.by('owner') }
+      it { should_not be_readable.by('owner') }
+    end
+  else
+    describe file('/etc/shadow') do
+      it { should be_writable.by('owner') }
+      it { should be_readable.by('owner') }
+    end
   end
   if os.debian? || os.suse?
     describe file('/etc/shadow') do
@@ -176,9 +184,9 @@ control 'os-05b' do
     it { should_not be_writable }
   end
   describe login_defs do
-    its('SYS_UID_MIN') { should eq '100' }
+    its('SYS_UID_MIN') { should eq '201' }
     its('SYS_UID_MAX') { should eq '999' }
-    its('SYS_GID_MIN') { should eq '100' }
+    its('SYS_GID_MIN') { should eq '201' }
     its('SYS_GID_MAX') { should eq '999' }
   end
   only_if { os.redhat? }
