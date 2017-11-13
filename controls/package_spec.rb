@@ -88,7 +88,7 @@ control 'package-08' do
     its('log_file') { should cmp '/var/log/audit/audit.log' }
     its('log_format') { should cmp 'raw' }
     its('flush') { should match(/^INCREMENTAL|INCREMENTAL_ASYNC$/) }
-    its('max_log_file_action') { should cmp 'ROTATE' }
+    its('max_log_file_action') { should cmp 'keep_logs' }
     its('space_left') { should cmp 75 }
     its('action_mail_acct') { should cmp 'root' }
     its('space_left_action') { should cmp 'SYSLOG' }
