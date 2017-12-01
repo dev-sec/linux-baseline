@@ -1,5 +1,48 @@
 # Change Log
 
+## [2.2.0](https://github.com/dev-sec/linux-baseline/tree/2.2.0) (2017-12-01)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.1.1...2.2.0)
+
+**Closed issues:**
+
+- linux-baseline os-06 can not be skipped [\#86](https://github.com/dev-sec/linux-baseline/issues/86)
+- control os-10 fails \(/etc/modprobe.d/dev-sec.conf\) [\#80](https://github.com/dev-sec/linux-baseline/issues/80)
+- package-08 error on amazon linux [\#79](https://github.com/dev-sec/linux-baseline/issues/79)
+
+**Merged pull requests:**
+
+- deferring the execution of permissions to profile execution [\#87](https://github.com/dev-sec/linux-baseline/pull/87) ([chris-rock](https://github.com/chris-rock))
+- CIS 4.1.1.3 [\#85](https://github.com/dev-sec/linux-baseline/pull/85) ([tomhaynes](https://github.com/tomhaynes))
+- Update Fedora controls [\#84](https://github.com/dev-sec/linux-baseline/pull/84) ([shoekstra](https://github.com/shoekstra))
+- Fix log\_dir\_group for Ubuntu 14.04+ [\#83](https://github.com/dev-sec/linux-baseline/pull/83) ([shoekstra](https://github.com/shoekstra))
+- Tune some parameters for RedHat system [\#82](https://github.com/dev-sec/linux-baseline/pull/82) ([strangeman](https://github.com/strangeman))
+- add logdir-check [\#81](https://github.com/dev-sec/linux-baseline/pull/81) ([rndmh3ro](https://github.com/rndmh3ro))
+- Optimize file search routines [\#77](https://github.com/dev-sec/linux-baseline/pull/77) ([mcgege](https://github.com/mcgege))
+- Check for Amazon Linux when determining audit package. [\#76](https://github.com/dev-sec/linux-baseline/pull/76) ([HenryTheHamster](https://github.com/HenryTheHamster))
+- Update package\_spec.rb [\#74](https://github.com/dev-sec/linux-baseline/pull/74) ([lnxchk](https://github.com/lnxchk))
+- CIS 1.5.4 Ensure prelink is disabled [\#73](https://github.com/dev-sec/linux-baseline/pull/73) ([bitvijays](https://github.com/bitvijays))
+- Added net.ipv4.conf.default.log\_martians for Martian Packets in sysctl\_spec.rb [\#72](https://github.com/dev-sec/linux-baseline/pull/72) ([bitvijays](https://github.com/bitvijays))
+- 1.1.1 CIS Disable unused filesystem [\#71](https://github.com/dev-sec/linux-baseline/pull/71) ([bitvijays](https://github.com/bitvijays))
+- os-02: Fix for SUSE environments [\#70](https://github.com/dev-sec/linux-baseline/pull/70) ([mcgege](https://github.com/mcgege))
+- On SUSE environments 'auditd' is part of package 'audit' [\#69](https://github.com/dev-sec/linux-baseline/pull/69) ([mcgege](https://github.com/mcgege))
+- use recommended spdx license identifier [\#68](https://github.com/dev-sec/linux-baseline/pull/68) ([chris-rock](https://github.com/chris-rock))
+
+## [2.1.1](https://github.com/dev-sec/linux-baseline/tree/2.1.1) (2017-06-02)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.1.0...2.1.1)
+
+**Closed issues:**
+
+- systctl-33 doesn't see nx flag [\#65](https://github.com/dev-sec/linux-baseline/issues/65)
+- check for audit\(d\) fails on aws linux ami [\#60](https://github.com/dev-sec/linux-baseline/issues/60)
+
+**Merged pull requests:**
+
+- CI: update to ruby 2.4.1 and rubocop 0.49.1 [\#66](https://github.com/dev-sec/linux-baseline/pull/66) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Use assignment\_regex, only\_if and bump profile version [\#64](https://github.com/dev-sec/linux-baseline/pull/64) ([alexpop](https://github.com/alexpop))
+- num\_logs has different values on different distros [\#63](https://github.com/dev-sec/linux-baseline/pull/63) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Allow verification if kernel modules loading is disabled [\#62](https://github.com/dev-sec/linux-baseline/pull/62) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Fix: more generic auditd settings [\#61](https://github.com/dev-sec/linux-baseline/pull/61) ([artem-sidorenko](https://github.com/artem-sidorenko))
+
 ## [2.1.0](https://github.com/dev-sec/linux-baseline/tree/2.1.0) (2017-05-08)
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.0.1...2.1.0)
 
@@ -9,7 +52,7 @@
 - update gemfile [\#57](https://github.com/dev-sec/linux-baseline/pull/57) ([atomic111](https://github.com/atomic111))
 - restrict ruby testing to version 2.3.3 [\#56](https://github.com/dev-sec/linux-baseline/pull/56) ([atomic111](https://github.com/atomic111))
 - Properly verify the kernel dump setting [\#52](https://github.com/dev-sec/linux-baseline/pull/52) ([artem-sidorenko](https://github.com/artem-sidorenko))
-- auditd package is called audit in the rhel family [\#51](https://github.com/dev-sec/linux-baseline/pull/51) ([iamthemuffinman](https://github.com/iamthemuffinman))
+- auditd package is called audit in the rhel family [\#51](https://github.com/dev-sec/linux-baseline/pull/51) ([rdeusser](https://github.com/rdeusser))
 - Ignore inspec.lock file [\#50](https://github.com/dev-sec/linux-baseline/pull/50) ([techraf](https://github.com/techraf))
 - Remove duplicated expectation from sysctl-16 [\#49](https://github.com/dev-sec/linux-baseline/pull/49) ([techraf](https://github.com/techraf))
 - update links in readme [\#47](https://github.com/dev-sec/linux-baseline/pull/47) ([chris-rock](https://github.com/chris-rock))
