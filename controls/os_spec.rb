@@ -55,7 +55,7 @@ control 'os-02' do
     it { should_not be_executable }
     it { should_not be_readable.by('other') }
   end
-  if os.redhat?
+  if os.redhat? || os.name == 'fedora'
     describe file('/etc/shadow') do
       it { should_not be_writable.by('owner') }
       it { should_not be_readable.by('owner') }
