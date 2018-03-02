@@ -27,6 +27,7 @@ login_defs_passwarnage = attribute('login_defs_passwarnage', default: '7', descr
 
 shadow_group = 'root'
 shadow_group = 'shadow' if os.debian? || os.suse?
+container_execution = virtualization.role == 'guest' && virtualization.system =~ /^(lxc|docker)$/
 
 blacklist = attribute(
   'blacklist',
@@ -196,6 +197,7 @@ control 'os-10' do
   impact 1.0
   title 'CIS: Disable unused filesystems'
   desc '1.1.1 Ensure mounting of cramfs, freevxfs, jffs2, hfs, hfsplus, squashfs, udf, FAT'
+  only_if { !container_execution }
   describe file('/etc/modprobe.d/dev-sec.conf') do
     its(:content) { should match 'install cramfs /bin/true' }
     its(:content) { should match 'install freevxfs /bin/true' }
