@@ -1,5 +1,18 @@
 # Change Log
 
+## [2.2.1](https://github.com/dev-sec/linux-baseline/tree/2.2.1) (2018-05-14)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.2.0...2.2.1)
+
+**Closed issues:**
+
+- /etc/shadow permissions false positive on Fedora [\#89](https://github.com/dev-sec/linux-baseline/issues/89)
+
+**Merged pull requests:**
+
+- Skip auditd and sysctl tests for containers [\#91](https://github.com/dev-sec/linux-baseline/pull/91) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Fixes \#89 false positive /etc/shadow on Fedora [\#90](https://github.com/dev-sec/linux-baseline/pull/90) ([marcelhuth](https://github.com/marcelhuth))
+- Fix typos in `inspec.yml` [\#88](https://github.com/dev-sec/linux-baseline/pull/88) ([jerryaldrichiii](https://github.com/jerryaldrichiii))
+
 ## [2.2.0](https://github.com/dev-sec/linux-baseline/tree/2.2.0) (2017-12-01)
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.1.1...2.2.0)
 

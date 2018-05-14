@@ -5,6 +5,6 @@ copyright: DevSec Hardening Framework Team
 copyright_email: hello@dev-sec.io
 license: Apache-2.0
 summary: Test suite for best practice Linux OS hardening
-version: 2.2.0
+version: 2.2.1
 supports:
   - os-family: linux
