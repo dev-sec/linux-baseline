@@ -37,6 +37,18 @@ blacklist = attribute(
   description: 'blacklist of suid/sgid program on system'
 )
 
+find_exclude_paths = attribute(
+  'find_exclude_paths',
+  default: suid_check.default_exclude_paths,
+  description: 'exclude paths from being walked by find for permissions issues'
+)
+
+find_exclude_fstypes = attribute(
+  'find_exclude_fstypes',
+  default: suid_check.default_exclude_fstypes,
+  description: 'exclude mounts with these fstypes from being walked by find for permissions issues'
+)
+
 control 'os-01' do
   impact 1.0
   title 'Trusted hosts login'
@@ -158,7 +170,7 @@ control 'os-06' do
   title 'Check for SUID/ SGID blacklist'
   desc 'Find blacklisted SUID and SGID files to ensure that no rogue SUID and SGID files have been introduced into the system'
 
-  describe suid_check(blacklist) do
+  describe suid_check(blacklist, exclude_fstypes: find_exclude_fstypes, exclude_paths: find_exclude_paths) do
     its('diff') { should be_empty }
   end
 end
