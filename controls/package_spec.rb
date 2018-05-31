@@ -18,7 +18,11 @@
 # author: Patrick Muench
 
 val_syslog_pkg = attribute('syslog_pkg', default: 'rsyslog', description: 'syslog package to ensure present (default: rsyslog, alternative: syslog-ng...')
-container_execution = virtualization.role == 'guest' && virtualization.system =~ /^(lxc|docker)$/
+container_execution = begin
+                        virtualization.role == 'guest' && virtualization.system =~ /^(lxc|docker)$/
+                      rescue NoMethodError
+                        false
+                      end
 
 control 'package-01' do
   impact 1.0
