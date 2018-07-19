@@ -49,7 +49,7 @@ control 'package-03' do
   impact 1.0
   title 'Do not install rsh server'
   desc 'The r-commands suffers same problem as telnet. http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf, Chapter 3.2.3'
-  describe package('telnetd') do
+  describe package('rsh-server') do
     it { should_not be_installed }
   end
 end
