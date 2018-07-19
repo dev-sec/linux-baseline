@@ -1,5 +1,13 @@
 # Change Log
 
+## [2.2.2](https://github.com/dev-sec/linux-baseline/tree/2.2.2) (2018-07-19)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.2.1...2.2.2)
+
+**Merged pull requests:**
+
+- Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
+- fix virtualization usage in older inspec versions [\#95](https://github.com/dev-sec/linux-baseline/pull/95) ([mattlqx](https://github.com/mattlqx))
+
 ## [2.2.1](https://github.com/dev-sec/linux-baseline/tree/2.2.1) (2018-05-14)
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.2.0...2.2.1)
 
