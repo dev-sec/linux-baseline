@@ -88,7 +88,7 @@ end
 control 'package-08' do
   impact 1.0
   title 'Install auditd'
-  desc 'auditd provides extended logging capacities on recent distribution'
+  desc 'auditd provides extended logging capabilities on recent distributions'
   only_if { !container_execution }
   audit_pkg = os.redhat? || os.suse? || os.name == 'amazon' || os.name == 'fedora' ? 'audit' : 'auditd'
   describe package(audit_pkg) do
