@@ -17,8 +17,6 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-log_dir_group = 'root'
-log_dir_group = 'syslog' if os.name == 'ubuntu' && os[:release].to_i >= 14
 login_defs_umask = attribute('login_defs_umask', default: os.redhat? ? '077' : '027', description: 'Default umask to set in login.defs')
 
 login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', description: 'Default password maxdays to set in login.defs')
@@ -226,6 +224,6 @@ control 'os-11' do
   describe file('/var/log') do
     it { should be_directory }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into log_dir_group }
+    its(:group) { should match(/^root|syslog$/) }
   end
 end
