@@ -1,7 +1,7 @@
 DevSec Linux Baseline
 =====================
 
-This Compliance Profile ensures, that all hardening projects keep the same quality.
+This Compliance Profile ensures that all hardening projects keep the same quality.
 
 - https://github.com/dev-sec/puppet-os-hardening
 - https://github.com/dev-sec/chef-os-hardening
