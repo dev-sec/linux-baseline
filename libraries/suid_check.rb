@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # author: Christoph Hartmann
 
 class SUIDCheck < Inspec.resource(1)
