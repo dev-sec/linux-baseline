@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # author: Christoph Hartmann
 
 class SUIDBlacklist < Inspec.resource(1)

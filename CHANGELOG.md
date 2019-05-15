@@ -1,10 +1,33 @@
 # Change Log
 
+## [2.3.0](https://github.com/dev-sec/linux-baseline/tree/2.3.0) (2019-05-14)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.2.2...2.3.0)
+
+**Closed issues:**
+
+- Audit Daemon Fails on Amazon Linux 2 [\#109](https://github.com/dev-sec/linux-baseline/issues/109)
+- os-11 fails on vanilla Ubuntu 16.04/18.04 [\#104](https://github.com/dev-sec/linux-baseline/issues/104)
+- Container conditions to skip tests? [\#102](https://github.com/dev-sec/linux-baseline/issues/102)
+- Duplicate testing for telnetd instead of rsh [\#97](https://github.com/dev-sec/linux-baseline/issues/97)
+- Profile summary VS Test Summary  [\#93](https://github.com/dev-sec/linux-baseline/issues/93)
+- Control Sysctl 31-b from sysctl\_spec.rb causing Inspec to exit with error code [\#92](https://github.com/dev-sec/linux-baseline/issues/92)
+
+**Merged pull requests:**
+
+- Add compatibility for alpine based images [\#111](https://github.com/dev-sec/linux-baseline/pull/111) ([zopanix](https://github.com/zopanix))
+- Minor grammatical fix in README [\#108](https://github.com/dev-sec/linux-baseline/pull/108) ([cachedout](https://github.com/cachedout))
+- Update issue templates [\#106](https://github.com/dev-sec/linux-baseline/pull/106) ([rndmh3ro](https://github.com/rndmh3ro))
+- \#104 Fix os-11 for Ubuntu 16.04 and newer [\#105](https://github.com/dev-sec/linux-baseline/pull/105) ([IceBear2k](https://github.com/IceBear2k))
+- efi-check should run on remote host, not locally [\#103](https://github.com/dev-sec/linux-baseline/pull/103) ([rndmh3ro](https://github.com/rndmh3ro))
+- update grammar in desc [\#101](https://github.com/dev-sec/linux-baseline/pull/101) ([juliandunn](https://github.com/juliandunn))
+- Update to test for rsh-server instead of duplicate telnetd [\#98](https://github.com/dev-sec/linux-baseline/pull/98) ([aavetis](https://github.com/aavetis))
+
 ## [2.2.2](https://github.com/dev-sec/linux-baseline/tree/2.2.2) (2018-07-19)
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.2.1...2.2.2)
 
 **Merged pull requests:**
 
+- Update to version 2.2.2 [\#99](https://github.com/dev-sec/linux-baseline/pull/99) ([james-stocks](https://github.com/james-stocks))
 - Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - fix virtualization usage in older inspec versions [\#95](https://github.com/dev-sec/linux-baseline/pull/95) ([mattlqx](https://github.com/mattlqx))
 
