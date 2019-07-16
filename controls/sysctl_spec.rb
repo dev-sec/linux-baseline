@@ -371,7 +371,7 @@ control 'sysctl-31b' do
   desc 'Ensure that core dumps are done with fully qualified path'
   only_if { kernel_parameter('fs.suid_dumpable').value == 2 && !container_execution }
   describe kernel_parameter('kernel.core_pattern') do
-    its(:value) { should match %r{^/.*} }
+    its(:value) { should match %r{^\|?/.*} }
   end
 end
 
