@@ -97,7 +97,7 @@ control 'package-08' do
   describe auditd_conf do
     its('log_file') { should cmp '/var/log/audit/audit.log' }
     its('log_format') { should cmp 'raw' }
-    its('flush') { should match(/^INCREMENTAL|INCREMENTAL_ASYNC$/) }
+    its('flush') { should match(/^incremental|INCREMENTAL|incremental_async|INCREMENTAL_ASYNC$/) }
     its('max_log_file_action') { should cmp 'keep_logs' }
     its('space_left') { should cmp 75 }
     its('action_mail_acct') { should cmp 'root' }
