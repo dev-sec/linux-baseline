@@ -54,6 +54,8 @@ control 'package-03' do
   end
 end
 
+# package-04 is reserved, because we forgot to use it in the first-place :-)
+
 control 'package-05' do
   impact 1.0
   title 'Do not install ypserv server (NIS)'
