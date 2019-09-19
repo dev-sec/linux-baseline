@@ -17,11 +17,11 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-login_defs_umask = attribute('login_defs_umask', default: os.redhat? ? '077' : '027', description: 'Default umask to set in login.defs')
+login_defs_umask = attribute('login_defs_umask', value: os.redhat? ? '077' : '027', description: 'Default umask to set in login.defs')
 
-login_defs_passmaxdays = attribute('login_defs_passmaxdays', default: '60', description: 'Default password maxdays to set in login.defs')
-login_defs_passmindays = attribute('login_defs_passmindays', default: '7', description: 'Default password mindays to set in login.defs')
-login_defs_passwarnage = attribute('login_defs_passwarnage', default: '7', description: 'Default password warnage (days) to set in login.defs')
+login_defs_passmaxdays = attribute('login_defs_passmaxdays', value: '60', description: 'Default password maxdays to set in login.defs')
+login_defs_passmindays = attribute('login_defs_passmindays', value: '7', description: 'Default password mindays to set in login.defs')
+login_defs_passwarnage = attribute('login_defs_passwarnage', value: '7', description: 'Default password warnage (days) to set in login.defs')
 
 shadow_group = 'root'
 shadow_group = 'shadow' if os.debian? || os.suse? || os.name == 'alpine'
@@ -33,7 +33,7 @@ container_execution = begin
 
 blacklist = attribute(
   'blacklist',
-  default: suid_blacklist.default,
+  value: suid_blacklist.default,
   description: 'blacklist of suid/sgid program on system'
 )
 
