@@ -233,7 +233,7 @@ control 'sysctl-19' do
   impact 1.0
   title 'IPv6 Forwarding'
   desc "If you're not intending for your system to forward traffic between interfaces, or if you only have a single interface, the forwarding function must be disable."
-  only_if { !container_execution }
+  only_if { sysctl_forwarding == false && !container_execution }
   describe kernel_parameter('net.ipv6.conf.all.forwarding') do
     its(:value) { should eq 0 }
   end
