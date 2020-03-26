@@ -1,6 +1,26 @@
 # Change Log
 
-## [2.3.0](https://github.com/dev-sec/linux-baseline/tree/2.3.0) (2019-05-14)
+## [2.4.0](https://github.com/dev-sec/linux-baseline/tree/2.4.0) (2020-03-26)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.3.0...2.4.0)
+
+**Closed issues:**
+
+- net.ipv4.ip\_forward needs to be '1' on docker hosts [\#126](https://github.com/dev-sec/linux-baseline/issues/126)
+- sysctl-19 should check the sysctl\_forwarding attribute [\#124](https://github.com/dev-sec/linux-baseline/issues/124)
+- Issue after upgrading to the latest version of Inspec. [\#122](https://github.com/dev-sec/linux-baseline/issues/122)
+- Support for ESXi [\#116](https://github.com/dev-sec/linux-baseline/issues/116)
+- Deprecation Warnings [\#115](https://github.com/dev-sec/linux-baseline/issues/115)
+- systctl-33 - undefined method `expect' [\#107](https://github.com/dev-sec/linux-baseline/issues/107)
+
+**Merged pull requests:**
+
+- skip the sysctl-19 control when sysctl\_forwarding is true [\#125](https://github.com/dev-sec/linux-baseline/pull/125) ([b-dean](https://github.com/b-dean))
+- add documentation for missing package-04 control [\#123](https://github.com/dev-sec/linux-baseline/pull/123) ([chris-rock](https://github.com/chris-rock))
+- Allow core dumps to be piped into a program with an absolute path. [\#121](https://github.com/dev-sec/linux-baseline/pull/121) ([samjmarshall](https://github.com/samjmarshall))
+- Allow for lowercase auditd config flush value. [\#120](https://github.com/dev-sec/linux-baseline/pull/120) ([samjmarshall](https://github.com/samjmarshall))
+- Fixing some deprecation notices [\#119](https://github.com/dev-sec/linux-baseline/pull/119) ([jjasghar](https://github.com/jjasghar))
+
+## [2.3.0](https://github.com/dev-sec/linux-baseline/tree/2.3.0) (2019-05-15)
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.2.2...2.3.0)
 
 **Closed issues:**
@@ -14,6 +34,7 @@
 
 **Merged pull requests:**
 
+- Bump version to 2.3.0 and switch to inspec 3 for check [\#113](https://github.com/dev-sec/linux-baseline/pull/113) ([alexpop](https://github.com/alexpop))
 - Add compatibility for alpine based images [\#111](https://github.com/dev-sec/linux-baseline/pull/111) ([zopanix](https://github.com/zopanix))
 - Minor grammatical fix in README [\#108](https://github.com/dev-sec/linux-baseline/pull/108) ([cachedout](https://github.com/cachedout))
 - Update issue templates [\#106](https://github.com/dev-sec/linux-baseline/pull/106) ([rndmh3ro](https://github.com/rndmh3ro))
