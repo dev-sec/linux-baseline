@@ -1,8 +1,8 @@
 # Changelog
 
-## [2.1.1](https://github.com/dev-sec/linux-baseline/tree/2.1.1) (2020-05-19)
+## [2.4.1](https://github.com/dev-sec/linux-baseline/tree/2.4.1) (2020-05-19)
 
-[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.0...2.1.1)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.0...2.4.1)
 
 **Closed issues:**
 
