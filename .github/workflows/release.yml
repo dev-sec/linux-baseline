@@ -30,6 +30,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           future_release: ${{ steps.version.outputs.next-version }}
 
+      - name: Generate changelog for the release
+        uses: charmixer/auto-changelog-action@8095796
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          since_tag: ${{ steps.previoustag.outputs.tag }}
+          future_release: ${{ steps.version.outputs.next-version }}
+          output: CHANGELOGRELEASE.md
+
       - name: update inspec.yml
         uses: mikefarah/yq@3.2.1
         with:
@@ -46,18 +54,11 @@ jobs:
           name: dev-sec CI
           email: hello@dev-sec.io
 
-      - name: Generate changelog for the release
-        uses: charmixer/auto-changelog-action@8095796
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          since_tag: ${{ steps.previoustag.outputs.tag }}
-          future_release: ${{ steps.version.outputs.next-version }}
-
       - name: Read CHANGELOG.md
         id: package
         uses: juliangruber/read-file-action@v1
         with:
-          path: ./CHANGELOG.md
+          path: ./CHANGELOGRELEASE.md
 
       - name: Create Release draft
         id: create_release
