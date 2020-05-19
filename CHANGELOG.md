@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.3](https://github.com/dev-sec/linux-baseline/tree/2.4.3) (2020-05-19)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.2...2.4.3)
+
+**Merged pull requests:**
+
+- release trigger [\#130](https://github.com/dev-sec/linux-baseline/pull/130) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.4.2](https://github.com/dev-sec/linux-baseline/tree/2.4.2) (2020-05-19)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.1...2.4.2)
@@ -64,6 +72,7 @@
 - efi-check should run on remote host, not locally [\#103](https://github.com/dev-sec/linux-baseline/pull/103) ([rndmh3ro](https://github.com/rndmh3ro))
 - update grammar in desc [\#101](https://github.com/dev-sec/linux-baseline/pull/101) ([juliandunn](https://github.com/juliandunn))
 - Update to test for rsh-server instead of duplicate telnetd [\#98](https://github.com/dev-sec/linux-baseline/pull/98) ([aavetis](https://github.com/aavetis))
+- Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 
 ## [2.2.2](https://github.com/dev-sec/linux-baseline/tree/2.2.2) (2018-07-19)
 
@@ -84,7 +93,6 @@
 
 **Merged pull requests:**
 
-- Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - Skip auditd and sysctl tests for containers [\#91](https://github.com/dev-sec/linux-baseline/pull/91) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Fixes \#89 false positive /etc/shadow on Fedora [\#90](https://github.com/dev-sec/linux-baseline/pull/90) ([marcelhuth](https://github.com/marcelhuth))
 - Fix typos in `inspec.yml` [\#88](https://github.com/dev-sec/linux-baseline/pull/88) ([jerryaldrichiii](https://github.com/jerryaldrichiii))
