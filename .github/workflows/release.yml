@@ -28,7 +28,6 @@ jobs:
         uses: charmixer/auto-changelog-action@8095796
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          since_tag: ${{ steps.previoustag.outputs.tag }}
           future_release: ${{ steps.version.outputs.next-version }}
 
       - name: update inspec.yml
@@ -46,6 +45,13 @@ jobs:
           files: inspec.yml CHANGELOG.md
           name: dev-sec CI
           email: hello@dev-sec.io
+
+      - name: Generate changelog for the release
+        uses: charmixer/auto-changelog-action@8095796
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          since_tag: ${{ steps.previoustag.outputs.tag }}
+          future_release: ${{ steps.version.outputs.next-version }}
 
       - name: Read CHANGELOG.md
         id: package
