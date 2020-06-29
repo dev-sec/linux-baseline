@@ -104,7 +104,7 @@ control 'os-03b' do
   title 'Check passwords hashes in /etc/passwd'
   desc 'Check periodically that /etc/passwd does not contain passwords'
   describe passwd do
-    its('passwords') { should be_in ['x'] }
+    its('passwords') { should be_in ['x', '*', '!'] }
   end
 end
 
