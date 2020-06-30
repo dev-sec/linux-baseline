@@ -99,6 +99,15 @@ control 'os-03' do
   end
 end
 
+control 'os-03b' do
+  impact 1.0
+  title 'Check passwords hashes in /etc/passwd'
+  desc 'Check periodically that /etc/passwd does not contain passwords'
+  describe passwd do
+    its('passwords') { should be_in ['x', '*'] }
+  end
+end
+
 control 'os-04' do
   impact 1.0
   title 'Dot in PATH variable'
