@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.5](https://github.com/dev-sec/linux-baseline/tree/2.4.5) (2020-06-30)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.4...2.4.5)
+
+**Closed issues:**
+
+- /etc/passwd should not contain any password hashes [\#117](https://github.com/dev-sec/linux-baseline/issues/117)
+
+**Merged pull requests:**
+
+- Adds /etc/passwd format check [\#132](https://github.com/dev-sec/linux-baseline/pull/132) ([imjoseangel](https://github.com/imjoseangel))
+
 ## [2.4.4](https://github.com/dev-sec/linux-baseline/tree/2.4.4) (2020-05-19)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.3...2.4.4)
@@ -73,6 +85,7 @@
 **Merged pull requests:**
 
 - Bump version to 2.3.0 and switch to inspec 3 for check [\#113](https://github.com/dev-sec/linux-baseline/pull/113) ([alexpop](https://github.com/alexpop))
+- Add compatibility for alpine based images [\#111](https://github.com/dev-sec/linux-baseline/pull/111) ([zopanix](https://github.com/zopanix))
 - Minor grammatical fix in README [\#108](https://github.com/dev-sec/linux-baseline/pull/108) ([cachedout](https://github.com/cachedout))
 - Update issue templates [\#106](https://github.com/dev-sec/linux-baseline/pull/106) ([rndmh3ro](https://github.com/rndmh3ro))
 - \#104 Fix os-11 for Ubuntu 16.04 and newer [\#105](https://github.com/dev-sec/linux-baseline/pull/105) ([IceBear2k](https://github.com/IceBear2k))
@@ -86,7 +99,6 @@
 
 **Merged pull requests:**
 
-- Add compatibility for alpine based images [\#111](https://github.com/dev-sec/linux-baseline/pull/111) ([zopanix](https://github.com/zopanix))
 - Update to version 2.2.2 [\#99](https://github.com/dev-sec/linux-baseline/pull/99) ([james-stocks](https://github.com/james-stocks))
 - Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - fix virtualization usage in older inspec versions [\#95](https://github.com/dev-sec/linux-baseline/pull/95) ([mattlqx](https://github.com/mattlqx))
@@ -170,10 +182,6 @@
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.0.0...2.0.1)
 
-**Fixed bugs:**
-
-- update identifier [\#37](https://github.com/dev-sec/linux-baseline/pull/37) ([chris-rock](https://github.com/chris-rock))
-
 **Closed issues:**
 
 - permissions /etc/shadow [\#41](https://github.com/dev-sec/linux-baseline/issues/41)
@@ -183,7 +191,6 @@
 
 - update profile metadata & tooling [\#46](https://github.com/dev-sec/linux-baseline/pull/46) ([chris-rock](https://github.com/chris-rock))
 - update Gemfile [\#43](https://github.com/dev-sec/linux-baseline/pull/43) ([atomic111](https://github.com/atomic111))
-- Update links in README file [\#42](https://github.com/dev-sec/linux-baseline/pull/42) ([netflash](https://github.com/netflash))
 - Fix cpu flags and change default for net.ipv4.conf.all.log\_martians [\#39](https://github.com/dev-sec/linux-baseline/pull/39) ([chris-rock](https://github.com/chris-rock))
 
 ## [2.0.0](https://github.com/dev-sec/linux-baseline/tree/2.0.0) (2016-04-29)
@@ -192,11 +199,16 @@
 
 **Merged pull requests:**
 
+- Update links in README file [\#42](https://github.com/dev-sec/linux-baseline/pull/42) ([netflash](https://github.com/netflash))
 - inspec profile [\#38](https://github.com/dev-sec/linux-baseline/pull/38) ([chris-rock](https://github.com/chris-rock))
 
 ## [1.3.0](https://github.com/dev-sec/linux-baseline/tree/1.3.0) (2016-04-25)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/1.2.0...1.3.0)
+
+**Fixed bugs:**
+
+- update identifier [\#37](https://github.com/dev-sec/linux-baseline/pull/37) ([chris-rock](https://github.com/chris-rock))
 
 **Merged pull requests:**
 
