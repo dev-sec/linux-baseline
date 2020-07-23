@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     name: create release draft
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: 'Get Previous tag'
         id: previoustag
@@ -49,10 +51,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           push-branch: 'master'
           commit-message: 'update inspec.yml and changelog'
-          force-add: 'true'
           files: inspec.yml CHANGELOG.md
           name: dev-sec CI
           email: hello@dev-sec.io
+          rebase: 'true'
 
       - name: Read CHANGELOG.md
         id: package
@@ -60,9 +62,20 @@ jobs:
         with:
           path: ./CHANGELOGRELEASE.md
 
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Get current commitish
+        id: current_commitish
+        run: echo "::set-output name=sha::$(git log -1 --format="%H")"
+
+      - name: Check it
+        run: echo ${{ steps.current_commitish.outputs.sha }}
+
       - name: Create Release draft
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1.1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
@@ -70,4 +83,5 @@ jobs:
           tag_name: ${{ steps.version.outputs.next-version }}
           body: |
             ${{ steps.package.outputs.content }}
+          commitish: ${{ steps.current_commitish.outputs.sha }}
           draft: true
