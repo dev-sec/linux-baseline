@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.6](https://github.com/dev-sec/linux-baseline/tree/2.4.6) (2020-07-23)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.5...2.4.6)
+
+**Closed issues:**
+
+- Default umask 077/027 leads into several problems installing software packages [\#133](https://github.com/dev-sec/linux-baseline/issues/133)
+
+**Merged pull requests:**
+
+- The release draft references the correct SHA [\#134](https://github.com/dev-sec/linux-baseline/pull/134) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.4.5](https://github.com/dev-sec/linux-baseline/tree/2.4.5) (2020-06-30)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.4...2.4.5)
@@ -191,6 +203,7 @@
 
 - update profile metadata & tooling [\#46](https://github.com/dev-sec/linux-baseline/pull/46) ([chris-rock](https://github.com/chris-rock))
 - update Gemfile [\#43](https://github.com/dev-sec/linux-baseline/pull/43) ([atomic111](https://github.com/atomic111))
+- Update links in README file [\#42](https://github.com/dev-sec/linux-baseline/pull/42) ([netflash](https://github.com/netflash))
 - Fix cpu flags and change default for net.ipv4.conf.all.log\_martians [\#39](https://github.com/dev-sec/linux-baseline/pull/39) ([chris-rock](https://github.com/chris-rock))
 
 ## [2.0.0](https://github.com/dev-sec/linux-baseline/tree/2.0.0) (2016-04-29)
@@ -199,7 +212,6 @@
 
 **Merged pull requests:**
 
-- Update links in README file [\#42](https://github.com/dev-sec/linux-baseline/pull/42) ([netflash](https://github.com/netflash))
 - inspec profile [\#38](https://github.com/dev-sec/linux-baseline/pull/38) ([chris-rock](https://github.com/chris-rock))
 
 ## [1.3.0](https://github.com/dev-sec/linux-baseline/tree/1.3.0) (2016-04-25)
