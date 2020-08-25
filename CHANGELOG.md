@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.0](https://github.com/dev-sec/linux-baseline/tree/2.5.0) (2020-08-25)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.6...2.5.0)
+
+**Implemented enhancements:**
+
+- add archlinux-support for audit-check [\#136](https://github.com/dev-sec/linux-baseline/pull/136) ([rndmh3ro](https://github.com/rndmh3ro))
+
+**Closed issues:**
+
+- os-10: CIS: Disable unused filesystems \(1 failed\) [\#135](https://github.com/dev-sec/linux-baseline/issues/135)
+
 ## [2.4.6](https://github.com/dev-sec/linux-baseline/tree/2.4.6) (2020-07-23)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.5...2.4.6)
