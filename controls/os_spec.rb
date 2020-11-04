@@ -37,6 +37,8 @@ blacklist = attribute(
   description: 'blacklist of suid/sgid program on system'
 )
 
+cpuvulndir = '/sys/devices/system/cpu/vulnerabilities/'
+
 control 'os-01' do
   impact 1.0
   title 'Trusted hosts login'
@@ -234,5 +236,25 @@ control 'os-11' do
     it { should be_directory }
     it { should be_owned_by 'root' }
     its(:group) { should match(/^root|syslog$/) }
+  end
+end
+
+control 'os-12' do
+  impact 1.0
+  title 'Detect vulnerabilities in the cpu-vulnerability-directory'
+  desc 'Check for known cpu vulnerabilities described here: https://www.kernel.org/doc/html/v5.6/admin-guide/hw-vuln/index.html'
+
+  if file(cpuvulndir).exist?
+    describe file(cpuvulndir) do
+      it { should be_directory }
+    end
+
+    loaded_files = command('find ' + cpuvulndir + ' -type f -maxdepth 1').stdout.split(/\n/).map(&:strip).find_all { |vulnfiles| !vulnfiles.empty? }
+
+    loaded_files.each do |vulnfile|
+      describe file(vulnfile) do
+        its('content') { should_not match /vulnerable/ }
+      end
+    end
   end
 end
