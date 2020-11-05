@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.6.0](https://github.com/dev-sec/linux-baseline/tree/2.6.0) (2020-11-05)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.5.0...2.6.0)
+
+**Implemented enhancements:**
+
+- feat\(osbaseline\): support validation for cpu vulnerabilities [\#138](https://github.com/dev-sec/linux-baseline/pull/138) ([imjoseangel](https://github.com/imjoseangel))
+
+**Closed issues:**
+
+- Support for validation of cpu vulnerabilities [\#114](https://github.com/dev-sec/linux-baseline/issues/114)
+
 ## [2.5.0](https://github.com/dev-sec/linux-baseline/tree/2.5.0) (2020-08-25)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.6...2.5.0)
