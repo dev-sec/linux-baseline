@@ -253,7 +253,7 @@ control 'os-12' do
 
     loaded_files.each do |vulnfile|
       describe file(vulnfile) do
-        its('content') { should_not match /vulnerable/ }
+        its('content') { should_not match 'vulnerable' }
       end
     end
   end
