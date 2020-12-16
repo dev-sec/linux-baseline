@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.6.0](https://github.com/dev-sec/linux-baseline/tree/2.6.0) (2020-11-05)
+## [2.6.0](https://github.com/dev-sec/linux-baseline/tree/2.6.0) (2020-12-16)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.5.0...2.6.0)
 
@@ -10,7 +10,12 @@
 
 **Closed issues:**
 
+- cpu-vulnerability-directory \(1 failed\) - Ubuntu [\#139](https://github.com/dev-sec/linux-baseline/issues/139)
 - Support for validation of cpu vulnerabilities [\#114](https://github.com/dev-sec/linux-baseline/issues/114)
+
+**Merged pull requests:**
+
+- only check cpu vulnerabilities if not in container [\#141](https://github.com/dev-sec/linux-baseline/pull/141) ([schurzi](https://github.com/schurzi))
 
 ## [2.5.0](https://github.com/dev-sec/linux-baseline/tree/2.5.0) (2020-08-25)
 
