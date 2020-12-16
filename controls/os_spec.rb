@@ -243,6 +243,7 @@ control 'os-12' do
   impact 1.0
   title 'Detect vulnerabilities in the cpu-vulnerability-directory'
   desc 'Check for known cpu vulnerabilities described here: https://www.kernel.org/doc/html/v5.6/admin-guide/hw-vuln/index.html'
+  only_if { !container_execution }
 
   if file(cpuvulndir).exist?
     describe file(cpuvulndir) do
