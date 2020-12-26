@@ -107,7 +107,7 @@ control 'sysctl-08' do
   desc 'Reply only if the target IP address is local address configured on the incoming interface.'
   only_if { !container_execution }
   describe kernel_parameter('net.ipv4.conf.all.arp_ignore') do
-    its(:value) { should eq 1 }
+    its(:value) { should cmp(/(1|2)/) }
   end
 end
 
