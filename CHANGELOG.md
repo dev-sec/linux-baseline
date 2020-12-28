@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.6.1](https://github.com/dev-sec/linux-baseline/tree/2.6.1) (2020-12-28)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.0...2.6.1)
+
+**Merged pull requests:**
+
+- Allow arp\_ignore = 2 [\#142](https://github.com/dev-sec/linux-baseline/pull/142) ([mcgege](https://github.com/mcgege))
+
 ## [2.6.0](https://github.com/dev-sec/linux-baseline/tree/2.6.0) (2020-12-16)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.5.0...2.6.0)
