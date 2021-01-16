@@ -113,7 +113,7 @@ end
 control 'os-04' do
   impact 1.0
   title 'Dot in PATH variable'
-  desc 'Do not include the current working directory in PATH variable. This makes it easier for an attacker to gain extensive rigths by executing a Trojan program'
+  desc 'Do not include the current working directory in PATH variable. This makes it easier for an attacker to gain extensive rights by executing a Trojan program'
   describe os_env('PATH') do
     its('split') { should_not include('') }
     its('split') { should_not include('.') }
