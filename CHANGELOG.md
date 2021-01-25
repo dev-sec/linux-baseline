@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.6.2](https://github.com/dev-sec/linux-baseline/tree/2.6.2) (2021-01-25)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.1...2.6.2)
+
+**Merged pull requests:**
+
+- Fix tiny typo [\#143](https://github.com/dev-sec/linux-baseline/pull/143) ([danwit](https://github.com/danwit))
+
 ## [2.6.1](https://github.com/dev-sec/linux-baseline/tree/2.6.1) (2020-12-28)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.0...2.6.1)
