@@ -4,7 +4,7 @@ AllCops:
   - vendor/**/*
 Documentation:
   Enabled: false
-AlignParameters:
+ParameterAlignment:
   Enabled: true
 HashSyntax:
   Enabled: true
