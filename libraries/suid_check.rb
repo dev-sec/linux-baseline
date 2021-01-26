@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # author: Christoph Hartmann
 
 class SUIDCheck < Inspec.resource(1)
@@ -10,6 +12,7 @@ class SUIDCheck < Inspec.resource(1)
    "
 
   def initialize(blacklist = nil)
+    super
     blacklist = default if blacklist.nil?
     @blacklist = blacklist
   end

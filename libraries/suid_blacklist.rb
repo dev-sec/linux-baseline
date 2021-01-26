@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # author: Christoph Hartmann
 
 class SUIDBlacklist < Inspec.resource(1)
