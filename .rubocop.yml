@@ -26,3 +26,7 @@ Metrics/PerceivedComplexity:
   Max: 10
 Metrics/AbcSize:
   Max: 30
+# Lint/AmbiguousBlockAssociation is incompatible with RSpec
+# https://github.com/rubocop-hq/rubocop/issues/4222
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
