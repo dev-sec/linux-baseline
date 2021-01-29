@@ -12,7 +12,7 @@ class SUIDCheck < Inspec.resource(1)
    "
 
   def initialize(blacklist = nil)
-    super
+    super()
     blacklist = default if blacklist.nil?
     @blacklist = blacklist
   end
