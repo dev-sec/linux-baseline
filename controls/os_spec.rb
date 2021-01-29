@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Copyright 2015, Patrick Muench
 #
@@ -26,10 +28,10 @@ login_defs_passwarnage = attribute('login_defs_passwarnage', value: '7', descrip
 shadow_group = 'root'
 shadow_group = 'shadow' if os.debian? || os.suse? || os.name == 'alpine'
 container_execution = begin
-                        virtualization.role == 'guest' && virtualization.system =~ /^(lxc|docker)$/
-                      rescue NoMethodError
-                        false
-                      end
+  virtualization.role == 'guest' && virtualization.system =~ /^(lxc|docker)$/
+rescue NoMethodError
+  false
+end
 
 blacklist = attribute(
   'blacklist',
@@ -250,7 +252,7 @@ control 'os-12' do
       it { should be_directory }
     end
 
-    loaded_files = command('find ' + cpuvulndir + ' -type f -maxdepth 1').stdout.split(/\n/).map(&:strip).find_all { |vulnfiles| !vulnfiles.empty? }
+    loaded_files = command("find #{cpuvulndir} -type f -maxdepth 1").stdout.split(/\n/).map(&:strip).find_all { |vulnfiles| !vulnfiles.empty? }
 
     loaded_files.each do |vulnfile|
       describe file(vulnfile) do
