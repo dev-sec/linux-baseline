@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.6.3](https://github.com/dev-sec/linux-baseline/tree/2.6.3) (2021-01-29)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.2...2.6.3)
+
+**Merged pull requests:**
+
+- fix super call [\#147](https://github.com/dev-sec/linux-baseline/pull/147) ([schurzi](https://github.com/schurzi))
+
 ## [2.6.2](https://github.com/dev-sec/linux-baseline/tree/2.6.2) (2021-01-29)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.1...2.6.2)
@@ -75,6 +83,10 @@
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.3...2.4.4)
 
+**Merged pull requests:**
+
+- CHANGELOG for RELEASE done before the push to avoid breaking [\#131](https://github.com/dev-sec/linux-baseline/pull/131) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.4.3](https://github.com/dev-sec/linux-baseline/tree/2.4.3) (2020-05-19)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.2...2.4.3)
@@ -89,7 +101,6 @@
 
 **Merged pull requests:**
 
-- CHANGELOG for RELEASE done before the push to avoid breaking [\#131](https://github.com/dev-sec/linux-baseline/pull/131) ([micheelengronne](https://github.com/micheelengronne))
 - align versions [\#129](https://github.com/dev-sec/linux-baseline/pull/129) ([micheelengronne](https://github.com/micheelengronne))
 
 ## [2.4.1](https://github.com/dev-sec/linux-baseline/tree/2.4.1) (2020-05-19)
@@ -156,7 +167,6 @@
 **Merged pull requests:**
 
 - Update to version 2.2.2 [\#99](https://github.com/dev-sec/linux-baseline/pull/99) ([james-stocks](https://github.com/james-stocks))
-- Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - fix virtualization usage in older inspec versions [\#95](https://github.com/dev-sec/linux-baseline/pull/95) ([mattlqx](https://github.com/mattlqx))
 
 ## [2.2.1](https://github.com/dev-sec/linux-baseline/tree/2.2.1) (2018-05-14)
@@ -185,6 +195,7 @@
 
 **Merged pull requests:**
 
+- Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - deferring the execution of permissions to profile execution [\#87](https://github.com/dev-sec/linux-baseline/pull/87) ([chris-rock](https://github.com/chris-rock))
 - CIS 4.1.1.3 [\#85](https://github.com/dev-sec/linux-baseline/pull/85) ([tomhaynes](https://github.com/tomhaynes))
 - Update Fedora controls [\#84](https://github.com/dev-sec/linux-baseline/pull/84) ([shoekstra](https://github.com/shoekstra))
@@ -198,6 +209,7 @@
 - Added net.ipv4.conf.default.log\_martians for Martian Packets in sysctl\_spec.rb [\#72](https://github.com/dev-sec/linux-baseline/pull/72) ([bitvijays](https://github.com/bitvijays))
 - 1.1.1 CIS Disable unused filesystem [\#71](https://github.com/dev-sec/linux-baseline/pull/71) ([bitvijays](https://github.com/bitvijays))
 - os-02: Fix for SUSE environments [\#70](https://github.com/dev-sec/linux-baseline/pull/70) ([mcgege](https://github.com/mcgege))
+- On SUSE environments 'auditd' is part of package 'audit' [\#69](https://github.com/dev-sec/linux-baseline/pull/69) ([mcgege](https://github.com/mcgege))
 - use recommended spdx license identifier [\#68](https://github.com/dev-sec/linux-baseline/pull/68) ([chris-rock](https://github.com/chris-rock))
 
 ## [2.1.1](https://github.com/dev-sec/linux-baseline/tree/2.1.1) (2017-06-02)
@@ -211,7 +223,6 @@
 
 **Merged pull requests:**
 
-- On SUSE environments 'auditd' is part of package 'audit' [\#69](https://github.com/dev-sec/linux-baseline/pull/69) ([mcgege](https://github.com/mcgege))
 - CI: update to ruby 2.4.1 and rubocop 0.49.1 [\#66](https://github.com/dev-sec/linux-baseline/pull/66) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Use assignment\_regex, only\_if and bump profile version [\#64](https://github.com/dev-sec/linux-baseline/pull/64) ([alexpop](https://github.com/alexpop))
 - num\_logs has different values on different distros [\#63](https://github.com/dev-sec/linux-baseline/pull/63) ([artem-sidorenko](https://github.com/artem-sidorenko))
@@ -233,6 +244,7 @@
 - Remove duplicated expectation from sysctl-16 [\#49](https://github.com/dev-sec/linux-baseline/pull/49) ([techraf](https://github.com/techraf))
 - update links in readme [\#47](https://github.com/dev-sec/linux-baseline/pull/47) ([chris-rock](https://github.com/chris-rock))
 - essay: differentiate redhat/debian, add extra conditions [\#44](https://github.com/dev-sec/linux-baseline/pull/44) ([juju4](https://github.com/juju4))
+- update Gemfile [\#43](https://github.com/dev-sec/linux-baseline/pull/43) ([atomic111](https://github.com/atomic111))
 
 ## [2.0.1](https://github.com/dev-sec/linux-baseline/tree/2.0.1) (2016-12-21)
 
@@ -246,7 +258,6 @@
 **Merged pull requests:**
 
 - update profile metadata & tooling [\#46](https://github.com/dev-sec/linux-baseline/pull/46) ([chris-rock](https://github.com/chris-rock))
-- update Gemfile [\#43](https://github.com/dev-sec/linux-baseline/pull/43) ([atomic111](https://github.com/atomic111))
 - Update links in README file [\#42](https://github.com/dev-sec/linux-baseline/pull/42) ([netflash](https://github.com/netflash))
 - Fix cpu flags and change default for net.ipv4.conf.all.log\_martians [\#39](https://github.com/dev-sec/linux-baseline/pull/39) ([chris-rock](https://github.com/chris-rock))
 
