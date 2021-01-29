@@ -1,11 +1,12 @@
 # Changelog
 
-## [2.6.2](https://github.com/dev-sec/linux-baseline/tree/2.6.2) (2021-01-26)
+## [2.6.2](https://github.com/dev-sec/linux-baseline/tree/2.6.2) (2021-01-29)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.1...2.6.2)
 
 **Merged pull requests:**
 
+- update code to conform to new linting rules [\#145](https://github.com/dev-sec/linux-baseline/pull/145) ([schurzi](https://github.com/schurzi))
 - add github action for testing [\#144](https://github.com/dev-sec/linux-baseline/pull/144) ([rndmh3ro](https://github.com/rndmh3ro))
 - Fix tiny typo [\#143](https://github.com/dev-sec/linux-baseline/pull/143) ([danwit](https://github.com/danwit))
 
@@ -74,10 +75,6 @@
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.3...2.4.4)
 
-**Merged pull requests:**
-
-- CHANGELOG for RELEASE done before the push to avoid breaking [\#131](https://github.com/dev-sec/linux-baseline/pull/131) ([micheelengronne](https://github.com/micheelengronne))
-
 ## [2.4.3](https://github.com/dev-sec/linux-baseline/tree/2.4.3) (2020-05-19)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.4.2...2.4.3)
@@ -92,6 +89,7 @@
 
 **Merged pull requests:**
 
+- CHANGELOG for RELEASE done before the push to avoid breaking [\#131](https://github.com/dev-sec/linux-baseline/pull/131) ([micheelengronne](https://github.com/micheelengronne))
 - align versions [\#129](https://github.com/dev-sec/linux-baseline/pull/129) ([micheelengronne](https://github.com/micheelengronne))
 
 ## [2.4.1](https://github.com/dev-sec/linux-baseline/tree/2.4.1) (2020-05-19)
@@ -200,7 +198,6 @@
 - Added net.ipv4.conf.default.log\_martians for Martian Packets in sysctl\_spec.rb [\#72](https://github.com/dev-sec/linux-baseline/pull/72) ([bitvijays](https://github.com/bitvijays))
 - 1.1.1 CIS Disable unused filesystem [\#71](https://github.com/dev-sec/linux-baseline/pull/71) ([bitvijays](https://github.com/bitvijays))
 - os-02: Fix for SUSE environments [\#70](https://github.com/dev-sec/linux-baseline/pull/70) ([mcgege](https://github.com/mcgege))
-- On SUSE environments 'auditd' is part of package 'audit' [\#69](https://github.com/dev-sec/linux-baseline/pull/69) ([mcgege](https://github.com/mcgege))
 - use recommended spdx license identifier [\#68](https://github.com/dev-sec/linux-baseline/pull/68) ([chris-rock](https://github.com/chris-rock))
 
 ## [2.1.1](https://github.com/dev-sec/linux-baseline/tree/2.1.1) (2017-06-02)
@@ -214,6 +211,7 @@
 
 **Merged pull requests:**
 
+- On SUSE environments 'auditd' is part of package 'audit' [\#69](https://github.com/dev-sec/linux-baseline/pull/69) ([mcgege](https://github.com/mcgege))
 - CI: update to ruby 2.4.1 and rubocop 0.49.1 [\#66](https://github.com/dev-sec/linux-baseline/pull/66) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Use assignment\_regex, only\_if and bump profile version [\#64](https://github.com/dev-sec/linux-baseline/pull/64) ([alexpop](https://github.com/alexpop))
 - num\_logs has different values on different distros [\#63](https://github.com/dev-sec/linux-baseline/pull/63) ([artem-sidorenko](https://github.com/artem-sidorenko))
