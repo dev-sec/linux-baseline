@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.6.4](https://github.com/dev-sec/linux-baseline/tree/2.6.4) (2021-02-02)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.3...2.6.4)
+
+**Closed issues:**
+
+- os-06: Check for SUID/ SGID blacklist control previously passing is now falling [\#146](https://github.com/dev-sec/linux-baseline/issues/146)
+
+**Merged pull requests:**
+
+- use version tag for changelog action [\#148](https://github.com/dev-sec/linux-baseline/pull/148) ([schurzi](https://github.com/schurzi))
+
 ## [2.6.3](https://github.com/dev-sec/linux-baseline/tree/2.6.3) (2021-01-29)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.2...2.6.3)
@@ -167,6 +179,7 @@
 **Merged pull requests:**
 
 - Update to version 2.2.2 [\#99](https://github.com/dev-sec/linux-baseline/pull/99) ([james-stocks](https://github.com/james-stocks))
+- Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - fix virtualization usage in older inspec versions [\#95](https://github.com/dev-sec/linux-baseline/pull/95) ([mattlqx](https://github.com/mattlqx))
 
 ## [2.2.1](https://github.com/dev-sec/linux-baseline/tree/2.2.1) (2018-05-14)
@@ -195,7 +208,6 @@
 
 **Merged pull requests:**
 
-- Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - deferring the execution of permissions to profile execution [\#87](https://github.com/dev-sec/linux-baseline/pull/87) ([chris-rock](https://github.com/chris-rock))
 - CIS 4.1.1.3 [\#85](https://github.com/dev-sec/linux-baseline/pull/85) ([tomhaynes](https://github.com/tomhaynes))
 - Update Fedora controls [\#84](https://github.com/dev-sec/linux-baseline/pull/84) ([shoekstra](https://github.com/shoekstra))
@@ -244,7 +256,6 @@
 - Remove duplicated expectation from sysctl-16 [\#49](https://github.com/dev-sec/linux-baseline/pull/49) ([techraf](https://github.com/techraf))
 - update links in readme [\#47](https://github.com/dev-sec/linux-baseline/pull/47) ([chris-rock](https://github.com/chris-rock))
 - essay: differentiate redhat/debian, add extra conditions [\#44](https://github.com/dev-sec/linux-baseline/pull/44) ([juju4](https://github.com/juju4))
-- update Gemfile [\#43](https://github.com/dev-sec/linux-baseline/pull/43) ([atomic111](https://github.com/atomic111))
 
 ## [2.0.1](https://github.com/dev-sec/linux-baseline/tree/2.0.1) (2016-12-21)
 
@@ -258,6 +269,7 @@
 **Merged pull requests:**
 
 - update profile metadata & tooling [\#46](https://github.com/dev-sec/linux-baseline/pull/46) ([chris-rock](https://github.com/chris-rock))
+- update Gemfile [\#43](https://github.com/dev-sec/linux-baseline/pull/43) ([atomic111](https://github.com/atomic111))
 - Update links in README file [\#42](https://github.com/dev-sec/linux-baseline/pull/42) ([netflash](https://github.com/netflash))
 - Fix cpu flags and change default for net.ipv4.conf.all.log\_martians [\#39](https://github.com/dev-sec/linux-baseline/pull/39) ([chris-rock](https://github.com/chris-rock))
 
