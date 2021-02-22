@@ -262,3 +262,22 @@ control 'os-12' do
     end
   end
 end
+
+control 'os-13' do
+  impact 1.0
+  title 'Protect cron directories and files'
+  desc 'The cron directories and files should belong to root.'
+
+  cron_files = ['/etc/crontab', '/etc/cron.hourly', '/etc/cron.daily', '/etc/cron.weekly', '/etc/cron.monthly', '/etc/cron.d']
+
+  cron_files.each do |cron_file|
+    next unless file(cron_file).exist?
+    describe file(cron_file) do
+      it { should be_owned_by 'root' }
+      it { should_not be_writable.by('group') }
+      it { should_not be_writable.by('other') }
+      it { should_not be_readable.by('group') }
+      it { should_not be_readable.by('other') }
+    end
+  end
+end
