@@ -272,6 +272,7 @@ control 'os-13' do
 
   cron_files.each do |cron_file|
     next unless file(cron_file).exist?
+
     describe file(cron_file) do
       it { should be_owned_by 'root' }
       it { should_not be_writable.by('group') }
