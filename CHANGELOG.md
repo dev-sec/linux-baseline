@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.7.1](https://github.com/dev-sec/linux-baseline/tree/2.7.1) (2021-03-22)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.7.0...2.7.1)
+
+**Merged pull requests:**
+
+- add dependency to chef-config for CI [\#151](https://github.com/dev-sec/linux-baseline/pull/151) ([schurzi](https://github.com/schurzi))
+
 ## [2.7.0](https://github.com/dev-sec/linux-baseline/tree/2.7.0) (2021-02-22)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.6.4...2.7.0)
@@ -177,8 +185,6 @@
 - Update issue templates [\#106](https://github.com/dev-sec/linux-baseline/pull/106) ([rndmh3ro](https://github.com/rndmh3ro))
 - \#104 Fix os-11 for Ubuntu 16.04 and newer [\#105](https://github.com/dev-sec/linux-baseline/pull/105) ([IceBear2k](https://github.com/IceBear2k))
 - efi-check should run on remote host, not locally [\#103](https://github.com/dev-sec/linux-baseline/pull/103) ([rndmh3ro](https://github.com/rndmh3ro))
-- update grammar in desc [\#101](https://github.com/dev-sec/linux-baseline/pull/101) ([juliandunn](https://github.com/juliandunn))
-- Update to version 2.2.2 [\#99](https://github.com/dev-sec/linux-baseline/pull/99) ([james-stocks](https://github.com/james-stocks))
 - Update to test for rsh-server instead of duplicate telnetd [\#98](https://github.com/dev-sec/linux-baseline/pull/98) ([aavetis](https://github.com/aavetis))
 
 ## [2.2.2](https://github.com/dev-sec/linux-baseline/tree/2.2.2) (2018-07-19)
@@ -187,6 +193,8 @@
 
 **Merged pull requests:**
 
+- update grammar in desc [\#101](https://github.com/dev-sec/linux-baseline/pull/101) ([juliandunn](https://github.com/juliandunn))
+- Update to version 2.2.2 [\#99](https://github.com/dev-sec/linux-baseline/pull/99) ([james-stocks](https://github.com/james-stocks))
 - Do not disable vfat by default [\#96](https://github.com/dev-sec/linux-baseline/pull/96) ([rndmh3ro](https://github.com/rndmh3ro))
 - fix virtualization usage in older inspec versions [\#95](https://github.com/dev-sec/linux-baseline/pull/95) ([mattlqx](https://github.com/mattlqx))
 
@@ -293,10 +301,6 @@
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/1.2.0...1.3.0)
 
-**Fixed bugs:**
-
-- update identifier [\#37](https://github.com/dev-sec/linux-baseline/pull/37) ([chris-rock](https://github.com/chris-rock))
-
 **Merged pull requests:**
 
 - prevent nil in flags [\#36](https://github.com/dev-sec/linux-baseline/pull/36) ([arlimus](https://github.com/arlimus))
@@ -304,6 +308,10 @@
 ## [1.2.0](https://github.com/dev-sec/linux-baseline/tree/1.2.0) (2015-12-08)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/1.1.0...1.2.0)
+
+**Fixed bugs:**
+
+- update identifier [\#37](https://github.com/dev-sec/linux-baseline/pull/37) ([chris-rock](https://github.com/chris-rock))
 
 **Merged pull requests:**
 
