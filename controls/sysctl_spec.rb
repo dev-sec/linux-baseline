@@ -167,6 +167,12 @@ control 'sysctl-13' do
   describe kernel_parameter('net.ipv4.conf.default.accept_source_route') do
     its(:value) { should eq 0 }
   end
+  describe kernel_parameter('net.ipv6.conf.all.accept_source_route') do
+    its(:value) { should eq 0 }
+  end
+  describe kernel_parameter('net.ipv6.conf.default.accept_source_route') do
+    its(:value) { should eq 0 }
+  end
 end
 
 control 'sysctl-14' do
