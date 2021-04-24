@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.0](https://github.com/dev-sec/linux-baseline/tree/2.8.0) (2021-03-24)
+## [2.8.0](https://github.com/dev-sec/linux-baseline/tree/2.8.0) (2021-04-24)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.7.0...2.8.0)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- fix rubocop error for Rakefile [\#153](https://github.com/dev-sec/linux-baseline/pull/153) ([schurzi](https://github.com/schurzi))
 - add dependency to chef-config for CI [\#151](https://github.com/dev-sec/linux-baseline/pull/151) ([schurzi](https://github.com/schurzi))
 
 ## [2.7.0](https://github.com/dev-sec/linux-baseline/tree/2.7.0) (2021-02-22)
