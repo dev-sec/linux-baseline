@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.0](https://github.com/dev-sec/linux-baseline/tree/2.8.0) (2021-04-24)
+## [2.8.0](https://github.com/dev-sec/linux-baseline/tree/2.8.0) (2021-04-29)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.7.0...2.8.0)
 
@@ -8,8 +8,13 @@
 
 - Disable source routing for IPv6. [\#152](https://github.com/dev-sec/linux-baseline/pull/152) ([joubbi](https://github.com/joubbi))
 
+**Closed issues:**
+
+- Remove package-07 test [\#149](https://github.com/dev-sec/linux-baseline/issues/149)
+
 **Merged pull requests:**
 
+- remove control package-07 [\#154](https://github.com/dev-sec/linux-baseline/pull/154) ([rndmh3ro](https://github.com/rndmh3ro))
 - fix rubocop error for Rakefile [\#153](https://github.com/dev-sec/linux-baseline/pull/153) ([schurzi](https://github.com/schurzi))
 - add dependency to chef-config for CI [\#151](https://github.com/dev-sec/linux-baseline/pull/151) ([schurzi](https://github.com/schurzi))
 
