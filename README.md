@@ -29,7 +29,7 @@ $ inspec exec https://github.com/dev-sec/linux-baseline
 * Author:: Christoph Hartmann <chris@lollyrock.com>
 * Author:: Edmund Haselwanter <me@ehaselwanter.com>
 
-* Copyright 2014-2016, The Hardening Framework Team
+* Copyright 2014-2021, The Hardening Framework Team
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
