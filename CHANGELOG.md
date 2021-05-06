@@ -1,11 +1,12 @@
 # Changelog
 
-## [2.8.0](https://github.com/dev-sec/linux-baseline/tree/2.8.0) (2021-04-29)
+## [2.8.0](https://github.com/dev-sec/linux-baseline/tree/2.8.0) (2021-05-06)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.7.0...2.8.0)
 
 **Implemented enhancements:**
 
+- remove sysctl-18 - ipv6 no longer needs to be disabled [\#155](https://github.com/dev-sec/linux-baseline/pull/155) ([schurzi](https://github.com/schurzi))
 - Disable source routing for IPv6. [\#152](https://github.com/dev-sec/linux-baseline/pull/152) ([joubbi](https://github.com/joubbi))
 
 **Closed issues:**
