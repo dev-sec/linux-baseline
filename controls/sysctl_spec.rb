@@ -227,16 +227,6 @@ control 'sysctl-17' do
   end
 end
 
-control 'sysctl-18' do
-  impact 1.0
-  title 'Disable IPv6 if it is not needed'
-  desc 'Disable IPv6 if it is not needed'
-  only_if { !container_execution }
-  describe kernel_parameter('net.ipv6.conf.all.disable_ipv6') do
-    its(:value) { should eq 1 }
-  end
-end
-
 control 'sysctl-19' do
   impact 1.0
   title 'IPv6 Forwarding'
