@@ -44,5 +44,4 @@ task :changelog do
   Rake::Task[:changelog].execute
 rescue LoadError
   puts '>>>>> GitHub Changelog Generator not loaded, omitting tasks'
-
 end
