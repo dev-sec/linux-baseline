@@ -295,7 +295,7 @@ control 'os-14' do
       it { should exist }
       it { should be_owned_by 'root' }
       its('group') { should eq 'root' }
-      its(:content) { should match /^password    requisite     pam_pwhistory.so remember=60 use_authtok$/ }
+      its(:content) { should match /^password    requisite     pam_pwhistory.so remember=5 use_authtok$/ }
       its(:content) { should match /^password    requisite     pam_pwquality.so try_first_pass retry=3 authtok_type=$/ }
       its(:content) { should match /^auth        required      pam_faillock.so preauth silent audit even_deny_root deny=5 unlock_time=15$/ }
       its(:content) { should match /^auth        required      pam_faillock.so authfail audit even_deny_root deny=5 unlock_time=15$/ }
