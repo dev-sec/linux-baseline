@@ -300,7 +300,7 @@ control 'os-15' do
     its(:stdout) { should match '-w /etc/ssh/sshd_config' }
     if os.redhat? || os.name == 'amazon' || os.name == 'fedora'
       its(:stdout) { should match '-w /usr/bin/yum -p x -k software_mgmt' }
-      its(:stdout) { should match '-w /etc/selinux/ -p wa -k MAC-policy' }
+      its(:stdout) { should match '-w /etc/selinux -p wa -k MAC-policy' }
     end
     if os.suse?
       its(:stdout) { should match '-w /usr/bin/zypper -p x -k software_mgmt' }
@@ -315,10 +315,10 @@ control 'os-15' do
     end
     if os.redhat? || os.name == 'amazon' || os.name == 'fedora' || os.suse?
       its(:stdout) { should match '-w /var/log/messages' }
-      its(:stdout) { should match '-w /etc/sysconfig/network-scripts/ -p wa -k system-locale' }
+      its(:stdout) { should match '-w /etc/sysconfig/network-scripts -p wa -k system-locale' }
     end
     if os.suse? || os.debian?
-      its(:stdout) { should match '-w /etc/apparmor/ -p wa -k MAC-policy' }
+      its(:stdout) { should match '-w /etc/apparmor -p wa -k MAC-policy' }
     end
   end
 end
