@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.8.1](https://github.com/dev-sec/linux-baseline/tree/2.8.1) (2021-10-19)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.0...2.8.1)
+
+**Closed issues:**
+
+- Ensure links are protected [\#159](https://github.com/dev-sec/linux-baseline/issues/159)
+
+**Merged pull requests:**
+
+- added sysctl-34 for checking link protection settings [\#160](https://github.com/dev-sec/linux-baseline/pull/160) ([cmhe](https://github.com/cmhe))
+
 ## [2.8.0](https://github.com/dev-sec/linux-baseline/tree/2.8.0) (2021-05-06)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.7.0...2.8.0)
