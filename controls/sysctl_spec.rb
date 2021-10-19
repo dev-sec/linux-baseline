@@ -407,3 +407,22 @@ control 'sysctl-33' do
     end
   end
 end
+
+control 'sysctl-34' do
+  impact 1.0
+  title 'Ensure links are protected'
+  desc 'Protects against common exploits in regards to links, fifos and regular files created or controlled by attackers'
+  only_if { !container_execution }
+  describe kernel_parameter('fs.protected_fifos') do
+    its(:value) { should match cmp(/(1|2)/) }
+  end
+  describe kernel_parameter('fs.protected_hardlinks') do
+    its(:value) { should eq 1 }
+  end
+  describe kernel_parameter('fs.protected_regular') do
+    its(:value) { should eq 2 }
+  end
+  describe kernel_parameter('fs.protected_symlinks') do
+    its(:value) { should eq 1 }
+  end
+end
