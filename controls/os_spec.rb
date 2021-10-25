@@ -282,3 +282,43 @@ control 'os-13' do
     end
   end
 end
+
+control 'os-15' do
+  impact 1.0
+  title 'Check auditd rules'
+  desc 'Check that the auditd rules are created and active'
+  output = command('auditctl -l')
+  describe output do
+    its(:stdout) { should match '-a always,exit -F arch=b64 -S execve' }
+    its(:stdout) { should match '-w /etc/localtime -p wa -k time-change' }
+    its(:stdout) { should match '-w /sbin/insmod -p x -k modules' }
+    its(:stdout) { should match '-w /etc/crontab' }
+    its(:stdout) { should match '-w /etc/sudoers -p wa -k scope' }
+    its(:stdout) { should match '-w /etc/passwd -p wa -k identity' }
+    its(:stdout) { should match '-w /var/log/audit/audit.log' }
+    its(:stdout) { should match '-w /etc/hosts -p wa -k system-locale' }
+    its(:stdout) { should match '-w /etc/ssh/sshd_config' }
+    if os.redhat? || os.name == 'amazon' || os.name == 'fedora'
+      its(:stdout) { should match '-w /usr/bin/yum -p x -k software_mgmt' }
+      its(:stdout) { should match '-w /etc/selinux -p wa -k MAC-policy' }
+    end
+    if os.suse?
+      its(:stdout) { should match '-w /usr/bin/zypper -p x -k software_mgmt' }
+    end
+    if os.debian?
+      its(:stdout) { should match '-w /usr/bin/apt-get -p x -k software_mgmt' }
+      its(:stdout) { should match '-w /var/log/system.log' }
+      its(:stdout) { should match '-w /etc/network/interfaces -p wa -k system-locale' }
+    end
+    if os.name == 'arch'
+      its(:stdout) { should match '-w /usr/bin/pacman -p x -k software_mgmt' }
+    end
+    if os.redhat? || os.name == 'amazon' || os.name == 'fedora' || os.suse?
+      its(:stdout) { should match '-w /var/log/messages' }
+      its(:stdout) { should match '-w /etc/sysconfig/network-scripts -p wa -k system-locale' }
+    end
+    if os.suse? || os.debian?
+      its(:stdout) { should match '-w /etc/apparmor -p wa -k MAC-policy' }
+    end
+  end
+end
