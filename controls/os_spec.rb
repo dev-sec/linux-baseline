@@ -334,3 +334,63 @@ control 'os-16' do
     it { should_not be_readable.by('other') }
   end
 end
+
+control 'os-17' do
+  impact 1.0
+  title 'Check owner and permissions for /etc/group'
+  desc 'Check periodically the owner and permissions for /etc/group'
+  describe file('/etc/group') do
+    it { should exist }
+    it { should be_file }
+    it { should be_owned_by 'root' }
+    its('group') { should eq 'root' }
+    it { should_not be_executable }
+    it { should be_writable.by('owner') }
+    it { should be_readable.by('owner') }
+    it { should_not be_writable.by('group') }
+    it { should be_readable.by('group') }
+    it { should_not be_writable.by('other') }
+    it { should be_readable.by('other') }
+  end
+end
+
+control 'os-18' do
+  impact 1.0
+  title 'Check owner and permissions for /etc/passwd-'
+  desc 'Check periodically the owner and permissions for /etc/passwd-'
+  only_if('/etc/passwd- exists') do
+    file('/etc/passwd-').exist?
+  end
+  describe file('/etc/passwd-') do
+    it { should be_file }
+    it { should be_owned_by 'root' }
+    its('group') { should eq 'root' }
+    it { should_not be_executable }
+    it { should be_writable.by('owner') }
+    it { should be_readable.by('owner') }
+    it { should_not be_writable.by('group') }
+    it { should be_readable.by('group') }
+    it { should_not be_writable.by('other') }
+    it { should be_readable.by('other') }
+  end
+end
+
+control 'os-19' do
+  impact 1.0
+  title 'Check owner and permissions for /etc/group-'
+  desc 'Check periodically the owner and permissions for /etc/group-'
+  only_if('/etc/group- exists') do
+    file('/etc/group-').exist?
+  end
+  describe file('/etc/group-') do
+    it { should be_owned_by 'root' }
+    its('group') { should eq 'root' }
+    it { should_not be_executable }
+    it { should be_writable.by('owner') }
+    it { should be_readable.by('owner') }
+    it { should_not be_writable.by('group') }
+    it { should be_readable.by('group') }
+    it { should_not be_writable.by('other') }
+    it { should be_readable.by('other') }
+  end
+end
