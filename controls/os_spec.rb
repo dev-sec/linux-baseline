@@ -41,6 +41,40 @@ blacklist = attribute(
 
 cpuvulndir = '/sys/devices/system/cpu/vulnerabilities/'
 
+# Overview of necessary mount options to be checked:
+#
+#---------------------------------------------------------
+#   Mount point              nodev  noexec  nosuid
+#   /boot                      v      v       v
+#   /dev                              v       v
+#   /dev/shm                   v      v       v
+#   /home                      v              v
+#   /run                       v              v
+#   /tmp                       v      v       v
+#   /var                       v              v
+#   /var/log                   v      v       v
+#   /var/log/audit             v      v       v
+#   /var/tmp                   v      v       v
+#---------------------------------------------------------
+
+mount_exec_blocklist = attribute(
+  'mount_exec_blocklist',
+  value: ['/boot', '/dev', '/dev/shm', '/tmp', '/var/log', '/var/log/audit', '/var/tmp'],
+  description: 'List of mountspoints where \'noexec\' mount option shoud be set'
+)
+
+mount_suid_blocklist = attribute(
+  'mount_suid_blocklist',
+  value: ['/boot', '/dev', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
+  description: 'List of mountpoints where \'nosuid\' mount option shoud be set'
+)
+
+mount_dev_blocklist = attribute(
+  'mount_dev_blocklist',
+  value: ['/boot', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
+  description: 'List of mountpoints where \'nodev\' mount option shoud be set'
+)
+
 control 'os-01' do
   impact 1.0
   title 'Trusted hosts login'
@@ -279,6 +313,48 @@ control 'os-13' do
       it { should_not be_writable.by('other') }
       it { should_not be_readable.by('group') }
       it { should_not be_readable.by('other') }
+    end
+  end
+end
+
+control 'os-14' do
+  impact 1.0
+  title 'Check mountpoints for noexec mount options'
+  desc 'Use the noexec mount options to limit attack vectors via mount points'
+
+  mount_exec_blocklist.each do |mnt_point|
+    next unless mount(mnt_point).mounted?
+
+    describe mount(mnt_point) do
+      its('options') { should include('noexec') }
+    end
+  end
+end
+
+control 'os-15' do
+  impact 1.0
+  title 'Check mountpoints for nosuid mount options'
+  desc 'Use the nosuid mount options to limit attack vectors via mount points'
+
+  mount_suid_blocklist.each do |mnt_point|
+    next unless mount(mnt_point).mounted?
+
+    describe mount(mnt_point) do
+      its('options') { should include('nosuid') }
+    end
+  end
+end
+
+control 'os-16' do
+  impact 1.0
+  title 'Check mountpoints for nodev mount options'
+  desc 'Use the nodev mount options to limit attack vectors via mount points'
+
+  mount_dev_blocklist.each do |mnt_point|
+    next unless mount(mnt_point).mounted?
+
+    describe mount(mnt_point) do
+      its('options') { should include('nodev') }
     end
   end
 end
