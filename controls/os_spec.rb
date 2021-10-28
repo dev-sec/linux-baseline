@@ -282,3 +282,25 @@ control 'os-13' do
     end
   end
 end
+
+control 'os-14' do
+  impact 1.0
+  title 'Check pam config - RedHat specific'
+  desc 'Check config of files in /etc/pam.d.'
+
+  pam_files = ['/etc/pam.d/system-auth', '/etc/pam.d/password-auth']
+
+  pam_files.each do |pam_file|
+    describe file(pam_file) do
+      it { should exist }
+      it { should be_owned_by 'root' }
+      its('group') { should eq 'root' }
+      its(:content) { should match(/^password\s*requisite\s*pam_pwhistory.so remember=5 use_authtok$/) }
+      its(:content) { should match(/^password\s*requisite\s*pam_pwquality.so try_first_pass retry=3 authtok_type=$/) }
+      its(:content) { should match(/^auth\s*required\s*pam_faillock.so preauth silent audit even_deny_root deny=5 unlock_time=15$/) }
+      its(:content) { should match(/^auth\s*required\s*pam_faillock.so authfail audit even_deny_root deny=5 unlock_time=15$/) }
+      its(:content) { should match(/^account\s*required\s*pam_faillock.so$/) }
+    end
+  end
+  only_if { os.redhat? }
+end
