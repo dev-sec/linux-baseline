@@ -25,6 +25,14 @@ login_defs_passmaxdays = attribute('login_defs_passmaxdays', value: '60', descri
 login_defs_passmindays = attribute('login_defs_passmindays', value: '7', description: 'Default password mindays to set in login.defs')
 login_defs_passwarnage = attribute('login_defs_passwarnage', value: '7', description: 'Default password warnage (days) to set in login.defs')
 
+system_users = passwd.params ? passwd.params.select { |x| x['uid'].to_i < login_defs.UID_MIN.to_i && x['uid'].to_i.positive? } : []
+
+system_users_non_login_permitlist = attribute(
+  'system_users_non_login_permitlist',
+  value: %w[sync halt shutdown],
+  description: 'List of system users which are allowed to log in'
+)
+
 shadow_group = 'root'
 shadow_group = 'shadow' if os.debian? || os.suse? || os.name == 'alpine'
 container_execution = begin
@@ -289,5 +297,18 @@ control 'os-14' do
   desc 'The password change date is used to detect expired passwords. Entering future dates might circumvent that.'
   describe shadow.where { last_change.to_i > (Date.today - Date.new(1970, 1, 1)).to_i } do
     its('users') { should be_empty }
+  end
+end
+
+control 'os-15' do
+  impact 1.0
+  title 'All system users are non-login'
+  desc 'The login of system users should be disabled'
+  system_users.each do |user|
+    next if system_users_non_login_permitlist.include? user['user']
+
+    describe OpenStruct.new(user) do
+      its('shell') { should be_in ['/bin/false', '/sbin/nologin', '/usr/bin/false', '/usr/sbin/nologin'] }
+    end
   end
 end
