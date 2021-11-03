@@ -282,3 +282,12 @@ control 'os-13' do
     end
   end
 end
+
+control 'os-14' do
+  impact 1.0
+  title 'All password change dates are in the past'
+  desc 'The password change date is used to detect expired passwords. Entering future dates might circumvent that.'
+  describe shadow.where { last_change.to_i > (Date.today - Date.new(1970, 1, 1)).to_i } do
+    its('users') { should be_empty }
+  end
+end
