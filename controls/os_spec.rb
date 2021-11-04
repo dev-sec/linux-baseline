@@ -341,3 +341,17 @@ control 'os-17' do
     its('content') { should_not match(/^[+-]/) }
   end
 end
+
+control 'os-18' do
+  impact 1.0
+  title 'Users and groups should be unique'
+  desc 'In order to avoid confusion or identity theft, every group and user should be unique'
+  describe passwd do
+    its('users') { should_not contain_duplicates }
+    its('uids') { should_not contain_duplicates }
+  end
+  describe etc_group do
+    its('groups') { should_not contain_duplicates }
+    its('gids') { should_not contain_duplicates }
+  end
+end
