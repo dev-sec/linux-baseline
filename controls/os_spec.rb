@@ -355,3 +355,18 @@ control 'os-18' do
     its('gids') { should_not contain_duplicates }
   end
 end
+
+control 'os-19' do
+  impact 1.0
+  title 'Shadow group should not have any users'
+  desc 'Members of the shadow group could have access to password hashes, so no user should be a member of that group'
+  shadow_group_entry = etc_group.where(name: shadow_group)
+
+  describe passwd.gids(shadow_group_entry.gids) do
+    its('count') { should eq 0 }
+  end
+
+  describe shadow_group_entry do
+    its('users') { should be_empty }
+  end
+end
