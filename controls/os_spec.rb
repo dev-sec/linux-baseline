@@ -370,3 +370,19 @@ control 'os-19' do
     its('users') { should be_empty }
   end
 end
+
+control 'os-20' do
+  impact 1.0
+  title 'All users and gids referred in /etc/group and /etc/passwd should exist'
+  desc 'Errors in system administration can lead to a case where gids or uids referred to do not exist'
+
+  gids = etc_group.gids.map(&:to_s)
+  describe passwd do
+    its('gids') { should be_in gids }
+  end
+
+  users = passwd.users
+  describe etc_group do
+    its('users') { should be_in users }
+  end
+end
