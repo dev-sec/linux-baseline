@@ -25,6 +25,14 @@ login_defs_passmaxdays = attribute('login_defs_passmaxdays', value: '60', descri
 login_defs_passmindays = attribute('login_defs_passmindays', value: '7', description: 'Default password mindays to set in login.defs')
 login_defs_passwarnage = attribute('login_defs_passwarnage', value: '7', description: 'Default password warnage (days) to set in login.defs')
 
+system_users = passwd.params ? passwd.params.select { |x| x['uid'].to_i < login_defs.UID_MIN.to_i && x['uid'].to_i.positive? } : []
+
+system_users_non_login_permitlist = attribute(
+  'system_users_non_login_permitlist',
+  value: %w[sync halt shutdown],
+  description: 'List of system users which are allowed to log in'
+)
+
 shadow_group = 'root'
 shadow_group = 'shadow' if os.debian? || os.suse? || os.name == 'alpine'
 container_execution = begin
@@ -280,5 +288,101 @@ control 'os-13' do
       it { should_not be_readable.by('group') }
       it { should_not be_readable.by('other') }
     end
+  end
+end
+
+control 'os-14' do
+  impact 1.0
+  title 'All password change dates are in the past'
+  desc 'The password change date is used to detect expired passwords. Entering future dates might circumvent that.'
+  describe shadow.where { last_change.to_i > (Date.today - Date.new(1970, 1, 1)).to_i } do
+    its('users') { should be_empty }
+  end
+end
+
+control 'os-15' do
+  impact 1.0
+  title 'All system users are non-login'
+  desc 'The login of system users should be disabled'
+  system_users.each do |user|
+    next if system_users_non_login_permitlist.include? user['user']
+
+    describe OpenStruct.new(user) do
+      its('shell') { should be_in ['/bin/false', '/sbin/nologin', '/usr/bin/false', '/usr/sbin/nologin'] }
+    end
+  end
+end
+
+control 'os-16' do
+  impact 1.0
+  title 'User \'root\' should be member of group \'root\' with gid \'0\''
+  desc 'This prevents root-owned files and directories to be accessible to non-privileged users'
+  describe passwd.uids(0) do
+    its('users') { should cmp 'root' }
+    its('gids') { should cmp 0 }
+  end
+  describe etc_group.where(gid: 0) do
+    its('groups') { should cmp 'root' }
+    its('users') { should be_empty }
+  end
+end
+
+control 'os-17' do
+  impact 1.0
+  title 'Prevent + or - fields in passwd an related files used by NIS'
+  desc 'NIS is insecure and should not be used'
+  describe file('/etc/passwd') do
+    its('content') { should_not match(/^[+-]/) }
+  end
+  describe file('/etc/shadow') do
+    its('content') { should_not match(/^[+-]/) }
+  end
+  describe file('/etc/group') do
+    its('content') { should_not match(/^[+-]/) }
+  end
+end
+
+control 'os-18' do
+  impact 1.0
+  title 'Users and groups should be unique'
+  desc 'In order to avoid confusion or identity theft, every group and user should be unique'
+  describe passwd do
+    its('users') { should_not contain_duplicates }
+    its('uids') { should_not contain_duplicates }
+  end
+  describe etc_group do
+    its('groups') { should_not contain_duplicates }
+    its('gids') { should_not contain_duplicates }
+  end
+end
+
+control 'os-19' do
+  impact 1.0
+  title 'Shadow group should not have any users'
+  desc 'Members of the shadow group could have access to password hashes, so no user should be a member of that group'
+  shadow_group_entry = etc_group.where(name: shadow_group)
+
+  describe passwd.gids(shadow_group_entry.gids) do
+    its('count') { should eq 0 }
+  end
+
+  describe shadow_group_entry do
+    its('users') { should be_empty }
+  end
+end
+
+control 'os-20' do
+  impact 1.0
+  title 'All users and gids referred in /etc/group and /etc/passwd should exist'
+  desc 'Errors in system administration can lead to a case where gids or uids referred to do not exist'
+
+  gids = etc_group.gids.map(&:to_s)
+  describe passwd do
+    its('gids') { should be_in gids }
+  end
+
+  users = passwd.users
+  describe etc_group do
+    its('users') { should be_in users }
   end
 end
