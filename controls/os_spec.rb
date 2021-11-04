@@ -312,3 +312,17 @@ control 'os-15' do
     end
   end
 end
+
+control 'os-16' do
+  impact 1.0
+  title 'User \'root\' should be member of group \'root\' with gid \'0\''
+  desc 'This prevents root-owned files and directories to be accessible to non-privileged users'
+  describe passwd.uids(0) do
+    its('users') { should cmp 'root' }
+    its('gids') { should cmp 0 }
+  end
+  describe etc_group.where(gid: 0) do
+    its('groups') { should cmp 'root' }
+    its('users') { should be_empty }
+  end
+end
