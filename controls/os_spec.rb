@@ -326,3 +326,18 @@ control 'os-16' do
     its('users') { should be_empty }
   end
 end
+
+control 'os-17' do
+  impact 1.0
+  title 'Prevent + or - fields in passwd an related files used by NIS'
+  desc 'NIS is insecure and should not be used'
+  describe file('/etc/passwd') do
+    its('content') { should_not match(/^[+-]/) }
+  end
+  describe file('/etc/shadow') do
+    its('content') { should_not match(/^[+-]/) }
+  end
+  describe file('/etc/group') do
+    its('content') { should_not match(/^[+-]/) }
+  end
+end
