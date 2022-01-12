@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.8.2](https://github.com/dev-sec/linux-baseline/tree/2.8.2) (2022-01-12)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.1...2.8.2)
+
+**Merged pull requests:**
+
+- missing inputs changed [\#167](https://github.com/dev-sec/linux-baseline/pull/167) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.8.1](https://github.com/dev-sec/linux-baseline/tree/2.8.1) (2022-01-12)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.0...2.8.1)
