@@ -33,7 +33,7 @@ rescue NoMethodError
   false
 end
 
-blacklist = attribute(
+blacklist = input(
   'blacklist',
   value: suid_blacklist.default,
   description: 'blacklist of suid/sgid program on system'
@@ -57,19 +57,19 @@ cpuvulndir = '/sys/devices/system/cpu/vulnerabilities/'
 #   /var/tmp                   v      v       v
 #---------------------------------------------------------
 
-mount_exec_blocklist = attribute(
+mount_exec_blocklist = input(
   'mount_exec_blocklist',
   value: ['/boot', '/dev', '/dev/shm', '/tmp', '/var/log', '/var/log/audit', '/var/tmp'],
   description: 'List of mountspoints where \'noexec\' mount option shoud be set'
 )
 
-mount_suid_blocklist = attribute(
+mount_suid_blocklist = input(
   'mount_suid_blocklist',
   value: ['/boot', '/dev', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
   description: 'List of mountpoints where \'nosuid\' mount option shoud be set'
 )
 
-mount_dev_blocklist = attribute(
+mount_dev_blocklist = input(
   'mount_dev_blocklist',
   value: ['/boot', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
   description: 'List of mountpoints where \'nodev\' mount option shoud be set'
