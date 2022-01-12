@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.1](https://github.com/dev-sec/linux-baseline/tree/2.8.1) (2021-11-23)
+## [2.8.1](https://github.com/dev-sec/linux-baseline/tree/2.8.1) (2022-01-12)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.0...2.8.1)
 
@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- use input instead of attribute [\#166](https://github.com/dev-sec/linux-baseline/pull/166) ([micheelengronne](https://github.com/micheelengronne))
 - feat\(os-14\) add rule to check noexec, nosuid and nodev mount options [\#164](https://github.com/dev-sec/linux-baseline/pull/164) ([cmhe](https://github.com/cmhe))
 - added sysctl-34 for checking link protection settings [\#160](https://github.com/dev-sec/linux-baseline/pull/160) ([cmhe](https://github.com/cmhe))
 
