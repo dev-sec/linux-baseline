@@ -18,7 +18,7 @@ class SUIDCheck < Inspec.resource(1)
   end
 
   def permissions
-    output = inspec.command('find / -perm -4000 -o -perm -2000 -type f ! -path \'/proc/*\' ! -path \'/var/lib/lxd/containers/*\' -print 2>/dev/null | grep -v \'^find:\'')
+    output = inspec.command('find / -type d \( -path \'/proc/*\' -o -path \'/var/lib/lxd/containers/*\' \) -prune -type f -o -perm -2000 -o -perm 4000 2>/dev/null | grep -v \'^find:\'')
     output.stdout.split(/\r?\n/)
   end
 
