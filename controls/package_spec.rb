@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-# Copyright 2015, Patrick Muench
+# Copyright:: 2015, Patrick Muench
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@
 
 container_execution = begin
   virtualization.role == 'guest' && virtualization.system =~ /^(lxc|docker)$/
-rescue NoMethodError
-  false
+                      rescue NoMethodError
+                        false
 end
 
 control 'package-01' do
