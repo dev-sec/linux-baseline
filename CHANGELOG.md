@@ -1,11 +1,12 @@
 # Changelog
 
-## [2.8.3](https://github.com/dev-sec/linux-baseline/tree/2.8.3) (2022-02-14)
+## [2.8.3](https://github.com/dev-sec/linux-baseline/tree/2.8.3) (2022-03-18)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.2...2.8.3)
 
 **Merged pull requests:**
 
+- Change linting to Cookstyle [\#169](https://github.com/dev-sec/linux-baseline/pull/169) ([schurzi](https://github.com/schurzi))
 - Improve SUID find [\#168](https://github.com/dev-sec/linux-baseline/pull/168) ([magmax](https://github.com/magmax))
 
 ## [2.8.2](https://github.com/dev-sec/linux-baseline/tree/2.8.2) (2022-01-12)
