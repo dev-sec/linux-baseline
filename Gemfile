@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'cookstyle'
 gem 'highline'
 gem 'rack'
 gem 'rake'
