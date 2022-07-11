@@ -414,13 +414,13 @@ control 'sysctl-34' do
   desc 'Protects against common exploits in regards to links, fifos and regular files created or controlled by attackers'
   only_if { !container_execution }
   describe kernel_parameter('fs.protected_fifos') do
-    its(:value) { should match cmp(/(1|2)/) }
+    its(:value) { should eq(1).or eq(2).or eq(nil) } # include nil because RHEL7 does not have this parameter
   end
   describe kernel_parameter('fs.protected_hardlinks') do
     its(:value) { should eq 1 }
   end
   describe kernel_parameter('fs.protected_regular') do
-    its(:value) { should eq 2 }
+    its(:value) { should eq(2).or eq(nil) } # include nil because RHEL7 does not have this parameter
   end
   describe kernel_parameter('fs.protected_symlinks') do
     its(:value) { should eq 1 }
