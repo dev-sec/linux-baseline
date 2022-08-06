@@ -254,7 +254,10 @@ control 'os-10' do
     its(:content) { should match 'install jffs2 /bin/true' }
     its(:content) { should match 'install hfs /bin/true' }
     its(:content) { should match 'install hfsplus /bin/true' }
-    its(:content) { should match 'install squashfs /bin/true' }
+    # Ubuntu Snaps need SquashFS to function
+    unless service('snapd').running?
+      its(:content) { should match 'install squashfs /bin/true' }
+    end
     its(:content) { should match 'install udf /bin/true' }
     # if efi is active, do not disable vfat. otherwise the system
     # won't boot anymore
