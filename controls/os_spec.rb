@@ -222,15 +222,6 @@ control 'os-07' do
   end
 end
 
-control 'os-08' do
-  impact 1.0
-  title 'Entropy'
-  desc 'Check system has enough entropy - greater than 1000'
-  describe file('/proc/sys/kernel/random/entropy_avail').content.to_i do
-    it { should >= 1000 }
-  end
-end
-
 control 'os-09' do
   impact 1.0
   title 'Check for .rhosts and .netrc file'
