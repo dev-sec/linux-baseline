@@ -1,11 +1,24 @@
 # Changelog
 
-## [2.8.3](https://github.com/dev-sec/linux-baseline/tree/2.8.3) (2022-03-18)
+## [2.8.3](https://github.com/dev-sec/linux-baseline/tree/2.8.3) (2022-09-29)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.2...2.8.3)
 
+**Fixed bugs:**
+
+- fix handling of sysctl fs.protected\_fifos and fs.protected\_regular [\#172](https://github.com/dev-sec/linux-baseline/pull/172) ([schurzi](https://github.com/schurzi))
+
+**Closed issues:**
+
+- Remove control 'os-08' because entropy is always at 256 [\#176](https://github.com/dev-sec/linux-baseline/issues/176)
+- How to deal with squashfs in Ubuntu 22 [\#174](https://github.com/dev-sec/linux-baseline/issues/174)
+- why keep\_logs? [\#171](https://github.com/dev-sec/linux-baseline/issues/171)
+- sysctl-34 - fs.protected\_regular is Ubuntu specific [\#170](https://github.com/dev-sec/linux-baseline/issues/170)
+
 **Merged pull requests:**
 
+- remove entropy-test [\#177](https://github.com/dev-sec/linux-baseline/pull/177) ([rndmh3ro](https://github.com/rndmh3ro))
+- only disable SquashFS if it's not needed [\#175](https://github.com/dev-sec/linux-baseline/pull/175) ([schurzi](https://github.com/schurzi))
 - Change linting to Cookstyle [\#169](https://github.com/dev-sec/linux-baseline/pull/169) ([schurzi](https://github.com/schurzi))
 - Improve SUID find [\#168](https://github.com/dev-sec/linux-baseline/pull/168) ([magmax](https://github.com/magmax))
 
