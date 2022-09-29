@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          ref: master
 
       - name: 'Get Previous tag'
         id: previoustag
@@ -32,13 +33,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           future_release: ${{ steps.version.outputs.next-version }}
 
-      - name: Generate changelog for the release
-        uses: charmixer/auto-changelog-action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          since_tag: ${{ steps.previoustag.outputs.tag }}
-          future_release: ${{ steps.version.outputs.next-version }}
-          output: CHANGELOGRELEASE.md
 
       - name: update inspec.yml
         uses: mikefarah/yq@3.2.1
@@ -46,7 +40,7 @@ jobs:
           cmd: yq w -I4 -i inspec.yml version ${{ steps.version.outputs.next-version }} && sed -i '1i---' inspec.yml
 
       - name: push inspec.yml and changelog
-        uses: github-actions-x/commit@v2.6
+        uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           push-branch: 'master'
@@ -54,7 +48,11 @@ jobs:
           files: inspec.yml CHANGELOG.md
           name: dev-sec CI
           email: hello@dev-sec.io
-          rebase: 'true'
+          force-add: 'true'
+
+      - name: Generate changelog for the release
+        run: |
+          sed '/## \[${{ steps.previoustag.outputs.tag }}\]/Q' CHANGELOG.md > CHANGELOGRELEASE.md
 
       - name: Read CHANGELOG.md
         id: package
@@ -62,26 +60,19 @@ jobs:
         with:
           path: ./CHANGELOGRELEASE.md
 
-      - uses: actions/checkout@v2
-        with:
-          ref: master
-
-      - name: Get current commitish
-        id: current_commitish
-        run: echo "::set-output name=sha::$(git log -1 --format="%H")"
-
-      - name: Check it
-        run: echo ${{ steps.current_commitish.outputs.sha }}
+      - name: Delete old drafts
+        uses: hugo19941994/delete-draft-releases@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release draft
         id: create_release
-        uses: actions/create-release@v1.1.2
+        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This token is provided by Actions, you do not need to create your own token
         with:
           release_name: ${{ steps.version.outputs.next-version }}
           tag_name: ${{ steps.version.outputs.next-version }}
           body: |
             ${{ steps.package.outputs.content }}
-          commitish: ${{ steps.current_commitish.outputs.sha }}
           draft: true
