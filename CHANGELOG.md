@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.8.4](https://github.com/dev-sec/linux-baseline/tree/2.8.4) (2022-10-28)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.3...2.8.4)
+
+**Implemented enhancements:**
+
+- use centralised issue templates and workflows [\#178](https://github.com/dev-sec/linux-baseline/pull/178) ([schurzi](https://github.com/schurzi))
+
 ## [2.8.3](https://github.com/dev-sec/linux-baseline/tree/2.8.3) (2022-09-29)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.2...2.8.3)
