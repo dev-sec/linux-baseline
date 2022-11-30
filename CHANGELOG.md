@@ -1,11 +1,12 @@
 # Changelog
 
-## [2.8.4](https://github.com/dev-sec/linux-baseline/tree/2.8.4) (2022-10-28)
+## [2.8.4](https://github.com/dev-sec/linux-baseline/tree/2.8.4) (2022-11-30)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.3...2.8.4)
 
 **Implemented enhancements:**
 
+- extend sysctls for ipv6 [\#179](https://github.com/dev-sec/linux-baseline/pull/179) ([rndmh3ro](https://github.com/rndmh3ro))
 - use centralised issue templates and workflows [\#178](https://github.com/dev-sec/linux-baseline/pull/178) ([schurzi](https://github.com/schurzi))
 
 ## [2.8.3](https://github.com/dev-sec/linux-baseline/tree/2.8.3) (2022-09-29)
