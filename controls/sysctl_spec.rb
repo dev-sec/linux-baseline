@@ -258,6 +258,9 @@ control 'sysctl-21' do
   describe kernel_parameter('net.ipv6.conf.default.router_solicitations') do
     its(:value) { should eq 0 }
   end
+  describe kernel_parameter('net.ipv6.conf.all.router_solicitations') do
+    its(:value) { should eq 0 }
+  end
 end
 
 control 'sysctl-22' do
@@ -309,6 +312,9 @@ control 'sysctl-26' do
   desc 'The autoconf setting controls whether router advertisements can cause the system to assign a global unicast address to an interface.'
   only_if { !container_execution }
   describe kernel_parameter('net.ipv6.conf.default.autoconf') do
+    its(:value) { should eq 0 }
+  end
+  describe kernel_parameter('net.ipv6.all.default.autoconf') do
     its(:value) { should eq 0 }
   end
 end
