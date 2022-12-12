@@ -314,7 +314,7 @@ control 'sysctl-26' do
   describe kernel_parameter('net.ipv6.conf.default.autoconf') do
     its(:value) { should eq 0 }
   end
-  describe kernel_parameter('net.ipv6.all.default.autoconf') do
+  describe kernel_parameter('net.ipv6.conf.all.autoconf') do
     its(:value) { should eq 0 }
   end
 end
