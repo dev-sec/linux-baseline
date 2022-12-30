@@ -10,4 +10,4 @@ on:
 
 jobs:
   test:
-    uses: dev-sec/.github/.github/workflows/baseline-test.yml@main
+    uses: dev-sec/.github/.github/workflows/baseline-test.yml@ruby3
