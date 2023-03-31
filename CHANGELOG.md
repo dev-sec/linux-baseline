@@ -1,8 +1,8 @@
 # Changelog
 
-## [2.8.4](https://github.com/dev-sec/linux-baseline/tree/2.8.4) (2022-12-12)
+## [2.9.0](https://github.com/dev-sec/linux-baseline/tree/2.9.0) (2023-03-31)
 
-[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.3...2.8.4)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.3...2.9.0)
 
 **Implemented enhancements:**
 
@@ -12,6 +12,10 @@
 **Fixed bugs:**
 
 - fix wrong sysctl [\#180](https://github.com/dev-sec/linux-baseline/pull/180) ([rndmh3ro](https://github.com/rndmh3ro))
+
+**Merged pull requests:**
+
+- Configure Renovate [\#182](https://github.com/dev-sec/linux-baseline/pull/182) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [2.8.3](https://github.com/dev-sec/linux-baseline/tree/2.8.3) (2022-09-29)
 
