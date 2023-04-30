@@ -60,25 +60,25 @@ cpuvulndir = '/sys/devices/system/cpu/vulnerabilities/'
 mount_exec_blocklist = input(
   'mount_exec_blocklist',
   value: ['/boot', '/dev', '/dev/shm', '/tmp', '/var/log', '/var/log/audit', '/var/tmp'],
-  description: 'List of mountspoints where \'noexec\' mount option shoud be set'
+  description: 'List of mountpoints where \'noexec\' mount option should be set'
 )
 
 mount_suid_blocklist = input(
   'mount_suid_blocklist',
   value: ['/boot', '/dev', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
-  description: 'List of mountpoints where \'nosuid\' mount option shoud be set'
+  description: 'List of mountpoints where \'nosuid\' mount option should be set'
 )
 
 mount_dev_blocklist = input(
   'mount_dev_blocklist',
   value: ['/boot', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
-  description: 'List of mountpoints where \'nodev\' mount option shoud be set'
+  description: 'List of mountpoints where \'nodev\' mount option should be set'
 )
 
 control 'os-01' do
   impact 1.0
   title 'Trusted hosts login'
-  desc "hosts.equiv file is a weak implemenation of authentication. Disabling the hosts.equiv support helps to prevent users from subverting the system's normal access control mechanisms of the system."
+  desc "hosts.equiv file is a weak implementation of authentication. Disabling the hosts.equiv support helps to prevent users from subverting the system's normal access control mechanisms of the system."
   describe file('/etc/hosts.equiv') do
     it { should_not exist }
   end
