@@ -4,7 +4,7 @@
 
 class SUIDBlacklist < Inspec.resource(1)
   name 'suid_blacklist'
-  desc 'The suid_blacklist resoruce returns the default suid blacklist'
+  desc 'The suid_blacklist resource returns the default suid blacklist'
 
   def default
     [
