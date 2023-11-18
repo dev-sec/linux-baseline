@@ -35,7 +35,7 @@ end
 
 blacklist = input(
   'blacklist',
-  value: suid_blacklist.default,
+  value: "#{suid_blacklist.default}",
   description: 'blacklist of suid/sgid program on system'
 )
 
