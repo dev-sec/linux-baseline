@@ -19,7 +19,7 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-login_defs_umask = input('login_defs_umask', value: os.redhat? ? '077' : '027', description: 'Default umask to set in login.defs')
+login_defs_umask = input('login_defs_umask', value: "#{os.redhat? ? '077' : '027'}", description: 'Default umask to set in login.defs')
 
 login_defs_passmaxdays = input('login_defs_passmaxdays', value: '60', description: 'Default password maxdays to set in login.defs')
 login_defs_passmindays = input('login_defs_passmindays', value: '7', description: 'Default password mindays to set in login.defs')
