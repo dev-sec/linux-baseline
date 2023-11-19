@@ -24,9 +24,9 @@ inputs:
     - name: mount_exec_blocklist
       description: List of mountpoints where 'noexec' mount option should be set
     - name: mount_suid_blocklist
-      description: List of mountpoints where \'nosuid\' mount option should be set
+      description: List of mountpoints where 'nosuid' mount option should be set
     - name: mount_dev_blocklist
-      description: List of mountpoints where \'nodev\' mount option should be set
+      description: List of mountpoints where 'nodev' mount option should be set
     - name: sysctl_forwarding
       description: Is network forwarding needed?
     - name: kernel_modules_disabled
