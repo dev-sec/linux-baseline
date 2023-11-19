@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.9.0](https://github.com/dev-sec/linux-baseline/tree/2.9.0) (2023-05-02)
+## [2.9.0](https://github.com/dev-sec/linux-baseline/tree/2.9.0) (2023-11-19)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.3...2.9.0)
 
@@ -15,6 +15,7 @@
 
 **Merged pull requests:**
 
+- ensure compatibility with new inspec version [\#184](https://github.com/dev-sec/linux-baseline/pull/184) ([schurzi](https://github.com/schurzi))
 - add spellchecking with codespell [\#183](https://github.com/dev-sec/linux-baseline/pull/183) ([schurzi](https://github.com/schurzi))
 - Configure Renovate [\#182](https://github.com/dev-sec/linux-baseline/pull/182) ([renovate[bot]](https://github.com/apps/renovate))
 
