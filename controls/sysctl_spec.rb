@@ -19,8 +19,8 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-sysctl_forwarding = input('sysctl_forwarding', value: false, description: 'Is network forwarding needed?')
-kernel_modules_disabled = input('kernel_modules_disabled', value: 0, description: 'Should loading of kernel modules be disabled?')
+sysctl_forwarding = input('sysctl_forwarding', value: false)
+kernel_modules_disabled = input('kernel_modules_disabled', value: 0)
 container_execution = begin
   virtualization.role == 'guest' && virtualization.system =~ /^(lxc|docker)$/
                       rescue NoMethodError

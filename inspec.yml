@@ -27,3 +27,7 @@ inputs:
       description: List of mountpoints where \'nosuid\' mount option should be set
     - name: mount_dev_blocklist
       description: List of mountpoints where \'nodev\' mount option should be set
+    - name: sysctl_forwarding
+      description: Is network forwarding needed?
+    - name: kernel_modules_disabled
+      description: Should loading of kernel modules be disabled?
