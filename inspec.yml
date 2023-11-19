@@ -10,3 +10,24 @@ inspec_version: '>= 4.6.3'
 version: 2.9.0
 supports:
     - os-family: linux
+inputs:
+    - name: login_defs_umask
+      description: Default umask to set in login.defs
+    - name: login_defs_passmaxdays
+      description: Default password maxdays to set in login.defs
+    - name: login_defs_passmindays
+      description: Default password mindays to set in login.defs
+    - name: login_defs_passwarnage
+      description: Default password warnage (days) to set in login.defs
+    - name: blacklist
+      description: blacklist of suid/sgid program on system
+    - name: mount_exec_blocklist
+      description: List of mountpoints where 'noexec' mount option should be set
+    - name: mount_suid_blocklist
+      description: List of mountpoints where 'nosuid' mount option should be set
+    - name: mount_dev_blocklist
+      description: List of mountpoints where 'nodev' mount option should be set
+    - name: sysctl_forwarding
+      description: Is network forwarding needed?
+    - name: kernel_modules_disabled
+      description: Should loading of kernel modules be disabled?
