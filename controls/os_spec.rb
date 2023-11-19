@@ -19,11 +19,11 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-login_defs_umask = input('login_defs_umask', value: "#{os.redhat? ? '077' : '027'}", description: 'Default umask to set in login.defs')
+login_defs_umask = input('login_defs_umask', value: os.redhat? ? '077' : '027')
 
-login_defs_passmaxdays = input('login_defs_passmaxdays', value: '60', description: 'Default password maxdays to set in login.defs')
-login_defs_passmindays = input('login_defs_passmindays', value: '7', description: 'Default password mindays to set in login.defs')
-login_defs_passwarnage = input('login_defs_passwarnage', value: '7', description: 'Default password warnage (days) to set in login.defs')
+login_defs_passmaxdays = input('login_defs_passmaxdays', value: '60')
+login_defs_passmindays = input('login_defs_passmindays', value: '7')
+login_defs_passwarnage = input('login_defs_passwarnage', value: '7')
 
 shadow_group = 'root'
 shadow_group = 'shadow' if os.debian? || os.suse? || os.name == 'alpine'
@@ -35,8 +35,7 @@ end
 
 blacklist = input(
   'blacklist',
-  value: "#{suid_blacklist.default}",
-  description: 'blacklist of suid/sgid program on system'
+  value: suid_blacklist.default
 )
 
 cpuvulndir = '/sys/devices/system/cpu/vulnerabilities/'
@@ -59,20 +58,17 @@ cpuvulndir = '/sys/devices/system/cpu/vulnerabilities/'
 
 mount_exec_blocklist = input(
   'mount_exec_blocklist',
-  value: ['/boot', '/dev', '/dev/shm', '/tmp', '/var/log', '/var/log/audit', '/var/tmp'],
-  description: 'List of mountpoints where \'noexec\' mount option should be set'
+  value: ['/boot', '/dev', '/dev/shm', '/tmp', '/var/log', '/var/log/audit', '/var/tmp']
 )
 
 mount_suid_blocklist = input(
   'mount_suid_blocklist',
-  value: ['/boot', '/dev', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
-  description: 'List of mountpoints where \'nosuid\' mount option should be set'
+  value: ['/boot', '/dev', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp']
 )
 
 mount_dev_blocklist = input(
   'mount_dev_blocklist',
-  value: ['/boot', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp'],
-  description: 'List of mountpoints where \'nodev\' mount option should be set'
+  value: ['/boot', '/dev/shm', '/home', '/run', '/tmp', '/var', '/var/log', '/var/log/audit', '/var/tmp']
 )
 
 control 'os-01' do
