@@ -312,10 +312,14 @@ control 'os-14' do
   title 'Check mountpoints for noexec mount options'
   desc 'Use the noexec mount options to limit attack vectors via mount points'
 
-  mount_exec_blocklist.each do |mnt_point|
-    next unless mount(mnt_point).mounted?
+  def mounted_mount_points
+    mount_exec_blocklist.select do |mount_point|
+      mount(mount_point)&.mounted?? true : nil
+    end
+  end
 
-    describe mount(mnt_point) do
+  mounted_mount_points.each do |mount_point|
+    describe mount(mount_point) do
       its('options') { should include('noexec') }
     end
   end
@@ -326,10 +330,14 @@ control 'os-15' do
   title 'Check mountpoints for nosuid mount options'
   desc 'Use the nosuid mount options to limit attack vectors via mount points'
 
-  mount_suid_blocklist.each do |mnt_point|
-    next unless mount(mnt_point).mounted?
+  def mounted_mount_points(blocklist)
+    blocklist.select do |mount_point|
+      mount(mount_point)&.mounted?? true : nil
+    end
+  end
 
-    describe mount(mnt_point) do
+  mounted_mount_points(mount_suid_blocklist).each do |mount_point|
+    describe mount(mount_point) do
       its('options') { should include('nosuid') }
     end
   end
@@ -340,10 +348,14 @@ control 'os-16' do
   title 'Check mountpoints for nodev mount options'
   desc 'Use the nodev mount options to limit attack vectors via mount points'
 
-  mount_dev_blocklist.each do |mnt_point|
-    next unless mount(mnt_point).mounted?
+  def mounted_mount_points(blocklist)
+    blocklist.select do |mount_point|
+      mount(mount_point)&.mounted?? true : nil
+    end
+  end
 
-    describe mount(mnt_point) do
+  mounted_mount_points(mount_dev_blocklist).each do |mount_point|
+    describe mount(mount_point) do
       its('options') { should include('nodev') }
     end
   end
