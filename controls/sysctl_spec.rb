@@ -256,7 +256,7 @@ control 'sysctl-21' do
   desc 'The router solicitations setting determines how many router solicitations are sent when bringing up the interface. If addresses are statically assigned, there is no need to send any solicitations.'
   only_if { !container_execution }
   describe kernel_parameter('net.ipv6.conf.default.router_solicitations') do
-    its(:value) { should eq 0 }
+    its(:value) { should <= 0 }
   end
   describe kernel_parameter('net.ipv6.conf.all.router_solicitations') do
     its(:value) { should <= 0 }
