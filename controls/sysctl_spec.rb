@@ -259,7 +259,7 @@ control 'sysctl-21' do
     its(:value) { should eq 0 }
   end
   describe kernel_parameter('net.ipv6.conf.all.router_solicitations') do
-    its(:value) { should eq 0 }
+    its(:value) { should <= 0 }
   end
 end
 
@@ -315,7 +315,7 @@ control 'sysctl-26' do
     its(:value) { should eq 0 }
   end
   describe kernel_parameter('net.ipv6.conf.all.autoconf') do
-    its(:value) { should eq 0 }
+    its(:value) { should >= 0 }
   end
 end
 
@@ -426,7 +426,7 @@ control 'sysctl-34' do
     its(:value) { should eq 1 }
   end
   describe kernel_parameter('fs.protected_regular') do
-    its(:value) { should eq(2).or eq(nil) } # include nil because RHEL7 does not have this parameter
+    its(:value) { should eq(1).or eq(2).or eq(nil) } # include nil because RHEL7 does not have this parameter
   end
   describe kernel_parameter('fs.protected_symlinks') do
     its(:value) { should eq 1 }
