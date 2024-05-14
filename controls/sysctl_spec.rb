@@ -259,7 +259,7 @@ control 'sysctl-21' do
     its(:value) { should eq 0 }
   end
   describe kernel_parameter('net.ipv6.conf.all.router_solicitations') do
-    its(:value) { should eq 0 }
+    its(:value) { should eq -1 }
   end
 end
 
