@@ -281,3 +281,4 @@ control 'os-13' do
       it { should_not be_readable.by('other') }
     end
   end
+end
