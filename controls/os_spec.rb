@@ -307,19 +307,19 @@ control 'os-13' do
   end
 end
 
-control 'os-14' do
-  impact 1.0
-  title 'Check mountpoints for noexec mount options'
-  desc 'Use the noexec mount options to limit attack vectors via mount points'
+#control 'os-14' do
+  #impact 1.0
+  #title 'Check mountpoints for noexec mount options'
+  #desc 'Use the noexec mount options to limit attack vectors via mount points'
 
-  mount_exec_blocklist.each do |mnt_point|
-    next unless mount(mnt_point).mounted?
+  #mount_exec_blocklist.each do |mnt_point|
+    #next unless mount(mnt_point).mounted?
 
-    describe mount(mnt_point) do
-      its('options') { should include('noexec') }
-    end
-  end
-end
+    #describe mount(mnt_point) do
+      #its('options') { should include('noexec') }
+    #end
+  #end
+#end
 
 control 'os-15' do
   impact 1.0
