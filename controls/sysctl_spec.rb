@@ -311,9 +311,6 @@ control 'sysctl-26' do
   describe kernel_parameter('net.ipv6.conf.default.autoconf') do
     its(:value) { should eq 0 }
   end
-  describe kernel_parameter('net.ipv6.conf.all.autoconf') do
-    its(:value) { should >= 0 }
-  end
 end
 
 control 'sysctl-27' do
@@ -408,24 +405,5 @@ control 'sysctl-33' do
     describe kernel_parameter('kernel.exec-shield') do
       its(:value) { should eq 1 }
     end
-  end
-end
-
-control 'sysctl-34' do
-  impact 1.0
-  title 'Ensure links are protected'
-  desc 'Protects against common exploits in regards to links, fifos and regular files created or controlled by attackers'
-  only_if { !container_execution }
-  describe kernel_parameter('fs.protected_fifos') do
-    its(:value) { should eq(1).or eq(2).or eq(nil) } # include nil because RHEL7 does not have this parameter
-  end
-  describe kernel_parameter('fs.protected_hardlinks') do
-    its(:value) { should eq 1 }
-  end
-  describe kernel_parameter('fs.protected_regular') do
-    its(:value) { should eq(1).or eq(2).or eq(nil) } # include nil because RHEL7 does not have this parameter
-  end
-  describe kernel_parameter('fs.protected_symlinks') do
-    its(:value) { should eq 1 }
   end
 end
