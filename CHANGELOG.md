@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.9.0](https://github.com/dev-sec/linux-baseline/tree/2.9.0) (2023-11-19)
+## [2.9.0](https://github.com/dev-sec/linux-baseline/tree/2.9.0) (2024-08-21)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.3...2.9.0)
 
