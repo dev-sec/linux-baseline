@@ -13,7 +13,7 @@ group :tools do
   gem 'pry-coolline'
 end
 
-source 'https://packagecloud.io/cinc-project/stable' do
+source 'https://rubygems.cinc.sh' do
   gem 'chef-config'
   gem 'cinc-auditor-bin'
 end
