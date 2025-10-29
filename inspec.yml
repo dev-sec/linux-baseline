@@ -7,7 +7,7 @@ copyright_email: hello@dev-sec.io
 license: Apache-2.0
 summary: Test suite for best practice Linux OS hardening
 inspec_version: '>= 4.6.3'
-version: 2.9.0
+version: 2.9.1
 supports:
     - os-family: linux
 inputs:

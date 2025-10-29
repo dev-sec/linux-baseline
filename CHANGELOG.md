@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.9.1](https://github.com/dev-sec/linux-baseline/tree/2.9.1) (2025-10-29)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.9.0...2.9.1)
+
+**Merged pull requests:**
+
+- Consistent use of regex for splitting find results [\#190](https://github.com/dev-sec/linux-baseline/pull/190) ([schurzi](https://github.com/schurzi))
+
 ## [2.9.0](https://github.com/dev-sec/linux-baseline/tree/2.9.0) (2024-08-21)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.8.3...2.9.0)
@@ -235,8 +243,6 @@
 
 - skip the sysctl-19 control when sysctl\_forwarding is true [\#125](https://github.com/dev-sec/linux-baseline/pull/125) ([b-dean](https://github.com/b-dean))
 - add documentation for missing package-04 control [\#123](https://github.com/dev-sec/linux-baseline/pull/123) ([chris-rock](https://github.com/chris-rock))
-- Allow core dumps to be piped into a program with an absolute path. [\#121](https://github.com/dev-sec/linux-baseline/pull/121) ([samjmarshall](https://github.com/samjmarshall))
-- Allow for lowercase auditd config flush value. [\#120](https://github.com/dev-sec/linux-baseline/pull/120) ([samjmarshall](https://github.com/samjmarshall))
 - Fixing some deprecation notices [\#119](https://github.com/dev-sec/linux-baseline/pull/119) ([jjasghar](https://github.com/jjasghar))
 
 ## [2.3.0](https://github.com/dev-sec/linux-baseline/tree/2.3.0) (2019-05-15)
