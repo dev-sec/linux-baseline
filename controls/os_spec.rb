@@ -276,7 +276,7 @@ control 'os-12' do
       it { should be_directory }
     end
 
-    loaded_files = command("find #{cpuvulndir} -type f -maxdepth 1").stdout.split(/\n/).map(&:strip).find_all { |vulnfiles| !vulnfiles.empty? }
+    loaded_files = command("find #{cpuvulndir} -type f -maxdepth 1").stdout.split(/\r?\n/).map(&:strip).find_all { |vulnfiles| !vulnfiles.empty? }
 
     loaded_files.each do |vulnfile|
       describe file(vulnfile) do
