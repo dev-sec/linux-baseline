@@ -432,3 +432,13 @@ control 'sysctl-34' do
     its(:value) { should eq 1 }
   end
 end
+
+control 'sysctl-35' do
+  impact 1.0
+  title 'Restrict ptrace attach to privileged users'
+  desc 'Ensure kernel.yama.ptrace_scope is set to at least 2 so unprivileged users cannot attach ptrace to arbitrary processes.'
+  only_if { !container_execution }
+  describe kernel_parameter('kernel.yama.ptrace_scope') do
+    its(:value) { should >= 2 }
+  end
+end
