@@ -1,8 +1,13 @@
 # Changelog
 
-## [2.9.1](https://github.com/dev-sec/linux-baseline/tree/2.9.1) (2025-10-29)
+## [2.10.0](https://github.com/dev-sec/linux-baseline/tree/2.10.0) (2026-05-26)
 
-[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.9.0...2.9.1)
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.9.0...2.10.0)
+
+**Implemented enhancements:**
+
+- Ptrace should be disabled or admin-only [\#192](https://github.com/dev-sec/linux-baseline/issues/192)
+- Restrict ptrace attach to privileged users [\#193](https://github.com/dev-sec/linux-baseline/pull/193) ([schurzi](https://github.com/schurzi))
 
 **Merged pull requests:**
 
