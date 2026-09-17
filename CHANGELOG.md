@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.11.0](https://github.com/dev-sec/linux-baseline/tree/2.11.0) (2026-09-17)
+
+[Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.10.0...2.11.0)
+
+**Merged pull requests:**
+
+- Remove requirement for minimum password age [\#194](https://github.com/dev-sec/linux-baseline/pull/194) ([schurzi](https://github.com/schurzi))
+
 ## [2.10.0](https://github.com/dev-sec/linux-baseline/tree/2.10.0) (2026-05-26)
 
 [Full Changelog](https://github.com/dev-sec/linux-baseline/compare/2.9.0...2.10.0)
