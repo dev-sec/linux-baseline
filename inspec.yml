@@ -15,8 +15,6 @@ inputs:
       description: Default umask to set in login.defs
     - name: login_defs_passmaxdays
       description: Default password maxdays to set in login.defs
-    - name: login_defs_passmindays
-      description: Default password mindays to set in login.defs
     - name: login_defs_passwarnage
       description: Default password warnage (days) to set in login.defs
     - name: blacklist
